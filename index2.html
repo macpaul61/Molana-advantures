@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>summitTosafaris | Premium Tanzania Safaris & Adventures</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #FBF9F4;
+      color: #1E2A2E;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    ::selection {
+      background: #F28C28;
+      color: white;
+    }
+
+    /* navbar - transparent floating */
+    .navbar {
+      position: fixed;
+      top: 24px;
+      left: 5%;
+      right: 5%;
+      width: 90%;
+      height: 14%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 32px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(14px);
+      border-radius: 100px;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Logo image styling - fits perfectly */
+    .logo-img {
+      height: 58px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+      transition: transform 0.2s ease;
+      object-fit: contain;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.02);
+    }
+
+    /* desktop navigation */
+    .nav-links {
+      display: flex;
+      gap: 42px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+      transition: 0.25s;
+      position: relative;
+    }
+
+    .nav-links li a:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #F28C28;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover:after {
+      width: 100%;
+    }
+
+    .nav-links li a:hover {
+      color: #F28C28;
+    }
+
+    /* hamburger menu */
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      background: rgba(255,255,255,0.15);
+      width: 44px;
+      height: 44px;
+      border-radius: 40px;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+      backdrop-filter: blur(4px);
+    }
+
+    .hamburger:hover {
+      background: rgba(242,140,40,0.7);
+    }
+
+    /* mobile menu overlay */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 75%;
+      max-width: 320px;
+      height: 100vh;
+      background: rgba(10, 20, 15, 0.98);
+      backdrop-filter: blur(16px);
+      z-index: 2000;
+      padding: 100px 30px 40px;
+      transition: right 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: -5px 0 35px rgba(0,0,0,0.4);
+      border-left: 1px solid rgba(242,140,40,0.3);
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-menu ul {
+      list-style: none;
+    }
+
+    .mobile-menu ul li {
+      margin-bottom: 32px;
+    }
+
+    .mobile-menu ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 500;
+      display: block;
+      letter-spacing: 1px;
+      transition: 0.2s;
+    }
+
+    .mobile-menu ul li a:hover {
+      color: #F28C28;
+      transform: translateX(8px);
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 30px;
+      right: 28px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* hero section - logo placement */
+    .hero {
+      width: 100%;
+      min-height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.55)), 
+                  url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1974&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center 30%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 5%;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 1000px;
+      margin-top: 40px;
+    }
+
+    /* Hero logo container - fits beautifully */
+    .hero-logo-area {
+      margin-bottom: 35px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-logo-img {
+      max-width: 220px;
+      width: auto;
+      height: auto;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+      transition: transform 0.4s ease;
+      object-fit: contain;
+    }
+
+    .hero-logo-img:hover {
+      transform: scale(1.02);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 68px;
+      font-weight: 800;
+      color: white;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+
+    .hero h1 span {
+      color: #F28C28;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: rgba(255,255,240,0.9);
+      margin-top: 24px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+    }
+
+    .btn-group {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 36px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary {
+      background: #F28C28;
+      color: #1E2A2E;
+      box-shadow: 0 8px 18px rgba(242,140,40,0.3);
+    }
+
+    .btn-primary:hover {
+      background: #e07c1a;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 26px rgba(242,140,40,0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.7);
+      color: white;
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: #0B3D2E;
+      border-color: white;
+    }
+
+    /* booking widget */
+    .booking-card {
+      width: 86%;
+      max-width: 1280px;
+      margin: -60px auto 0;
+      background: white;
+      border-radius: 40px;
+      padding: 32px 40px;
+      box-shadow: 0 35px 55px -20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 20;
+    }
+
+    .form-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .form-grid input {
+      flex: 1 1 180px;
+      padding: 16px 22px;
+      border: 1px solid #E6E0D6;
+      border-radius: 60px;
+      font-size: 0.95rem;
+      outline: none;
+      background: #FEFCF8;
+      transition: 0.2s;
+      font-weight: 500;
+    }
+
+    .form-grid input:focus {
+      border-color: #F28C28;
+      box-shadow: 0 0 0 3px rgba(242,140,40,0.2);
+    }
+
+    .form-grid button {
+      flex: 1 0 140px;
+      background: #0B3D2E;
+      border: none;
+      padding: 16px 25px;
+      border-radius: 60px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .form-grid button:hover {
+      background: #F28C28;
+      color: #1E2A2E;
+    }
+
+    /* sections */
+    .section-pad {
+      padding: 110px 6% 90px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-tag {
+      color: #F28C28;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 4px;
+      font-size: 0.8rem;
+    }
+
+    .section-title h2 {
+      font-size: 48px;
+      font-family: 'Playfair Display', serif;
+      color: #0B3D2E;
+      margin-top: 12px;
+    }
+
+    /* cards grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+    }
+
+    .luxury-card {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+    }
+
+    .luxury-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 45px -12px rgba(0,0,0,0.2);
+    }
+
+    .luxury-card img {
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+      transition: 0.6s;
+    }
+
+    .luxury-card:hover img {
+      transform: scale(1.02);
+    }
+
+    .card-text {
+      padding: 28px 25px;
+    }
+
+    .card-text h3 {
+      font-size: 28px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      color: #0B3D2E;
+    }
+
+    /* about section */
+    .about-premium {
+      background: #0B3D2E;
+      color: white;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-inner img {
+      width: 100%;
+      border-radius: 40px;
+      box-shadow: 0 30px 35px -15px rgba(0,0,0,0.3);
+    }
+
+    .about-text .sub {
+      color: #F28C28;
+      letter-spacing: 3px;
+      font-weight: 500;
+    }
+
+    .about-text h2 {
+      font-size: 48px;
+      font-family: 'Playfair Display', serif;
+      margin: 20px 0 20px;
+      line-height: 1.2;
+    }
+
+    .feature-list {
+      margin-top: 28px;
+    }
+
+    .feature-list p {
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feature-list i {
+      color: #F28C28;
+      font-size: 1.3rem;
+    }
+
+    /* CTA section */
+    .cta-section {
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                  url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1974&auto=format&fit=crop');
+      background-size: cover;
+      background-attachment: fixed;
+      padding: 110px 20px;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: 58px;
+      font-family: 'Playfair Display', serif;
+      color: white;
+    }
+
+    .cta-section p {
+      color: #f0e6d8;
+      font-size: 1.2rem;
+      max-width: 650px;
+      margin: 20px auto;
+    }
+
+    /* footer */
+    footer {
+      background: #121A17;
+      color: #CFD8DC;
+      padding: 70px 6% 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 50px;
+    }
+
+    footer h3 {
+      color: #F28C28;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 12px;
+      cursor: default;
+    }
+
+    .copyright {
+      margin-top: 60px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 32px;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 54px;
+      }
+      .section-title h2 {
+        font-size: 40px;
+      }
+      .about-text h2 {
+        font-size: 38px;
+      }
+    }
+
+    @media (max-width: 880px) {
+      .navbar {
+        width: 92%;
+        left: 4%;
+        right: 4%;
+        padding: 10px 24px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .about-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .feature-list p {
+        justify-content: center;
+      }
+      .booking-card {
+        padding: 24px 20px;
+        width: 92%;
+      }
+      .form-grid {
+        flex-direction: column;
+      }
+      .form-grid input, .form-grid button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 40px;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .btn {
+        padding: 12px 28px;
+      }
+      .section-title h2 {
+        font-size: 32px;
+      }
+      .cta-section h2 {
+        font-size: 38px;
+      }
+      .navbar {
+        top: 16px;
+        padding: 8px 20px;
+      }
+      .logo-img {
+        height: 48px;
+      }
+      .hero-logo-img {
+        max-width: 160px;
+      }
+    }
+
+    @media (min-width: 1600px) {
+      .hero h1 {
+        font-size: 82px;
+      }
+      .hero-logo-img {
+        max-width: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- premium floating navbar with your PNG logo -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <!-- Your actual logo: summittosafarilogo.png -->
+      <img src="summittosafarlogo.png" alt="summitTosafaris Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/300x80?text=summitTosafaris';">
+    </div>
+    <div class="hamburger" id="hamburgerBtn">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Safaris</a></li>
+      <li><a href="#">Destinations</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="close-menu" id="closeMenuBtn">
+      <i class="fas fa-times"></i>
+    </div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Safaris</a></li>
+      <li><a href="#">Destinations</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO section with logo placed elegantly -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-logo-area">
+        <img src="summittosafarlogo.png" alt="summitTosafaris Logo" class="hero-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/300x100?text=summitTosafaris';">
+      </div>
+      <h1>Adventure Begins <br><span>at the Summit</span></h1>
+      <p>Luxury wildlife safaris, Kilimanjaro expeditions & Zanzibar escapes — crafted by Tanzanian experts.</p>
+      <div class="btn-group">
+        <button class="btn btn-primary">Explore Safaris</button>
+        <button class="btn btn-secondary">Plan Your Trip</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking widget -->
+  <div class="booking-card">
+    <div class="form-grid">
+      <input type="text" placeholder="📍 Destination (e.g., Serengeti)">
+      <input type="text" placeholder="🦁 Safari Type">
+      <input type="date" value="2026-07-15">
+      <input type="number" placeholder="Travelers" value="2">
+      <button><i class="fas fa-search" style="margin-right: 8px;"></i> Search Adventures</button>
+    </div>
+  </div>
+
+  <!-- Experiences -->
+  <section class="section-pad">
+    <div class="section-title">
+      <div class="section-tag">Signature Experiences</div>
+      <h2>Explore Tanzania’s Wonders</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="luxury-card">
+        <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?q=80&w=1974&auto=format&fit=crop" alt="Wildlife Safari">
+        <div class="card-text">
+          <h3>Wildlife Safaris</h3>
+          <p style="margin-top: 8px; color:#4b5b5f;">Big Five encounters in Serengeti & Ngorongoro Crater.</p>
+        </div>
+      </div>
+      <div class="luxury-card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1974&auto=format&fit=crop" alt="Kilimanjaro">
+        <div class="card-text">
+          <h3>Kilimanjaro Trekking</h3>
+          <p style="margin-top: 8px; color:#4b5b5f;">Summit Africa’s roof with expert mountain guides.</p>
+        </div>
+      </div>
+      <div class="luxury-card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1974&auto=format&fit=crop" alt="Zanzibar">
+        <div class="card-text">
+          <h3>Zanzibar Escapes</h3>
+          <p style="margin-top: 8px; color:#4b5b5f;">Turquoise waters, spice tours, and barefoot luxury.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About premium section -->
+  <section class="about-premium section-pad">
+    <div class="about-inner">
+      <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1974&auto=format&fit=crop" alt="Luxury safari jeep">
+      <div class="about-text">
+        <div class="sub">Why SummitTosafaris</div>
+        <h2>Luxury Safari Experiences <br>Crafted Just for You</h2>
+        <div class="feature-list">
+          <p><i class="fas fa-check-circle"></i> Expert Local Guides (Certified & Passionate)</p>
+          <p><i class="fas fa-check-circle"></i> Luxury Safari Vehicles & Fly-in Options</p>
+          <p><i class="fas fa-check-circle"></i> Tailor-Made Adventures & Private Departures</p>
+          <p><i class="fas fa-check-circle"></i> Kilimanjaro Specialist Team (98% summit rate)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to action -->
+  <section class="cta-section">
+    <div>
+      <h2>Adventure Awaits <br>Beyond the Horizon</h2>
+      <p>Let us design your dream Tanzania journey — from wild savannahs to the snows of Kilimanjaro.</p>
+      <button class="btn btn-primary" style="margin-top: 20px;">Start Your Journey <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h3>summitTosafaris</h3>
+        <p>Premium adventures & authentic safaris in Tanzania, East Africa.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          <li>Home</li>
+          <li>Safaris</li>
+          <li>About Us</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Connect</h3>
+        <ul>
+          <li><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Dar es Salaam, Tanzania</li>
+          <li><i class="fas fa-phone-alt"></i> +255 768 123 456</li>
+          <li><i class="fas fa-envelope"></i> hello@summittosafaris.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2026 summitTosafaris Adventures — Luxury Safari & Expedition Specialists. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu functionality
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+    function openMenu() {
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+    
+    // Close mobile menu when clicking on any link
+    const mobileLinks = mobileMenu.querySelectorAll('ul li a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        closeMenu();
+        if (link.getAttribute('href') && link.getAttribute('href') !== '#') {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          if(targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Interactive button alerts for demo (luxury experience)
+    const allCtaButtons = document.querySelectorAll('.btn-primary, .btn-secondary, .form-grid button');
+    allCtaButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if (btn.closest('.form-grid') && btn.innerHTML.includes('Search')) {
+          e.preventDefault();
+          alert("✨ Our safari concierge will curate the perfect itinerary for you.");
+        } else if (btn.innerText.includes('Explore Safaris') || btn.innerText.includes('Start Your Journey')) {
+          e.preventDefault();
+          alert("🌍 Welcome to summitTosafaris! Get ready for an unforgettable East African adventure.");
+        } else if (btn.innerText.includes('Plan Your Trip')) {
+          e.preventDefault();
+          alert("📞 Talk to a travel specialist — we're here to craft your dream safari.");
+        }
+      });
+    });
+
+    console.log("✅ summitTosafaris — premium layout with real logo (PNG) in navbar and hero. Fully responsive with hamburger menu.");
+  </script>
+</body>
+</html>

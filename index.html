@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>summitTosafaris Adventures – Adventure Begins at the Summit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ── TOKENS from logo ─────────────────────────────────────────────────── */
+:root {
+  --cream:       #F5EFE6;        /* logo background */
+  --cream-dark:  #EDE3D4;
+  --forest:      #1A3A1A;        /* deep dark green of "summit" text */
+  --forest-mid:  #2C5F2E;
+  --forest-lite: #4A7C3F;
+  --orange:      #E07820;        /* the "T" and "Adventures" script color */
+  --orange-lite: #F5A623;
+  --earth:       #6B4226;        /* warm brown */
+  --sun:         #F4C040;        /* sun rays */
+  --dark:        #0F1F10;
+  --white:       #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--cream);
+  color: var(--forest);
+  overflow-x: hidden;
+}
+
+/* ── TEXTURE OVERLAY ────────────────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+/* ── NAV ────────────────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 72px;
+  background: rgba(245,239,230,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(26,58,26,0.1);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 2px 24px rgba(26,58,26,0.12); }
+
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo-img {
+  height: 52px; width: 52px; border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #ffe47a, var(--orange) 70%);
+  border: 2px solid var(--forest);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.nav-logo-img svg { width: 38px; height: 38px; }
+.nav-brand { line-height: 1.1; }
+.nav-brand .name { font-family: 'Lato', sans-serif; font-size: 17px; font-weight: 900; color: var(--forest); letter-spacing: -0.3px; }
+.nav-brand .name span.T { color: var(--orange); }
+.nav-brand .sub { font-family: 'Dancing Script', cursive; font-size: 13px; color: var(--orange); }
+
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--forest); text-decoration: none; transition: color 0.2s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 2px; background: var(--orange); transition: width 0.25s; }
+.nav-links a:hover { color: var(--orange); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--forest); color: var(--cream);
+  padding: 10px 24px; border-radius: 4px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+  text-decoration: none; border: 2px solid var(--forest);
+  transition: all 0.22s;
+}
+.nav-cta:hover { background: var(--orange); border-color: var(--orange); }
+
+/* ── HERO ────────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; padding-top: 72px;
+  background: linear-gradient(175deg, #FBF5E9 0%, #EDE3D0 50%, #E8D9BC 100%);
+}
+
+/* Animated sun rays */
+.hero-sun {
+  position: absolute; top: 8%; left: 50%; transform: translateX(-50%);
+  width: 700px; height: 700px; pointer-events: none;
+}
+.sun-circle {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 160px; height: 160px; border-radius: 50%;
+  background: radial-gradient(circle, #FFE066 30%, var(--orange) 100%);
+  box-shadow: 0 0 60px rgba(224,120,32,0.5), 0 0 120px rgba(244,192,64,0.25);
+  animation: sunPulse 4s ease-in-out infinite;
+}
+@keyframes sunPulse { 0%,100%{box-shadow:0 0 60px rgba(224,120,32,0.5),0 0 120px rgba(244,192,64,0.25)} 50%{box-shadow:0 0 90px rgba(224,120,32,0.7),0 0 180px rgba(244,192,64,0.4)} }
+
+.sun-rays {
+  position: absolute; inset: 0;
+  animation: raysSpin 40s linear infinite;
+}
+@keyframes raysSpin { to { transform: rotate(360deg); } }
+.sun-rays::before, .sun-rays::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  transform: translate(-50%, -50%);
+}
+
+/* SVG rays via clip */
+.rays-svg {
+  position: absolute; inset: 0; animation: raysSpin 40s linear infinite;
+  opacity: 0.6;
+}
+
+/* Mountain silhouette */
+.hero-mountain {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 900px; pointer-events: none;
+}
+.hero-mountain svg { width: 100%; display: block; }
+
+/* Ground stripe */
+.hero-ground {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 90px;
+  background: linear-gradient(to top, var(--forest) 0%, var(--forest-mid) 60%, transparent 100%);
+}
+
+/* Road stripes */
+.hero-road {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; pointer-events: none;
+}
+
+/* Birds */
+.hero-birds {
+  position: absolute; top: 22%; left: 18%;
+  animation: birdsFloat 8s ease-in-out infinite;
+}
+@keyframes birdsFloat { 0%,100%{transform:translate(0,0)} 50%{transform:translate(18px,-12px)} }
+
+.hero-content {
+  position: relative; z-index: 10;
+  text-align: center; padding: 0 24px;
+  animation: heroFadeUp 1s 0.3s both;
+}
+@keyframes heroFadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 20px;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; display: block; width: 36px; height: 2px; background: var(--orange);
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 7.5vw, 7rem);
+  font-weight: 900; line-height: 1.0;
+  color: var(--forest); margin-bottom: 6px;
+}
+.hero-title em { font-style: italic; color: var(--orange); }
+.hero-title .line2 { color: var(--forest-mid); }
+
+.hero-script {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
+  color: var(--orange); margin-bottom: 28px;
+  display: block;
+}
+
+.hero-tagline {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-size: 14px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--forest-mid); margin-bottom: 40px;
+}
+.hero-tagline::before, .hero-tagline::after {
+  content: '—'; color: var(--orange);
+}
+
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+.btn-main {
+  background: var(--forest); color: var(--cream);
+  padding: 16px 40px; border-radius: 4px;
+  font-size: 13px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase;
+  text-decoration: none; border: 2px solid var(--forest);
+  transition: all 0.22s;
+  box-shadow: 4px 4px 0 var(--earth);
+}
+.btn-main:hover { background: var(--orange); border-color: var(--orange); transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--earth); }
+
+.btn-ghost {
+  background: transparent; color: var(--forest);
+  padding: 14px 38px; border-radius: 4px;
+  font-size: 13px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase;
+  text-decoration: none; border: 2px solid var(--forest);
+  transition: all 0.22s;
+}
+.btn-ghost:hover { background: var(--forest); color: var(--cream); }
+
+/* Hero animal silhouette (giraffe outlines) */
+.hero-giraffe-left, .hero-giraffe-right {
+  position: absolute; bottom: 60px; pointer-events: none; opacity: 0.12;
+}
+.hero-giraffe-left { left: 3%; }
+.hero-giraffe-right { right: 3%; transform: scaleX(-1); }
+.hero-giraffe-left svg, .hero-giraffe-right svg { height: 340px; }
+
+/* Scroll indicator */
+.hero-scroll {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 10;
+}
+.hero-scroll span { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--cream); font-weight: 700; }
+.scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--orange-lite), transparent); animation: scrollDrop 2s ease-in-out infinite; }
+@keyframes scrollDrop { 0%{opacity:1;transform:scaleY(0);transform-origin:top} 50%{opacity:1;transform:scaleY(1)} 100%{opacity:0;transform:scaleY(1)} }
+
+/* ── STATS BAR ──────────────────────────────────────────────────────────── */
+.stats-bar {
+  background: var(--forest);
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 0;
+}
+.stat-item {
+  flex: 1; min-width: 160px; padding: 28px 24px;
+  text-align: center; border-right: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 900;
+  color: var(--orange-lite); line-height: 1; margin-bottom: 4px;
+}
+.stat-label { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(245,239,230,0.55); }
+
+/* ── SECTION COMMONS ─────────────────────────────────────────────────────── */
+section { padding: 100px 48px; position: relative; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 14px;
+}
+.section-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--orange); }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 900; line-height: 1.15;
+  color: var(--forest); margin-bottom: 18px;
+}
+.section-title em { font-style: italic; color: var(--orange); }
+.section-body { font-size: 1.05rem; color: rgba(26,58,26,0.7); line-height: 1.75; max-width: 520px; }
+
+/* ── DISCOVER SECTION ────────────────────────────────────────────────────── */
+.discover { background: var(--cream); }
+.discover-header { text-align: center; margin-bottom: 60px; }
+.discover-header .section-body { margin: 0 auto; }
+
+.destinations-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-rows: 300px 300px;
+  gap: 14px;
+}
+.dest-card {
+  position: relative; border-radius: 8px; overflow: hidden;
+  cursor: pointer; transition: transform 0.35s;
+  border: 2px solid transparent;
+}
+.dest-card:hover { transform: translateY(-6px); border-color: var(--orange); }
+.dest-card.big { grid-row: 1 / 3; }
+
+.dest-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; display: block; }
+.dest-card:hover .dest-img { transform: scale(1.06); }
+
+.dest-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(15,31,16,0.88) 0%, rgba(15,31,16,0.1) 55%);
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;
+  transition: background 0.3s;
+}
+.dest-card:hover .dest-overlay { background: linear-gradient(to top, rgba(15,31,16,0.92) 0%, rgba(15,31,16,0.25) 55%); }
+.dest-tag { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange-lite); margin-bottom: 6px; }
+.dest-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--white); margin-bottom: 6px; line-height: 1.15; }
+.dest-name.big-name { font-size: 2.1rem; }
+.dest-desc { font-size: 0.83rem; color: rgba(255,255,255,0.72); line-height: 1.55; }
+.dest-arrow {
+  position: absolute; top: 18px; right: 18px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(224,120,32,0.15); border: 1.5px solid rgba(224,120,32,0.5);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--orange-lite); font-size: 15px;
+  transition: all 0.22s;
+}
+.dest-card:hover .dest-arrow { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+/* ── EXPERIENCE TABS ─────────────────────────────────────────────────────── */
+.experiences { background: var(--forest); }
+.experiences .section-title { color: var(--cream); }
+.experiences .section-eyebrow { color: var(--orange-lite); }
+.experiences .section-eyebrow::before { background: var(--orange-lite); }
+
+.exp-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+.exp-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.exp-card {
+  background: rgba(245,239,230,0.05); border: 1.5px solid rgba(245,239,230,0.1);
+  border-radius: 8px; padding: 28px 22px;
+  transition: all 0.25s; cursor: pointer;
+}
+.exp-card:hover {
+  background: rgba(224,120,32,0.1); border-color: rgba(224,120,32,0.4);
+  transform: translateY(-4px);
+}
+.exp-icon { font-size: 2rem; margin-bottom: 14px; }
+.exp-name { font-weight: 900; font-size: 0.95rem; color: var(--cream); margin-bottom: 6px; letter-spacing: 0.3px; }
+.exp-text { font-size: 0.82rem; color: rgba(245,239,230,0.55); line-height: 1.6; }
+
+/* ── PACKAGES ────────────────────────────────────────────────────────────── */
+.packages { background: var(--cream-dark); }
+.packages-header { text-align: center; margin-bottom: 60px; }
+.packages-header .section-body { margin: 0 auto; }
+
+.packages-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+
+.pkg-card {
+  border-radius: 8px; overflow: hidden;
+  background: var(--cream); border: 2px solid rgba(26,58,26,0.1);
+  display: flex; flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.pkg-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(26,58,26,0.15); border-color: var(--orange); }
+
+.pkg-img { position: relative; height: 210px; overflow: hidden; }
+.pkg-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
+.pkg-card:hover .pkg-img img { transform: scale(1.07); }
+.pkg-badge {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--orange); color: var(--white);
+  font-size: 9px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 2px;
+}
+.pkg-badge.pop { background: var(--forest); }
+
+.pkg-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+.pkg-type { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.pkg-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 900; color: var(--forest); margin-bottom: 12px; }
+.pkg-desc { font-size: 0.85rem; color: rgba(26,58,26,0.65); line-height: 1.65; margin-bottom: 20px; flex: 1; }
+.pkg-features { list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
+.pkg-features li { font-size: 0.83rem; color: rgba(26,58,26,0.8); display: flex; align-items: center; gap: 8px; }
+.pkg-features li::before { content: '✓'; color: var(--forest-mid); font-weight: 900; font-size: 11px; }
+.pkg-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 18px; border-top: 1px solid rgba(26,58,26,0.1); }
+.pkg-price-from { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(26,58,26,0.5); }
+.pkg-price-num { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 900; color: var(--orange); line-height: 1; }
+.pkg-price-pp { font-size: 10px; color: rgba(26,58,26,0.45); }
+.pkg-btn {
+  font-size: 11px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--forest); text-decoration: none;
+  border: 2px solid var(--forest); padding: 8px 18px; border-radius: 3px;
+  transition: all 0.22s;
+}
+.pkg-btn:hover { background: var(--forest); color: var(--cream); }
+
+/* ── KILIMANJARO ─────────────────────────────────────────────────────────── */
+.kilimanjaro {
+  background: var(--dark);
+  padding: 0; overflow: hidden; position: relative;
+}
+.kili-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, rgba(15,31,16,0.97) 35%, rgba(15,31,16,0.6) 70%, rgba(15,31,16,0.3) 100%),
+    url('https://images.unsplash.com/photo-1621414050946-1e5e29f14d39?w=1600&auto=format&fit=crop') right center/cover no-repeat;
+}
+.kili-content { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; align-items: center; min-height: 600px; padding: 100px 48px; max-width: 1200px; margin: 0 auto; gap: 60px; }
+.kili-text .section-title { color: var(--cream); }
+.kili-text .section-body { color: rgba(245,239,230,0.65); margin-bottom: 36px; }
+
+.routes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 40px; }
+.route-item {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(245,239,230,0.06); border: 1px solid rgba(245,239,230,0.12);
+  border-radius: 6px; padding: 12px 16px;
+  font-size: 0.87rem; font-weight: 700; color: rgba(245,239,230,0.85);
+  transition: all 0.22s; cursor: pointer;
+}
+.route-item:hover { background: rgba(224,120,32,0.12); border-color: rgba(224,120,32,0.4); color: var(--white); }
+.route-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--forest-lite); flex-shrink: 0; }
+
+.kili-metrics { display: flex; gap: 40px; }
+.kili-metric .num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; color: var(--orange-lite); line-height: 1; }
+.kili-metric .lbl { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,239,230,0.5); margin-top: 4px; }
+
+/* ── WHY US ──────────────────────────────────────────────────────────────── */
+.why-us { background: var(--cream); }
+.why-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.why-visual { position: relative; }
+.why-img-wrap { border-radius: 8px; overflow: hidden; border: 3px solid var(--forest); height: 520px; }
+.why-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.why-float-badge {
+  position: absolute; bottom: -20px; right: -20px;
+  background: var(--orange); color: var(--white);
+  padding: 22px 26px; border-radius: 8px; text-align: center;
+  border: 4px solid var(--cream); box-shadow: 0 12px 36px rgba(224,120,32,0.35);
+}
+.why-float-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; line-height: 1; }
+.why-float-lbl { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.85; margin-top: 4px; }
+
+.why-list { display: flex; flex-direction: column; gap: 28px; margin-top: 36px; }
+.why-item { display: flex; gap: 18px; }
+.why-num-circle {
+  flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--forest); color: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 900;
+}
+.why-title { font-weight: 900; font-size: 0.97rem; color: var(--forest); margin-bottom: 5px; }
+.why-desc { font-size: 0.85rem; color: rgba(26,58,26,0.65); line-height: 1.65; }
+
+/* ── TESTIMONIALS ────────────────────────────────────────────────────────── */
+.testimonials { background: var(--forest); }
+.test-header { text-align: center; margin-bottom: 56px; }
+.testimonials .section-title { color: var(--cream); }
+.testimonials .section-eyebrow { color: var(--orange-lite); }
+.testimonials .section-eyebrow::before { background: var(--orange-lite); }
+
+.test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.test-card {
+  background: rgba(245,239,230,0.05); border: 1.5px solid rgba(245,239,230,0.1);
+  border-radius: 8px; padding: 32px 28px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.test-card:hover { border-color: rgba(224,120,32,0.4); transform: translateY(-4px); }
+
+.test-quote { font-size: 3rem; color: var(--orange); font-family: 'Playfair Display', serif; line-height: 0.8; margin-bottom: 14px; }
+.test-text { font-size: 0.9rem; color: rgba(245,239,230,0.75); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+.test-stars { color: var(--orange-lite); letter-spacing: 3px; margin-bottom: 18px; font-size: 0.9rem; }
+.test-author { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid rgba(245,239,230,0.1); }
+.test-ava {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--forest-mid), var(--orange));
+  border: 2px solid rgba(224,120,32,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 1rem; color: var(--cream);
+}
+.test-name { font-weight: 900; font-size: 0.9rem; color: var(--cream); }
+.test-origin { font-size: 0.78rem; color: rgba(245,239,230,0.45); }
+
+/* ── CTA ─────────────────────────────────────────────────────────────────── */
+.cta {
+  background: var(--orange);
+  padding: 100px 48px; text-align: center; position: relative; overflow: hidden;
+}
+.cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 12px);
+}
+.cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900;
+  color: var(--white); margin-bottom: 14px; position: relative;
+}
+.cta h2 em { font-style: italic; color: var(--forest); }
+.cta p { font-size: 1.05rem; color: rgba(255,255,255,0.85); max-width: 540px; margin: 0 auto 40px; line-height: 1.7; position: relative; }
+.cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+.btn-cta-main {
+  background: var(--forest); color: var(--cream);
+  padding: 16px 40px; border-radius: 4px;
+  font-size: 13px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase;
+  text-decoration: none; border: 2px solid var(--forest); transition: all 0.22s;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+}
+.btn-cta-main:hover { background: var(--dark); border-color: var(--dark); transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,0.2); }
+.btn-cta-ghost {
+  background: transparent; color: var(--white);
+  padding: 14px 38px; border-radius: 4px;
+  font-size: 13px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase;
+  text-decoration: none; border: 2px solid rgba(255,255,255,0.6); transition: all 0.22s;
+}
+.btn-cta-ghost:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+
+/* ── FOOTER ──────────────────────────────────────────────────────────────── */
+footer {
+  background: var(--dark); padding: 72px 48px 36px;
+  border-top: 3px solid var(--orange);
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1200px; margin: 0 auto 48px; }
+
+.footer-brand-name { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 1.5rem; color: var(--cream); margin-bottom: 4px; }
+.footer-brand-name span { color: var(--orange); }
+.footer-script { font-family: 'Dancing Script', cursive; font-size: 1.1rem; color: var(--orange); margin-bottom: 16px; display: block; }
+.footer-bio { font-size: 0.87rem; color: rgba(245,239,230,0.5); line-height: 1.7; margin-bottom: 24px; }
+
+.footer-socials { display: flex; gap: 10px; }
+.soc {
+  width: 38px; height: 38px; border-radius: 4px;
+  background: rgba(245,239,230,0.07); border: 1px solid rgba(245,239,230,0.12);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(245,239,230,0.6); font-size: 13px; font-weight: 700;
+  text-decoration: none; transition: all 0.22s;
+}
+.soc:hover { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cream); margin-bottom: 20px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { font-size: 0.87rem; color: rgba(245,239,230,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-col a:hover { color: var(--orange); }
+
+.footer-bottom { border-top: 1px solid rgba(245,239,230,0.07); padding-top: 28px; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 0.82rem; color: rgba(245,239,230,0.3); }
+.footer-tagline {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,239,230,0.3);
+}
+.footer-tagline::before, .footer-tagline::after { content: '—'; color: var(--orange); opacity: 0.5; }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  nav { padding: 0 20px; }
+  .nav-links, .nav-cta { display: none; }
+  section { padding: 64px 20px; }
+  .destinations-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .dest-card.big { grid-row: auto; height: 300px; }
+  .dest-card { height: 240px; }
+  .exp-layout, .why-layout, .kili-content { grid-template-columns: 1fr; gap: 40px; }
+  .packages-grid, .test-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .stats-bar { gap: 0; }
+  .hero-giraffe-left, .hero-giraffe-right { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    
+      <img src="summittosafarilogo.jpg" style="object-fit: contain; width: 10%; height: 100%;">
+   
+    <div class="nav-brand">
+      <div class="name">summit<span class="T">T</span>osafaris</div>
+      <div class="sub">Adventures</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#discover">Destinations</a></li>
+    <li><a href="#packages">Safaris</a></li>
+    <li><a href="#kilimanjaro">Kilimanjaro</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Plan My Trip</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+  <!-- Sun rays SVG -->
+  <svg class="rays-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:4%;left:50%;transform:translateX(-50%);width:700px;height:700px;pointer-events:none;">
+    <g transform="translate(350,350)">
+      <!-- 24 rays -->
+      <g opacity="0.45">
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="18" stroke-linecap="round"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="18" stroke-linecap="round" transform="rotate(15)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F5A623" stroke-width="14" stroke-linecap="round" transform="rotate(30)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="18" stroke-linecap="round" transform="rotate(45)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F5A623" stroke-width="12" stroke-linecap="round" transform="rotate(60)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="16" stroke-linecap="round" transform="rotate(75)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F5A623" stroke-width="18" stroke-linecap="round" transform="rotate(90)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="13" stroke-linecap="round" transform="rotate(105)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F5A623" stroke-width="16" stroke-linecap="round" transform="rotate(120)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="18" stroke-linecap="round" transform="rotate(135)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F5A623" stroke-width="12" stroke-linecap="round" transform="rotate(150)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="16" stroke-linecap="round" transform="rotate(165)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F5A623" stroke-width="18" stroke-linecap="round" transform="rotate(180)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="14" stroke-linecap="round" transform="rotate(195)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F5A623" stroke-width="16" stroke-linecap="round" transform="rotate(210)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="18" stroke-linecap="round" transform="rotate(225)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F5A623" stroke-width="12" stroke-linecap="round" transform="rotate(240)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="16" stroke-linecap="round" transform="rotate(255)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F5A623" stroke-width="18" stroke-linecap="round" transform="rotate(270)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="13" stroke-linecap="round" transform="rotate(285)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F5A623" stroke-width="16" stroke-linecap="round" transform="rotate(300)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="18" stroke-linecap="round" transform="rotate(315)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F5A623" stroke-width="12" stroke-linecap="round" transform="rotate(330)"/>
+        <line x1="0" y1="-90" x2="0" y2="-340" stroke="#F4C040" stroke-width="16" stroke-linecap="round" transform="rotate(345)"/>
+      </g>
+      <!-- Sun circle -->
+      <circle cx="0" cy="0" r="70" fill="url(#sunGrad)"/>
+      <defs>
+        <radialGradient id="sunGrad" cx="40%" cy="35%">
+          <stop offset="0%" stop-color="#FFE47A"/>
+          <stop offset="100%" stop-color="#E07820"/>
+        </radialGradient>
+      </defs>
+    </g>
+  </svg>
+
+  <!-- Mountain SVG -->
+  <svg style="position:absolute;bottom:0;left:0;width:100%;pointer-events:none;" viewBox="0 0 1440 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+    <!-- Background hills -->
+    <ellipse cx="720" cy="500" rx="900" ry="300" fill="#4A7C3F" opacity="0.3"/>
+    <!-- Main Kilimanjaro -->
+    <polygon points="400,420 720,80 1040,420" fill="#1A3A1A"/>
+    <polygon points="580,420 720,130 860,420" fill="#2C5F2E"/>
+    <!-- Snow cap -->
+    <polygon points="680,130 720,80 760,130 745,125 720,92 695,125" fill="#EDE3D0" opacity="0.7"/>
+    <!-- Foreground foliage -->
+    <ellipse cx="200" cy="430" rx="260" ry="80" fill="#1A3A1A"/>
+    <ellipse cx="1240" cy="430" rx="260" ry="80" fill="#1A3A1A"/>
+    <!-- Ground -->
+    <rect x="0" y="400" width="1440" height="20" fill="#1A3A1A"/>
+    <!-- Acacia tree right -->
+    <rect x="1060" y="340" width="8" height="60" fill="#0F1F10"/>
+    <ellipse cx="1064" cy="330" rx="48" ry="18" fill="#1A3A1A"/>
+    <!-- Safari vehicle silhouette -->
+    <rect x="1110" y="370" width="60" height="28" rx="4" fill="#0F1F10"/>
+    <circle cx="1122" cy="400" r="10" fill="#0F1F10"/>
+    <circle cx="1158" cy="400" r="10" fill="#0F1F10"/>
+    <rect x="1118" y="360" width="44" height="14" rx="2" fill="#0F1F10" opacity="0.7"/>
+    <!-- Birds -->
+    <path d="M310 180 q8-6 12 0 q4 6 12 0" stroke="#1A3A1A" stroke-width="2.5" fill="none"/>
+    <path d="M330 165 q6-5 10 0 q4 5 10 0" stroke="#1A3A1A" stroke-width="2.5" fill="none"/>
+  </svg>
+
+  <!-- Road stripes -->
+  <svg style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;pointer-events:none;" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M500,60 L720,20 L940,60" stroke="#E07820" stroke-width="3" fill="none" opacity="0.7"/>
+    <path d="M400,60 L720,15 L1040,60" stroke="#1A3A1A" stroke-width="2" fill="none" opacity="0.5"/>
+  </svg>
+
+  <!-- Hero text -->
+  <div class="hero-content">
+    <div class="hero-eyebrow">Tanzania's Premier Adventure Company</div>
+    <h1 class="hero-title">
+      summit<em>T</em>osafaris<br/>
+      <span class="line2" style="font-size:0.55em;font-weight:700;letter-spacing:2px;">ADVENTURES</span>
+    </h1>
+    <span class="hero-script">Adventure Begins at the Summit</span>
+    <div class="hero-tagline">From Kilimanjaro to the Serengeti</div>
+    <div class="hero-btns">
+      <a href="#packages" class="btn-main">Explore Safaris</a>
+      <a href="#kilimanjaro" class="btn-ghost">Climb Kilimanjaro</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Happy Adventurers</div></div>
+  <div class="stat-item"><div class="stat-num">12+</div><div class="stat-label">Years Experience</div></div>
+  <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">Kili Routes</div></div>
+  <div class="stat-item"><div class="stat-num">15+</div><div class="stat-label">National Parks</div></div>
+  <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Summit Success</div></div>
+</div>
+
+<!-- DISCOVER -->
+<section class="discover" id="discover">
+  <div class="container">
+    <div class="discover-header">
+      <div class="section-eyebrow">Discover Tanzania</div>
+      <h2 class="section-title">Where Will Your<br/><em>Adventure Take You?</em></h2>
+      <p class="section-body">From the vast Serengeti plains to the volcanic Ngorongoro Crater and the spice-scented shores of Zanzibar — Tanzania holds wonders unlike anywhere on earth.</p>
+    </div>
+    <div class="destinations-grid">
+      <div class="dest-card big">
+        <img class="dest-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=900&auto=format&fit=crop" alt="Serengeti"/>
+        <div class="dest-overlay">
+          <div class="dest-tag">Northern Circuit · Iconic</div>
+          <div class="dest-name big-name">Serengeti<br/>National Park</div>
+          <div class="dest-desc">Witness the Great Migration — 1.5 million wildebeest crossing ancient plains in nature's greatest spectacle.</div>
+        </div>
+        <div class="dest-arrow">→</div>
+      </div>
+      <div class="dest-card">
+        <img class="dest-img" src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=700&auto=format&fit=crop" alt="Ngorongoro"/>
+        <div class="dest-overlay">
+          <div class="dest-tag">Northern Circuit</div>
+          <div class="dest-name">Ngorongoro Crater</div>
+          <div class="dest-desc">Africa's Eden — a volcanic caldera teeming with the Big Five.</div>
+        </div>
+        <div class="dest-arrow">→</div>
+      </div>
+      <div class="dest-card">
+        <img class="dest-img" src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=700&auto=format&fit=crop" alt="Zanzibar"/>
+        <div class="dest-overlay">
+          <div class="dest-tag">Beaches & Islands</div>
+          <div class="dest-name">Zanzibar Island</div>
+          <div class="dest-desc">Crystal waters, white sands, and rich Swahili heritage.</div>
+        </div>
+        <div class="dest-arrow">→</div>
+      </div>
+      <div class="dest-card">
+        <img class="dest-img" src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=700&auto=format&fit=crop" alt="Tarangire"/>
+        <div class="dest-overlay">
+          <div class="dest-tag">Northern Circuit</div>
+          <div class="dest-name">Tarangire N.P.</div>
+          <div class="dest-desc">Elephant herds and ancient baobabs in a hidden gem.</div>
+        </div>
+        <div class="dest-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="experiences" id="experiences">
+  <div class="container">
+    <div class="exp-layout">
+      <div>
+        <div class="section-eyebrow">Experience Your Way</div>
+        <h2 class="section-title" style="color:var(--cream)">Tailored for<br/><em>Every Explorer</em></h2>
+        <p class="section-body" style="color:rgba(245,239,230,0.65);margin-bottom:0">Whether you're a family seeking wonder, honeymooners chasing romance, or a solo summiteer — every journey is crafted around you.</p>
+      </div>
+      <div class="exp-cards">
+        <div class="exp-card">
+          <div class="exp-icon">👨‍👩‍👧</div>
+          <div class="exp-name">Family Safari</div>
+          <div class="exp-text">Child-friendly game drives and camps built for shared memories that last a lifetime.</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon">💑</div>
+          <div class="exp-name">Honeymoon Safari</div>
+          <div class="exp-text">Romantic private camps under African skies with candlelit bush dinners.</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon">🎈</div>
+          <div class="exp-name">Balloon Safari</div>
+          <div class="exp-text">Drift above the Serengeti at sunrise — a perspective only the lucky few witness.</div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon">🚶</div>
+          <div class="exp-name">Walking Safari</div>
+          <div class="exp-text">Track wildlife on foot with expert naturalist guides — up close and personal.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages" id="packages">
+  <div class="container">
+    <div class="packages-header">
+      <div class="section-eyebrow">Safari Packages</div>
+      <h2 class="section-title">Choose Your <em>Safari Style</em></h2>
+      <p class="section-body">Every budget deserves an extraordinary safari. We offer three tiers — all with expert guides, quality 4×4 vehicles, and unmatched passion for Tanzania.</p>
+    </div>
+    <div class="packages-grid">
+      <div class="pkg-card">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c93a?w=600&auto=format&fit=crop" alt="Budget"/>
+          <div class="pkg-badge">Best Value</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-type">Camping Safari</div>
+          <div class="pkg-name">The Wild at Heart</div>
+          <div class="pkg-desc">Sleep under stars in iconic parks. The most authentic way to experience Tanzania's raw wilderness.</div>
+          <ul class="pkg-features">
+            <li>Serengeti & Ngorongoro</li>
+            <li>Tented camp accommodation</li>
+            <li>Shared 4×4 game drives</li>
+            <li>All park fees included</li>
+          </ul>
+          <div class="pkg-footer">
+            <div>
+              <div class="pkg-price-from">From</div>
+              <div class="pkg-price-num">$850</div>
+              <div class="pkg-price-pp">per person</div>
+            </div>
+            <a href="#" class="pkg-btn">View Trip</a>
+          </div>
+        </div>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&auto=format&fit=crop" alt="Mid Range"/>
+          <div class="pkg-badge pop">Most Popular</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-type">Mid-Range Safari</div>
+          <div class="pkg-name">Classic Tanzania</div>
+          <div class="pkg-desc">Comfortable lodges, private drives, and all of Tanzania's iconic wildlife. The perfect balance.</div>
+          <ul class="pkg-features">
+            <li>Full Northern Circuit (5 parks)</li>
+            <li>Comfortable lodge stays</li>
+            <li>Private game drive vehicle</li>
+            <li>Zanzibar beach extension option</li>
+          </ul>
+          <div class="pkg-footer">
+            <div>
+              <div class="pkg-price-from">From</div>
+              <div class="pkg-price-num">$1,800</div>
+              <div class="pkg-price-pp">per person</div>
+            </div>
+            <a href="#" class="pkg-btn">View Trip</a>
+          </div>
+        </div>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1508702785571-99a4a4dc44e7?w=600&auto=format&fit=crop" alt="Luxury"/>
+          <div class="pkg-badge">Premium</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-type">Luxury Safari</div>
+          <div class="pkg-name">Ultimate Indulgence</div>
+          <div class="pkg-desc">Exclusive camps, gourmet bush dinners, helicopter transfers, and fully bespoke itineraries.</div>
+          <ul class="pkg-features">
+            <li>Private exclusive-use camps</li>
+            <li>Helicopter transfers</li>
+            <li>Dedicated guide & vehicle</li>
+            <li>Fully bespoke itinerary</li>
+          </ul>
+          <div class="pkg-footer">
+            <div>
+              <div class="pkg-price-from">From</div>
+              <div class="pkg-price-num">$4,500</div>
+              <div class="pkg-price-pp">per person</div>
+            </div>
+            <a href="#" class="pkg-btn">View Trip</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="#" class="btn-main">View All Packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- KILIMANJARO -->
+<section class="kilimanjaro" id="kilimanjaro">
+  <div class="kili-bg"></div>
+  <div class="kili-content">
+    <div class="kili-text">
+      <div class="section-eyebrow" style="color:var(--orange-lite)">
+        <span style="display:inline-block;width:28px;height:2px;background:var(--orange-lite);margin-right:10px;vertical-align:middle"></span>
+        Mount Kilimanjaro
+      </div>
+      <h2 class="section-title">Africa's Rooftop<br/><em>Awaits You</em></h2>
+      <p class="section-body">At 5,895 m, Kilimanjaro is the highest peak in Africa — and with summitTosafaris, you're in the safest, most experienced hands on the mountain. Our 98% summit success rate speaks for itself.</p>
+      <div class="routes-grid">
+        <div class="route-item"><div class="route-dot"></div>Machame Route</div>
+        <div class="route-item"><div class="route-dot"></div>Lemosho Route</div>
+        <div class="route-item"><div class="route-dot"></div>Marangu Route</div>
+        <div class="route-item"><div class="route-dot"></div>Rongai Route</div>
+        <div class="route-item"><div class="route-dot"></div>Northern Circuit</div>
+        <div class="route-item"><div class="route-dot"></div>Umbwe Route</div>
+      </div>
+      <div class="kili-metrics">
+        <div class="kili-metric"><div class="num">98%</div><div class="lbl">Summit Success</div></div>
+        <div class="kili-metric"><div class="num">5,895m</div><div class="lbl">Altitude</div></div>
+        <div class="kili-metric"><div class="num">6–9</div><div class="lbl">Days</div></div>
+      </div>
+      <div style="margin-top:36px">
+        <a href="#" class="btn-main">Plan My Climb</a>
+      </div>
+    </div>
+    <div></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="about">
+  <div class="container">
+    <div class="why-layout">
+      <div class="why-visual">
+        <div class="why-img-wrap">
+          <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&auto=format&fit=crop" alt="Guide"/>
+        </div>
+        <div class="why-float-badge">
+          <div class="why-float-num">12+</div>
+          <div class="why-float-lbl">Years in<br/>Tanzania</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-eyebrow">Why summitTosafaris</div>
+        <h2 class="section-title">Adventure With<br/><em>People Who Care</em></h2>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-num-circle">01</div>
+            <div>
+              <div class="why-title">Born & Raised in Tanzania</div>
+              <div class="why-desc">Our guides grew up with these landscapes. That local knowledge — from hidden game spots to reading weather on Kilimanjaro — makes all the difference.</div>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num-circle">02</div>
+            <div>
+              <div class="why-title">Safety First, Always</div>
+              <div class="why-desc">KPAP-accredited mountain crew, first-aid certified guides, and comprehensive safety protocols on every single departure.</div>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num-circle">03</div>
+            <div>
+              <div class="why-title">Responsible Tourism</div>
+              <div class="why-desc">Fair wages for porters, community investment, and minimal environmental impact. We believe tourism should uplift Tanzania.</div>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num-circle">04</div>
+            <div>
+              <div class="why-title">Truly Tailor-Made</div>
+              <div class="why-desc">No two trips are the same. Every itinerary is custom-built around your timeframe, budget, and bucket list.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="container">
+    <div class="test-header">
+      <div class="section-eyebrow" style="justify-content:center">
+        <span style="display:inline-block;width:28px;height:2px;background:var(--orange-lite);margin-right:10px;vertical-align:middle"></span>
+        Traveller Stories
+      </div>
+      <h2 class="section-title">Words from the <em>Wild</em></h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-quote">"</div>
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">Reaching Uhuru Peak was the hardest and most rewarding thing I've ever done. Our guide was exceptional — passionate, knowledgeable, and endlessly encouraging.</p>
+        <div class="test-author">
+          <div class="test-ava">S</div>
+          <div>
+            <div class="test-name">Sarah M.</div>
+            <div class="test-origin">🇬🇧 United Kingdom · Kilimanjaro</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"</div>
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">We witnessed the Great Migration and I still can't believe our eyes. summitTosafaris thought of every detail — from camp to game drive. Absolutely flawless.</p>
+        <div class="test-author">
+          <div class="test-ava">D</div>
+          <div>
+            <div class="test-name">David & Lisa K.</div>
+            <div class="test-origin">🇺🇸 United States · Serengeti</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-quote">"</div>
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">Ngorongoro at sunset, a balloon over the Serengeti, and our honeymoon camp under the Milky Way — every moment felt magical. Truly personal and special.</p>
+        <div class="test-author">
+          <div class="test-ava">A</div>
+          <div>
+            <div class="test-name">Amara & Kwame O.</div>
+            <div class="test-origin">🇳🇬 Nigeria · Honeymoon Safari</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta" id="contact">
+  <h2>Ready to Start Your<br/><em>Tanzania Adventure?</em></h2>
+  <p>Talk to our local experts today. We'll craft your perfect journey — from the summit of Kilimanjaro to the heart of the Serengeti.</p>
+  <div class="cta-btns">
+    <a href="mailto:info@summittosafaris.com" class="btn-cta-main">Email Us Today</a>
+    <a href="#" class="btn-cta-ghost">Plan My Trip Online</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">summit<span>T</span>osafaris</div>
+      <span class="footer-script">Adventures</span>
+      <p class="footer-bio">Tanzania's adventure specialists — combining Kilimanjaro climbs and wildlife safaris into unforgettable journeys since 2012. Based in Moshi, at the foot of the mountain.</p>
+      <div class="footer-socials">
+        <a href="#" class="soc">f</a>
+        <a href="#" class="soc">in</a>
+        <a href="#" class="soc">X</a>
+        <a href="#" class="soc">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Tanzania Safaris</h4>
+      <ul>
+        <li><a href="#">Budget Camping Safari</a></li>
+        <li><a href="#">Mid-Range Safari</a></li>
+        <li><a href="#">Luxury Safari</a></li>
+        <li><a href="#">Great Migration</a></li>
+        <li><a href="#">Zanzibar Beaches</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kilimanjaro</h4>
+      <ul>
+        <li><a href="#">Machame Route</a></li>
+        <li><a href="#">Lemosho Route</a></li>
+        <li><a href="#">Marangu Route</a></li>
+        <li><a href="#">Rongai Route</a></li>
+        <li><a href="#">Gear Checklist</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Blog & Stories</a></li>
+        <li><a href="#">TripAdvisor</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 summitTosafaris Adventures · Moshi, Kilimanjaro Region, Tanzania</p>
+    <div class="footer-tagline">Adventure Begins at the Summit</div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+</script>
+</body>
+</html>
