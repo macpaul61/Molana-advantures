@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>summitTosafaris | Luxury Tanzania Safaris & Kilimanjaro</title>
+  <meta name="description" content="SummitTosafaris – Luxury Tanzania safaris, Kilimanjaro trekking, and Zanzibar escapes. Local experts, custom tours, 98% summit success rate. Book your adventure today." />
+  <meta name="keywords" content="Tanzania safari, Kilimanjaro climbing, Zanzibar beach holiday, luxury safari, local tour operator, Serengeti migration" />
+  <meta name="author" content="summitTosafaris Adventures" />
+  <meta property="og:title" content="summitTosafaris | Luxury Tanzania Safaris & Kilimanjaro" />
+  <meta property="og:description" content="From the plains of Serengeti to the roof of Africa – create memories forever with our expert local team." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1974&auto=format" />
+  <meta property="og:type" content="website" />
+  <title>summitTosafaris | Tanzania Luxury Safaris, Kilimanjaro & Zanzibar</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +25,7 @@
     }
 
     body {
-      background: #FBF9F4;
+      background: #FDF9F2;
       color: #1E2A2E;
       font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
@@ -38,29 +45,24 @@
       font-weight: 700;
     }
 
-    /* Fade animations */
+    /* Animations */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .section-pad, .booking-section, .cards-grid .luxury-card, .about-inner, .cta-section {
+    .section-pad, .booking-section, .cards-grid .luxury-card, .about-inner, .cta-section, .package-card, .testimonial-card, .video-placeholder {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    .section-pad.visible, .booking-section.visible, .cards-grid .luxury-card.visible, 
-    .about-inner.visible, .cta-section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
     }
 
-    .cards-grid .luxury-card:nth-child(1) { transition-delay: 0.1s; }
-    .cards-grid .luxury-card:nth-child(2) { transition-delay: 0.2s; }
-    .cards-grid .luxury-card:nth-child(3) { transition-delay: 0.3s; }
-
-    /* ===== NAVBAR - COMPLETELY TRANSPARENT ===== */
+    /* Navbar transparent */
     .navbar {
       position: fixed;
       top: 20px;
@@ -70,757 +72,326 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 32px;
-      background: transparent;  /* FULLY TRANSPARENT */
-      backdrop-filter: none;
+      padding: 8px 28px;
+      background: transparent;
       border-radius: 80px;
       z-index: 1000;
-      transition: all 0.3s ease;
-      border: none;  /* no border */
-      box-shadow: none;
+      transition: all 0.3s;
+      border: none;
     }
-
-    /* Optional: add subtle dark background on scroll (for better readability when scrolling) */
     .navbar.scrolled {
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.2);
     }
-
     .logo-img {
-      height: 52px;
+      height: 50px;
       width: auto;
-      display: block;
       filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
-      transition: transform 0.2s ease;
-      object-fit: contain;
     }
-
-    .logo-img:hover {
-      transform: scale(1.02);
-    }
-
     .logo-fallback {
       color: white;
       font-weight: 700;
       font-size: 20px;
-      letter-spacing: 1px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
     .logo-fallback span { color: #F28C28; }
-
-    .nav-links {
-      display: flex;
-      gap: 42px;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav-links li a {
+    .nav-links { display: flex; gap: 35px; list-style: none; }
+    .nav-links a {
       color: white;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1rem;
-      transition: 0.25s;
-      position: relative;
-      font-family: 'Poppins', sans-serif;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.4);  /* TEXT SHADOW FOR READABILITY */
-      letter-spacing: 0.3px;
-    }
-
-    .nav-links li a:after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: #F28C28;
-      transition: 0.3s;
-    }
-
-    .nav-links li a:hover:after,
-    .nav-links li a.active:after {
-      width: 100%;
-    }
-
-    .nav-links li a.active {
-      color: #F28C28;
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 26px;
-      color: white;
-      cursor: pointer;
-      background: rgba(0,0,0,0.3);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      align-items: center;
-      justify-content: center;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
       transition: 0.2s;
-      backdrop-filter: blur(4px);
     }
-
-    .hamburger:hover {
-      background: rgba(242,140,40,0.8);
-    }
-
+    .nav-links a:hover, .nav-links a.active { color: #F28C28; }
+    .hamburger { display: none; font-size: 24px; color: white; cursor: pointer; background: rgba(0,0,0,0.3); width: 40px; height: 40px; border-radius: 50%; align-items: center; justify-content: center; }
     .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 75%;
-      max-width: 320px;
-      height: 100vh;
-      background: rgba(10, 20, 15, 0.98);
-      backdrop-filter: blur(20px);
-      z-index: 2000;
-      padding: 100px 30px 40px;
-      transition: right 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      box-shadow: -5px 0 35px rgba(0,0,0,0.5);
-      border-left: 1px solid rgba(242,140,40,0.4);
+      position: fixed; top: 0; right: -100%; width: 75%; max-width: 280px; height: 100vh;
+      background: rgba(10,20,15,0.98); backdrop-filter: blur(20px); z-index: 2000;
+      padding: 100px 25px; transition: 0.4s; border-left: 1px solid rgba(242,140,40,0.4);
     }
+    .mobile-menu.active { right: 0; }
+    .mobile-menu ul li { margin-bottom: 28px; }
+    .mobile-menu ul li a { color: white; font-size: 20px; text-decoration: none; }
+    .mobile-menu ul li a.active, .mobile-menu ul li a:hover { color: #F28C28; }
+    .close-menu { position: absolute; top: 25px; right: 25px; font-size: 28px; color: white; cursor: pointer; }
 
-    .mobile-menu.active {
-      right: 0;
-    }
-
-    .mobile-menu ul {
-      list-style: none;
-    }
-
-    .mobile-menu ul li {
-      margin-bottom: 32px;
-    }
-
-    .mobile-menu ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 22px;
-      font-weight: 500;
-      display: block;
-      transition: 0.2s;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .mobile-menu ul li a:hover,
-    .mobile-menu ul li a.active {
-      color: #F28C28;
-      transform: translateX(8px);
-    }
-
-    .close-menu {
-      position: absolute;
-      top: 30px;
-      right: 28px;
-      font-size: 30px;
-      color: white;
-      cursor: pointer;
-    }
-
-    /* HERO SECTION - original background */
+    /* Hero */
     .hero {
-      width: 100%;
       min-height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
-                  url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1974&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1974&auto=format');
+      background-size: cover; background-position: center;
+      display: flex; align-items: center; justify-content: center; text-align: center;
       padding: 0 5%;
-      position: relative;
     }
-
-    .hero-content {
-      max-width: 1000px;
-    }
-
-    .hero-logo {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 40px;
-    }
-
-    .hero-logo-img {
-      max-width: 200px;
-      width: auto;
-      height: auto;
-      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
-      transition: transform 0.3s ease;
-      object-fit: contain;
-    }
-
-    .hero-logo-img:hover {
-      transform: scale(1.02);
-    }
-
-    .hero h1 {
-      font-size: 68px;
-      font-weight: 800;
-      color: white;
-      line-height: 1.15;
-      letter-spacing: -0.5px;
-    }
-
-    .hero h1 span {
-      color: #F28C28;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      color: rgba(255,255,240,0.92);
-      margin-top: 24px;
-      max-width: 650px;
-      margin-left: auto;
-      margin-right: auto;
-      font-weight: 500;
-    }
-
-    .btn-group {
-      margin-top: 35px;
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 16px 38px;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 0.5px;
-    }
-
-    .btn-primary {
-      background: #F28C28;
-      color: #1E2A2E;
-      box-shadow: 0 8px 20px rgba(242,140,40,0.35);
-    }
-
-    .btn-primary:hover {
-      background: #e07c1a;
-      transform: translateY(-3px);
-    }
-
-    .btn-secondary {
-      background: rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.6);
-      color: white;
-    }
-
-    .btn-secondary:hover {
-      background: white;
-      color: #0B3D2E;
-    }
+    .hero-content { max-width: 1000px; }
+    .hero-logo-img { max-width: 180px; margin-bottom: 30px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)); }
+    .hero h1 { font-size: 64px; color: white; line-height: 1.2; }
+    .hero h1 span { color: #F28C28; }
+    .hero p { font-size: 1.2rem; color: rgba(255,255,240,0.95); margin-top: 20px; }
+    .btn-group { margin-top: 35px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 14px 34px; border-radius: 40px; font-weight: 600; border: none; cursor: pointer; transition: 0.25s; font-family: 'Poppins',sans-serif; }
+    .btn-primary { background: #F28C28; color: #1E2A2E; box-shadow: 0 8px 20px rgba(242,140,40,0.35); }
+    .btn-primary:hover { background: #e07c1a; transform: translateY(-3px); }
+    .btn-secondary { background: rgba(0,0,0,0.55); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.6); color: white; }
+    .btn-secondary:hover { background: white; color: #0B3D2E; }
 
     /* Trust badges */
-    .trust-row {
-      margin-top: 40px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px 28px;
-    }
+    .trust-row { margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 20px; }
+    .trust-badge { background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 40px; color: white; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 6px; }
+    .trust-badge i { color: #F28C28; }
 
-    .trust-badge {
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(8px);
-      padding: 8px 18px;
-      border-radius: 40px;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: white;
-      font-size: 0.8rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    /* Packages section */
+    .section-pad { padding: 80px 6%; }
+    .section-title { text-align: center; margin-bottom: 50px; }
+    .section-tag { color: #F28C28; text-transform: uppercase; letter-spacing: 4px; font-size: 0.75rem; font-weight: 600; }
+    .section-title h2 { font-size: 42px; color: #0B3D2E; margin-top: 8px; }
+    .packages-grid, .cards-grid, .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px;
     }
+    .package-card, .luxury-card, .testimonial-card {
+      background: white; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 30px -12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .package-card:hover, .luxury-card:hover { transform: translateY(-8px); }
+    .package-card img, .luxury-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .package-card .content, .card-text { padding: 22px; }
+    .package-card h3 { font-size: 24px; color: #0B3D2E; }
+    .package-price { color: #F28C28; font-weight: 800; font-size: 1.3rem; margin: 10px 0; }
+    .btn-small { background: #0B3D2E; color: white; border: none; padding: 8px 20px; border-radius: 30px; cursor: pointer; font-weight: 600; margin-top: 12px; }
+    .btn-small:hover { background: #F28C28; color: #1E2A2E; }
 
-    .trust-badge i {
-      color: #F28C28;
-    }
+    /* Testimonials */
+    .testimonial-card { padding: 25px; text-align: center; }
+    .testimonial-card i { font-size: 2rem; color: #F28C28; opacity: 0.5; }
+    .testimonial-card p { font-style: italic; margin: 15px 0; color: #2c3e2f; }
+    .client-name { font-weight: 700; color: #0B3D2E; }
 
-    .social-proof-split {
-      margin-top: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px 24px;
-    }
+    /* Why Choose Us / About */
+    .about-premium { background: #0B3D2E; color: white; }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .about-inner img { width: 100%; border-radius: 32px; border: 2px solid rgba(242,140,40,0.3); }
+    .feature-list p { margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+    .feature-list i { color: #F28C28; }
 
-    .social-proof-item {
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(4px);
-      padding: 5px 16px;
-      border-radius: 30px;
-      font-size: 0.75rem;
-      color: #FFECB3;
-      font-weight: 500;
-    }
+    /* Video placeholder */
+    .video-placeholder { background: #1a2a1f; border-radius: 32px; text-align: center; padding: 60px 20px; color: white; margin-top: 40px; }
+    .video-placeholder i { font-size: 4rem; color: #F28C28; margin-bottom: 20px; }
 
-    /* BOOKING SECTION - standalone */
-    .booking-section {
-      background: linear-gradient(135deg, #FEFCF8 0%, #F5EFE6 100%);
-      padding: 60px 6% 70px;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
+    /* FAQ */
+    .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 25px; margin-top: 30px; }
+    .faq-item { background: white; border-radius: 24px; padding: 22px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .faq-item h4 { color: #F28C28; margin-bottom: 10px; font-size: 1.2rem; }
 
-    .booking-container {
-      max-width: 1280px;
-      margin: 0 auto;
-    }
+    /* Contact & Social */
+    .contact-bar { background: #1E2A2E; color: white; padding: 40px 6%; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; border-radius: 40px; margin: 40px 6% 0; }
+    .contact-info i { width: 30px; color: #F28C28; }
+    .social-icons a { color: white; font-size: 1.8rem; margin-right: 20px; transition: 0.2s; }
+    .social-icons a:hover { color: #F28C28; }
 
-    .booking-title {
-      text-align: center;
-      margin-bottom: 35px;
-    }
+    footer { background: #121A17; color: #aaa; padding: 60px 6% 30px; margin-top: 60px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 40px; }
+    footer h3 { color: #F28C28; margin-bottom: 18px; }
+    footer ul li { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .copyright { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); }
 
-    .booking-title .section-tag {
-      color: #F28C28;
-      text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: 4px;
-      font-size: 0.75rem;
+    /* Floating WhatsApp */
+    .whatsapp-float {
+      position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white;
+      width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 999; transition: 0.2s;
     }
-
-    .booking-title h3 {
-      font-size: 32px;
-      color: #0B3D2E;
-      margin-top: 8px;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .booking-card {
-      background: white;
-      border-radius: 48px;
-      padding: 40px 42px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
-    }
-
-    .booking-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .form-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: flex-end;
-    }
-
-    .input-group {
-      flex: 1 1 180px;
-    }
-
-    .input-group label {
-      display: block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #F28C28;
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-    }
-
-    .form-grid input {
-      width: 100%;
-      padding: 16px 20px;
-      border: 1.5px solid #E6E0D6;
-      border-radius: 60px;
-      font-size: 0.95rem;
-      outline: none;
-      background: #FEFCF8;
-      transition: 0.2s;
-      font-weight: 500;
-    }
-
-    .form-grid input:focus {
-      border-color: #F28C28;
-      box-shadow: 0 0 0 3px rgba(242,140,40,0.15);
-    }
-
-    .form-grid button {
-      flex: 1 0 150px;
-      background: #0B3D2E;
-      border: none;
-      padding: 16px 28px;
-      border-radius: 60px;
-      color: white;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.25s;
-      font-size: 1rem;
-    }
-
-    .form-grid button:hover {
-      background: #F28C28;
-      color: #1E2A2E;
-      transform: scale(0.98);
-    }
-
-    /* Regular sections */
-    .section-pad {
-      padding: 100px 6%;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .section-tag {
-      color: #F28C28;
-      text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: 5px;
-      font-size: 0.8rem;
-    }
-
-    .section-title h2 {
-      font-size: 48px;
-      color: #0B3D2E;
-      margin-top: 12px;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-    }
-
-    .luxury-card {
-      background: white;
-      border-radius: 32px;
-      overflow: hidden;
-      transition: all 0.4s ease;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
-    }
-
-    .luxury-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 30px 45px -12px rgba(0,0,0,0.2);
-    }
-
-    .luxury-card img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      transition: 0.5s;
-    }
-
-    .luxury-card:hover img {
-      transform: scale(1.03);
-    }
-
-    .card-text {
-      padding: 28px 25px;
-    }
-
-    .card-text h3 {
-      font-size: 28px;
-      font-weight: 700;
-      color: #0B3D2E;
-    }
-
-    .about-premium {
-      background: #0B3D2E;
-      color: white;
-    }
-
-    .about-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-inner img {
-      width: 100%;
-      border-radius: 40px;
-      box-shadow: 0 30px 35px -10px rgba(0,0,0,0.4);
-      border: 2px solid rgba(242,140,40,0.3);
-    }
-
-    .about-text .sub {
-      color: #F28C28;
-      letter-spacing: 4px;
-      font-weight: 500;
-      text-transform: uppercase;
-    }
-
-    .about-text h2 {
-      font-size: 48px;
-      margin: 20px 0 20px;
-    }
-
-    .feature-list p {
-      margin-bottom: 16px;
-      font-size: 1.05rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .feature-list i {
-      color: #F28C28;
-    }
-
-    .cta-section {
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
-                  url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1974&auto=format&fit=crop');
-      background-size: cover;
-      background-attachment: fixed;
-      padding: 110px 20px;
-      text-align: center;
-    }
-
-    .cta-section h2 {
-      font-size: 56px;
-      color: white;
-    }
-
-    .cta-section p {
-      color: #f0e6d8;
-      font-size: 1.2rem;
-      max-width: 650px;
-      margin: 20px auto;
-    }
-
-    footer {
-      background: #121A17;
-      color: #CFD8DC;
-      padding: 70px 6% 40px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 50px;
-    }
-
-    footer h3 {
-      color: #F28C28;
-      margin-bottom: 20px;
-      font-family: 'Playfair Display', serif;
-    }
-
-    footer ul li {
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    footer ul li i {
-      width: 24px;
-      color: #F28C28;
-    }
-
-    .copyright {
-      margin-top: 60px;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 32px;
-    }
+    .whatsapp-float:hover { transform: scale(1.05); background: #128C7E; }
 
     /* Responsive */
-    @media (max-width: 1024px) {
-      .hero h1 { font-size: 54px; }
-      .section-title h2, .about-text h2 { font-size: 42px; }
-      .hero-logo-img { max-width: 170px; }
-    }
-
     @media (max-width: 880px) {
-      .navbar { width: 92%; left: 4%; padding: 8px 24px; }
-      .logo-img { height: 44px; }
+      .navbar { width: 94%; left: 3%; padding: 6px 20px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .about-inner { grid-template-columns: 1fr; text-align: center; }
-      .feature-list p { justify-content: center; }
-      .booking-card { padding: 28px 24px; }
-    }
-
-    @media (max-width: 768px) {
       .hero h1 { font-size: 42px; }
-      .hero p { font-size: 1rem; }
-      .btn { padding: 12px 28px; }
-      .section-title h2 { font-size: 34px; }
-      .about-text h2 { font-size: 32px; }
-      .hero-logo-img { max-width: 140px; }
-      .form-grid { flex-direction: column; }
-      .form-grid button { width: 100%; }
+      .section-title h2 { font-size: 32px; }
     }
-
-    @media (max-width: 480px) {
+    @media (max-width: 640px) {
       .hero h1 { font-size: 32px; }
-      .hero-logo-img { max-width: 110px; }
-      .trust-badge { font-size: 0.6rem; }
+      .hero-logo-img { max-width: 130px; }
+      .btn { padding: 10px 24px; }
+      .contact-bar { flex-direction: column; text-align: center; }
+      .social-icons a { font-size: 1.5rem; margin: 0 10px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR - fully transparent -->
-  <nav class="navbar" id="navbar">
-    <div class="logo-container">
-      <img src="summittosafarilogo.jpg" alt="summitTosafaris Logo" class="logo-img" 
-           onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'logo-fallback\'>summit<span>To</span>safaris</div>';">
-    </div>
-    <div class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></div>
-    <ul class="nav-links">
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#">Safaris</a></li>
-      <li><a href="#">Destinations</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/255700000000?text=Hello%21%20I%27m%20interested%20in%20a%20safari%20or%20Kilimanjaro%20trip" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></div>
-    <ul>
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#">Safaris</a></li>
-      <li><a href="#">Destinations</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="logo-container">
+   <img src="summittosafarilogo.jpg" alt="summitTosafaris" class="logo-img" 
+     onerror="this.onerror=null; var fallback=document.createElement('div'); fallback.className='logo-fallback'; fallback.innerHTML='summit<span>To</span>safaris'; this.parentNode.replaceChild(fallback, this);">
   </div>
+  <div class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></div>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-logo">
-        <img src="summittosafarlogo.png" alt="summitTosafaris Logo" class="hero-logo-img" 
-             onerror="this.onerror=null; this.src='https://placehold.co/200x80?text=summitTosafaris';">
-      </div>
-      <h1>Adventure Begins <br><span>at the Summit</span></h1>
-      <p>Experience luxury safaris, Mount Kilimanjaro expeditions, and unforgettable Tanzania adventures.</p>
-      <div class="btn-group">
-        <button class="btn btn-primary">Explore Safaris</button>
-        <button class="btn btn-secondary">Plan Your Trip</button>
-      </div>
-      <div class="trust-row">
-        <span class="trust-badge"><i class="fas fa-map-marked-alt"></i> Locally Owned Tanzanian Co.</span>
-        <span class="trust-badge"><i class="fas fa-mountain"></i> Expert Safari & Mountain Guides</span>
-        <span class="trust-badge"><i class="fas fa-gem"></i> Custom Private Tours</span>
-        <span class="trust-badge"><i class="fas fa-star"></i> 5-Star Guest Experiences</span>
-      </div>
-      <div class="social-proof-split">
-        <span class="social-proof-item"><i class="fas fa-globe-africa"></i> Trusted by travelers from 20+ countries</span>
-        <span class="social-proof-item"><i class="fas fa-flag-checkered"></i> Hundreds of successful Kilimanjaro summits</span>
-      </div>
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></div>
+  <ul>
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+
+<!-- Hero section with emotional storytelling -->
+<section class="hero">
+  <div class="hero-content">
+    <img src="summittosafarlogo.png" alt="summitTosafaris" class="hero-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/200x80?text=summitTosafaris';">
+    <h1>From the Plains of Serengeti <br>to the <span>Roof of Africa</span></h1>
+    <p>We create journeys you will remember forever — luxury safaris, Kilimanjaro summits, and Zanzibar turquoise waters. Local experts, authentic experiences.</p>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="alert('📞 Contact us via WhatsApp or email for custom quote!')">Get a Free Quote</button>
+      <button class="btn btn-secondary" onclick="location.href='#packages'">View Packages</button>
     </div>
-  </section>
+    <div class="trust-row">
+      <span class="trust-badge"><i class="fas fa-map-marked-alt"></i> Local Tanzanian Co.</span>
+      <span class="trust-badge"><i class="fas fa-mountain"></i> 98% Summit Success</span>
+      <span class="trust-badge"><i class="fas fa-gem"></i> Custom Private Tours</span>
+      <span class="trust-badge"><i class="fas fa-trophy"></i> TripAdvisor 5★</span>
+    </div>
+  </div>
+</section>
 
-  <!-- BOOKING SECTION -->
-  <section class="booking-section">
-    <div class="booking-container">
-      <div class="booking-title">
-        <div class="section-tag">Plan Your Journey</div>
-        <h3>Start Your Safari Adventure Today</h3>
+<!-- Tour Packages with Prices -->
+<section class="section-pad" id="packages">
+  <div class="section-title">
+    <div class="section-tag">Exclusive Tours</div>
+    <h2>Our Most Loved Packages</h2>
+  </div>
+  <div class="packages-grid">
+    <div class="package-card"><img src="https://images.unsplash.com/photo-1549366021-9f761d450615?q=80&w=1974&auto=format" alt="Safari"><div class="content"><h3>3 Days Serengeti + Ngorongoro</h3><div class="package-price">from $1,250 p/p</div><p>Game drives, crater tour, luxury safari jeep, all meals & park fees.</p><button class="btn-small" onclick="alert('Request booking for Safari package')">Book Now →</button></div></div>
+    <div class="package-card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1974&auto=format" alt="Kilimanjaro"><div class="content"><h3>7 Days Machame Route</h3><div class="package-price">from $1,850 p/p</div><p>Full camping, professional guides, porters, summit certificate, transfers.</p><button class="btn-small" onclick="alert('Request booking for Kilimanjaro')">Book Now →</button></div></div>
+    <div class="package-card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1974&auto=format" alt="Zanzibar"><div class="content"><h3>5 Days Zanzibar Beach Escape</h3><div class="package-price">from $890 p/p</div><p>Stone Town tour, spice farm, beach resort, snorkeling & transfers.</p><button class="btn-small" onclick="alert('Request booking for Zanzibar')">Book Now →</button></div></div>
+    <div class="package-card"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1974&auto=format" alt="Luxury Safari"><div class="content"><h3>5 Days Luxury Safari</h3><div class="package-price">from $2,990 p/p</div><p>Fly-in Serengeti, luxury lodges, private vehicle, champagne sunset.</p><button class="btn-small" onclick="alert('Request luxury safari')">Book Now →</button></div></div>
+  </div>
+</section>
+
+<!-- Video & Emotional Story -->
+<section class="section-pad" style="padding-top: 0;">
+  <div class="video-placeholder">
+    <i class="fas fa-play-circle"></i>
+    <h3>Watch the Magic of Tanzania</h3>
+    <p>Experience summit day, wildlife close-ups, and happy travelers. (Your video here)</p>
+    <button class="btn-primary btn" style="background:#F28C28; margin-top: 15px;" onclick="alert('Video would play – replace with your own YouTube/Vimeo link')">Watch Trailer</button>
+  </div>
+</section>
+
+<!-- Why Choose Us / About (enhanced) -->
+<section class="about-premium section-pad" id="about">
+  <div class="about-inner">
+    <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1974&auto=format" alt="Our team">
+    <div class="about-text">
+      <div class="sub">Why SummitTosafaris</div>
+      <h2>Your Tanzanian Family Since 2012</h2>
+      <div class="feature-list">
+        <p><i class="fas fa-check-circle"></i> 10+ years local guiding experience</p>
+        <p><i class="fas fa-check-circle"></i> 100% Tanzanian owned & operated</p>
+        <p><i class="fas fa-check-circle"></i> Certified mountain guides + ethical porter treatment</p>
+        <p><i class="fas fa-check-circle"></i> 24/7 support & custom itineraries</p>
+        <p><i class="fas fa-check-circle"></i> High summit success (98%) – we prepare you right</p>
       </div>
-      <div class="booking-card">
-        <div class="form-grid">
-          <div class="input-group"><label>Destination</label><input type="text" placeholder="e.g., Serengeti, Ngorongoro"></div>
-          <div class="input-group"><label>Safari Type</label><input type="text" placeholder="Luxury / Group / Private"></div>
-          <div class="input-group"><label>Travel Date</label><input type="date" value="2026-07-15"></div>
-          <div class="input-group"><label>Travelers</label><input type="number" placeholder="2" value="2"></div>
-          <button><i class="fas fa-search"></i> Search Trips</button>
-        </div>
-      </div>
+      <button class="btn-primary btn" style="margin-top: 15px;" onclick="alert('Our story: founded by local guides who love sharing Tanzania.')">Meet Our Team →</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- EXPERIENCES -->
-  <section class="section-pad">
-    <div class="section-title">
-      <div class="section-tag">Signature Experiences</div>
-      <h2>Explore Tanzania's Wonders</h2>
-    </div>
-    <div class="cards-grid">
-      <div class="luxury-card"><img src="https://images.unsplash.com/photo-1549366021-9f761d450615?q=80&w=1974&auto=format&fit=crop" alt="Wildlife"><div class="card-text"><h3>Wildlife Safaris</h3><p>Big Five encounters in Serengeti & Ngorongoro Crater.</p></div></div>
-      <div class="luxury-card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1974&auto=format&fit=crop" alt="Kilimanjaro"><div class="card-text"><h3>Kilimanjaro Trekking</h3><p>Summit Africa's roof with expert mountain guides.</p></div></div>
-      <div class="luxury-card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1974&auto=format&fit=crop" alt="Zanzibar"><div class="card-text"><h3>Zanzibar Escapes</h3><p>Turquoise waters, spice tours, and barefoot luxury.</p></div></div>
-    </div>
-  </section>
+<!-- Testimonials / Reviews -->
+<section class="section-pad" id="testimonials">
+  <div class="section-title">
+    <div class="section-tag">Real Stories</div>
+    <h2>What Our Travelers Say</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"The Kilimanjaro trek was life-changing. Our guide Moses was incredible – we felt safe and motivated. Summit sunrise was magical!"</p><div class="client-name">— Sarah & Tom, UK</div></div>
+    <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Luxury safari exceeded expectations. Saw big five, amazing lodge, and the team handled everything. Will come back for Zanzibar."</p><div class="client-name">— Linda, Australia</div></div>
+    <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Best decision to book with a local company. They customized our honeymoon: safari + beach. Flawless logistics."</p><div class="client-name">— James & Elena, USA</div></div>
+  </div>
+  <div style="text-align: center; margin-top: 30px;">
+    <span class="trust-badge" style="background: #0B3D2E; color:white;"><i class="fab fa-tripadvisor"></i> Rated 5.0 on TripAdvisor</span>
+    <span class="trust-badge" style="background: #0B3D2E; color:white;"><i class="fab fa-google"></i> Google Reviews ★★★★★</span>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section class="about-premium section-pad">
-    <div class="about-inner">
-      <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1974&auto=format&fit=crop" alt="Safari experience">
-      <div class="about-text"><div class="sub">Why SummitTosafaris</div><h2>Luxury Safari Experiences<br>Crafted Just for You</h2><div class="feature-list"><p><i class="fas fa-check-circle"></i> Expert Local Guides</p><p><i class="fas fa-check-circle"></i> Luxury Safari Vehicles & Fly-in Options</p><p><i class="fas fa-check-circle"></i> Tailor-Made Adventures</p><p><i class="fas fa-check-circle"></i> Kilimanjaro Specialists (98% summit rate)</p></div></div>
-    </div>
-  </section>
+<!-- FAQ Section -->
+<section class="section-pad" style="background: #F5EFE6;">
+  <div class="section-title">
+    <div class="section-tag">Got questions?</div>
+    <h2>Frequently Asked</h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item"><h4>🏔️ Best time to climb Kilimanjaro?</h4><p>January–March and June–October offer the best weather. We climb year-round with proper gear.</p></div>
+    <div class="faq-item"><h4>🦁 When is the Great Migration?</h4><p>June–July in Serengeti western corridor, and August–November in Masai Mara border. We track it live.</p></div>
+    <div class="faq-item"><h4>✈️ Do I need a visa?</h4><p>Most nationalities get visa on arrival ($50-100). We provide invitation letters if needed.</p></div>
+    <div class="faq-item"><h4>💪 How fit for Kili?</h4><p>Moderate fitness required. We recommend hiking beforehand. Our guides adjust pace for success.</p></div>
+    <div class="faq-item"><h4>💰 What’s included in prices?</h4><p>Park fees, meals, accommodation, guides, porter wages. International flights extra. No hidden fees.</p></div>
+    <div class="faq-item"><h4>📞 How to book?</h4><p>Contact us via WhatsApp, email, or form. Pay 30% deposit, balance before arrival. Secure.</p></div>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div><h2>Adventure Awaits <br>Beyond the Horizon</h2><p>Let us design your dream Tanzania journey.</p><button class="btn btn-primary" style="margin-top: 20px;">Start Your Journey <i class="fas fa-arrow-right"></i></button></div>
-  </section>
+<!-- Contact Bar with all socials and inquiry -->
+<div id="contact"></div>
+<div class="contact-bar">
+  <div class="contact-info"><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania<br><i class="fas fa-phone-alt"></i> +255 768 123 456<br><i class="fas fa-envelope"></i> info@summittosafaris.com</div>
+  <div class="social-icons">
+    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+  <div><button class="btn-primary btn" onclick="alert('📧 Send us an email or WhatsApp for immediate response!')">Request Quote →</button></div>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div><h3>summitTosafaris</h3><p>Premium adventures & authentic safaris in Tanzania.</p></div>
-      <div><h3>Quick Links</h3><ul><li>Home</li><li>Safaris</li><li>About Us</li><li>Contact</li></ul></div>
-      <div><h3>Connect</h3><ul><li><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</li><li><i class="fas fa-phone-alt"></i> +255 768 123 456</li><li><i class="fas fa-envelope"></i> hello@summittosafaris.com</li></ul></div>
-    </div>
-    <div class="copyright">© 2026 summitTosafaris Adventures — All rights reserved.</div>
-  </footer>
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div><h3>summitTosafaris</h3><p>Premium adventures, authentic safaris, local heart. Let’s create your dream Tanzania journey.</p></div>
+    <div><h3>Quick Links</h3><ul><li><a href="#" style="color:#aaa;">Home</a></li><li><a href="#packages" style="color:#aaa;">Packages</a></li><li><a href="#about" style="color:#aaa;">About</a></li><li><a href="#contact" style="color:#aaa;">Contact</a></li></ul></div>
+    <div><h3>Certified</h3><ul><li><i class="fas fa-shield-alt"></i> Licensed Tanzanian Tour Operator</li><li><i class="fas fa-lock"></i> Secure Booking</li><li><i class="fas fa-hand-holding-heart"></i> Ethical Porter Policy</li></ul></div>
+  </div>
+  <div class="copyright">© 2026 summitTosafaris Adventures – Your gateway to Tanzania’s wild beauty. All rights reserved.</div>
+</footer>
 
-  <script>
-    // Scroll effect for navbar (adds background only when scrolling)
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
+<script>
+  // Scroll navbar
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { if (window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
 
-    // Intersection Observer for animations
-    const fadeElements = document.querySelectorAll('.section-pad, .booking-section, .cards-grid .luxury-card, .about-inner, .cta-section');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    fadeElements.forEach(el => observer.observe(el));
+  // Intersection Observer for animations
+  const animated = document.querySelectorAll('.section-pad, .booking-section, .cards-grid .luxury-card, .about-inner, .cta-section, .package-card, .testimonial-card, .video-placeholder');
+  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
+  animated.forEach(el => observer.observe(el));
 
-    // Mobile menu
-    const hamburger = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const closeMenuBtn = document.getElementById('closeMenuBtn');
-    hamburger?.addEventListener('click', () => { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; });
-    closeMenuBtn?.addEventListener('click', () => { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; });
-    document.querySelectorAll('.mobile-menu ul li a').forEach(link => link.addEventListener('click', () => { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }));
-
-    // Button alerts
-    document.querySelectorAll('.btn-primary, .btn-secondary, .form-grid button').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        if (btn.closest('.form-grid')) { e.preventDefault(); alert("✨ Our safari concierge will craft your custom itinerary."); }
-        else if (btn.innerText.includes('Explore Safaris') || btn.innerText.includes('Start Your Journey')) { e.preventDefault(); alert("🌍 Welcome to summitTosafaris – your luxury Tanzania adventure awaits."); }
-        else if (btn.innerText.includes('Plan Your Trip')) { e.preventDefault(); alert("📞 Speak with a travel specialist."); }
-      });
-    });
-  </script>
+  // Mobile menu
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMenu = document.getElementById('closeMenuBtn');
+  hamburger?.addEventListener('click', () => { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; });
+  closeMenu?.addEventListener('click', () => { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; });
+  document.querySelectorAll('.mobile-menu ul li a').forEach(link => link.addEventListener('click', () => { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }));
+</script>
 </body>
 </html>
