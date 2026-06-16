@@ -1,397 +1,2372 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="description" content="SummitTosafaris – Luxury Tanzania safaris, Kilimanjaro trekking, and Zanzibar escapes. Local experts, custom tours, 98% summit success rate. Book your adventure today." />
-  <meta name="keywords" content="Tanzania safari, Kilimanjaro climbing, Zanzibar beach holiday, luxury safari, local tour operator, Serengeti migration" />
-  <meta name="author" content="summitTosafaris Adventures" />
-  <meta property="og:title" content="summitTosafaris | Luxury Tanzania Safaris & Kilimanjaro" />
-  <meta property="og:description" content="From the plains of Serengeti to the roof of Africa – create memories forever with our expert local team." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1974&auto=format" />
-  <meta property="og:type" content="website" />
-  <title>summitTosafaris | Tanzania Luxury Safaris, Kilimanjaro & Zanzibar</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Molana Tours — Tanzania's Finest Journeys</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Instrument+Serif:ital@1&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --gold: #d4882a;
+        --gold-light: #f0a93c;
+        --gold-pale: #f7d98b;
+        --terra: #c4532a;
+        --forest: #1e4d2b;
+        --forest-light: #2d6b3e;
+        --forest-pale: #3d8a50;
+        --cream: #faf3e0;
+        --cream2: #f2e4c0;
+        --cream3: #e8d5a0;
+        --dark: #0d1a0f;
+        --dark2: #142018;
+        --card: #111d14;
+        --card2: #192a1c;
+        --card3: #1f3323;
+        --muted: rgba(250, 243, 224, 0.5);
+        --border: rgba(212, 136, 42, 0.2);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family:
+          "Almarai",
+          -apple-system,
+          sans-serif;
+        background: var(--dark);
+        color: var(--cream);
+        overflow-x: hidden;
+      }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      /* NOISE */
+      .noise-overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 3;
+        opacity: 0.55;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+      /* ── NAV (fixed, appears on scroll) ─────── */
+      #main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 500;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2.5rem;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.4s,
+          background 0.4s,
+          padding 0.3s;
+      }
+      #main-nav.show {
+        opacity: 1;
+        pointer-events: all;
+      }
+      #main-nav.scrolled {
+        background: rgba(13, 26, 15, 0.94);
+        backdrop-filter: blur(18px);
+        padding: 0.75rem 2.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      /* ── LOGO STYLES ─────────────────────────── */
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        background: rgba(250, 243, 224, 0.92);
+        border-radius: 9999px;
+        padding: 4px 14px 4px 4px;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(212, 136, 42, 0.2);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+        transition: box-shadow 0.2s;
+      }
+      .nav-logo:hover {
+        box-shadow: 0 4px 18px rgba(212, 136, 42, 0.3);
+      }
+      .nav-logo img {
+        height: 40px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      }
+      #main-nav ul {
+        list-style: none;
+        display: flex;
+        gap: 2.2rem;
+      }
+      #main-nav ul a {
+        text-decoration: none;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(250, 243, 224, 0.6);
+        transition: color 0.2s;
+        font-weight: 400;
+      }
+      #main-nav ul a:hover {
+        color: var(--gold-light);
+      }
+      .nav-book {
+        background: linear-gradient(135deg, var(--gold), var(--terra));
+        color: #fff;
+        padding: 0.5rem 1.3rem;
+        border-radius: 9999px;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 800;
+        text-decoration: none;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        box-shadow: 0 2px 14px rgba(212, 136, 42, 0.3);
+      }
+      .nav-book:hover {
+        opacity: 0.88;
+        transform: translateY(-1px);
+      }
 
-    body {
-      background: #FDF9F2;
-      color: #1E2A2E;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-    }
+      /* ── HERO ────────────────────────────────── */
+      #hero {
+        height: 100vh;
+        padding: 0.9rem;
+        display: flex;
+        flex-direction: column;
+      }
+      .hero-inner {
+        flex: 1;
+        position: relative;
+        border-radius: 1.6rem;
+        overflow: hidden;
+        background: var(--dark);
+      }
+      .hero-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+      }
+      .hero-grad {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(
+          to bottom,
+          rgba(13, 26, 15, 0.25) 0%,
+          rgba(13, 26, 15, 0.1) 35%,
+          rgba(13, 26, 15, 0.75) 100%
+        );
+      }
+      .hero-grad2 {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(
+          to right,
+          rgba(13, 26, 15, 0.55) 0%,
+          transparent 60%
+        );
+      }
 
-    html {
-      scroll-behavior: smooth;
-    }
+      /* Hero pill nav */
+      .hero-pill-nav {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+        background: rgba(13, 26, 15, 0.82);
+        backdrop-filter: blur(14px);
+        border-radius: 0 0 1.4rem 1.4rem;
+        padding: 0.65rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        border: 1px solid rgba(212, 136, 42, 0.15);
+        border-top: none;
+      }
+      .hero-pill-nav a {
+        text-decoration: none;
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(250, 243, 224, 0.7);
+        transition: color 0.2s;
+        font-weight: 400;
+      }
+      .hero-pill-nav a:hover {
+        color: var(--gold-light);
+      }
 
-    ::selection {
-      background: #F28C28;
-      color: white;
-    }
+      /* LOGO watermark in hero — top left */
+      .hero-logo {
+        position: absolute;
+        top: 1.2rem;
+        left: 1.6rem;
+        z-index: 20;
+        display: inline-flex;
+        align-items: center;
+        background: rgba(250, 243, 224, 0.92);
+        border-radius: 9999px;
+        padding: 5px 18px 5px 5px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(212, 136, 42, 0.25);
+        box-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
+      }
+      .hero-logo img {
+        height: 64px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      }
 
-    h1, h2, h3, .section-title h2, .card-text h3, .about-text h2, .cta-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-    }
+      /* Hero content */
+      .hero-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        padding: 0 1.8rem 1.8rem;
+        display: grid;
+        grid-template-columns: 8fr 4fr;
+        align-items: flex-end;
+        gap: 1.5rem;
+      }
+      .hero-title {
+        font-size: clamp(4rem, 17vw, 18vw);
+        font-weight: 800;
+        line-height: 0.85;
+        letter-spacing: -0.06em;
+        color: var(--cream);
+        font-family: "Almarai", sans-serif;
+      }
+      .hero-title .word {
+        display: inline-block;
+        transform: translateY(100%);
+        opacity: 0;
+        animation: wordUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .hero-title .w1 {
+        animation-delay: 0.05s;
+      }
+      .hero-title .w2 {
+        animation-delay: 0.14s;
+      }
+      .hero-title em {
+        font-style: italic;
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+        color: var(--gold-light);
+      }
 
-    /* Animations */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+      .hero-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding-bottom: 0.5rem;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: rgba(212, 136, 42, 0.18);
+        border: 1px solid rgba(212, 136, 42, 0.35);
+        border-radius: 9999px;
+        padding: 0.3rem 0.75rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        font-weight: 700;
+      }
+      .hero-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gold-light);
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.8);
+        }
+      }
+      .hero-desc {
+        color: rgba(250, 243, 224, 0.72);
+        font-size: clamp(0.78rem, 1.2vw, 1rem);
+        line-height: 1.3;
+        font-weight: 300;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+      }
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, var(--gold), var(--terra));
+        color: #fff;
+        border: none;
+        border-radius: 9999px;
+        padding: 0.6rem 0.6rem 0.6rem 1.3rem;
+        font-family: "Almarai", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 800;
+        text-decoration: none;
+        cursor: default;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+        transition: gap 0.3s;
+        box-shadow: 0 4px 20px rgba(212, 136, 42, 0.35);
+      }
+      .hero-cta:hover {
+        gap: 0.8rem;
+      }
+      .hero-cta-circle {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s;
+        flex-shrink: 0;
+      }
+      .hero-cta:hover .hero-cta-circle {
+        transform: scale(1.12);
+      }
+      .hero-cta-circle svg {
+        width: 15px;
+        height: 15px;
+        stroke: #fff;
+        stroke-width: 2.5;
+        fill: none;
+      }
 
-    .section-pad, .booking-section, .cards-grid .luxury-card, .about-inner, .cta-section, .package-card, .testimonial-card, .video-placeholder {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
+      .scroll-hint {
+        position: absolute;
+        bottom: 2rem;
+        left: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        z-index: 20;
+        opacity: 0;
+        animation: fadeIn 1.5s 2s ease both;
+      }
+      .scroll-hint span {
+        font-size: 0.58rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(250, 243, 224, 0.35);
+      }
+      .scroll-line {
+        width: 1px;
+        height: 40px;
+        background: linear-gradient(
+          to bottom,
+          rgba(212, 136, 42, 0.6),
+          transparent
+        );
+        animation: scrollPulse 1.8s ease infinite;
+      }
 
-    .visible {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-    }
+      /* ── STATS ───────────────────────────────── */
+      .stats-bar {
+        background: var(--card);
+        display: flex;
+        border-top: 1px solid rgba(212, 136, 42, 0.12);
+      }
+      .stat-item {
+        flex: 1;
+        text-align: center;
+        padding: 1.8rem 1rem;
+        border-right: 1px solid rgba(212, 136, 42, 0.1);
+      }
+      .stat-item:last-child {
+        border-right: none;
+      }
+      .stat-num {
+        font-size: 2.1rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .stat-lbl {
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(250, 243, 224, 0.38);
+        margin-top: 0.3rem;
+        font-weight: 300;
+      }
 
-    /* Navbar transparent */
-    .navbar {
-      position: fixed;
-      top: 20px;
-      left: 5%;
-      right: 5%;
-      width: 90%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 28px;
-      background: transparent;
-      border-radius: 80px;
-      z-index: 1000;
-      transition: all 0.3s;
-      border: none;
-    }
-    .navbar.scrolled {
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    .logo-img {
-      height: 50px;
-      width: auto;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
-    }
-    .logo-fallback {
-      color: white;
-      font-weight: 700;
-      font-size: 20px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-    .logo-fallback span { color: #F28C28; }
-    .nav-links { display: flex; gap: 35px; list-style: none; }
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-      transition: 0.2s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: #F28C28; }
-    .hamburger { display: none; font-size: 24px; color: white; cursor: pointer; background: rgba(0,0,0,0.3); width: 40px; height: 40px; border-radius: 50%; align-items: center; justify-content: center; }
-    .mobile-menu {
-      position: fixed; top: 0; right: -100%; width: 75%; max-width: 280px; height: 100vh;
-      background: rgba(10,20,15,0.98); backdrop-filter: blur(20px); z-index: 2000;
-      padding: 100px 25px; transition: 0.4s; border-left: 1px solid rgba(242,140,40,0.4);
-    }
-    .mobile-menu.active { right: 0; }
-    .mobile-menu ul li { margin-bottom: 28px; }
-    .mobile-menu ul li a { color: white; font-size: 20px; text-decoration: none; }
-    .mobile-menu ul li a.active, .mobile-menu ul li a:hover { color: #F28C28; }
-    .close-menu { position: absolute; top: 25px; right: 25px; font-size: 28px; color: white; cursor: pointer; }
+      /* ── SHARED ──────────────────────────────── */
+      .section-label {
+        font-size: 0.66rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        margin-bottom: 0.8rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+      }
+      .section-label::before {
+        content: "";
+        width: 20px;
+        height: 1.5px;
+        background: linear-gradient(to right, var(--gold), transparent);
+      }
+      .section-heading {
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
+        font-weight: 800;
+        line-height: 1.05;
+        color: var(--cream);
+      }
+      .section-heading em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold-light);
+      }
 
-    /* Hero */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1974&auto=format');
-      background-size: cover; background-position: center;
-      display: flex; align-items: center; justify-content: center; text-align: center;
-      padding: 0 5%;
-    }
-    .hero-content { max-width: 1000px; }
-    .hero-logo-img { max-width: 180px; margin-bottom: 30px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)); }
-    .hero h1 { font-size: 64px; color: white; line-height: 1.2; }
-    .hero h1 span { color: #F28C28; }
-    .hero p { font-size: 1.2rem; color: rgba(255,255,240,0.95); margin-top: 20px; }
-    .btn-group { margin-top: 35px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
-    .btn { padding: 14px 34px; border-radius: 40px; font-weight: 600; border: none; cursor: pointer; transition: 0.25s; font-family: 'Poppins',sans-serif; }
-    .btn-primary { background: #F28C28; color: #1E2A2E; box-shadow: 0 8px 20px rgba(242,140,40,0.35); }
-    .btn-primary:hover { background: #e07c1a; transform: translateY(-3px); }
-    .btn-secondary { background: rgba(0,0,0,0.55); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.6); color: white; }
-    .btn-secondary:hover { background: white; color: #0B3D2E; }
+      /* word pull */
+      .wp-wrap {
+        display: inline-block;
+        overflow: hidden;
+        margin-right: 0.22em;
+      }
+      .wp-word {
+        display: inline-block;
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      .wp-word.up {
+        animation: wordUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
 
-    /* Trust badges */
-    .trust-row { margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 20px; }
-    .trust-badge { background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 40px; color: white; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 6px; }
-    .trust-badge i { color: #F28C28; }
+      /* card in */
+      .card-in {
+        transform: scale(0.95) translateY(12px);
+        opacity: 0;
+      }
+      .card-in.visible {
+        animation: cardIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
 
-    /* Packages section */
-    .section-pad { padding: 80px 6%; }
-    .section-title { text-align: center; margin-bottom: 50px; }
-    .section-tag { color: #F28C28; text-transform: uppercase; letter-spacing: 4px; font-size: 0.75rem; font-weight: 600; }
-    .section-title h2 { font-size: 42px; color: #0B3D2E; margin-top: 8px; }
-    .packages-grid, .cards-grid, .testimonials-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px;
-    }
-    .package-card, .luxury-card, .testimonial-card {
-      background: white; border-radius: 28px; overflow: hidden; box-shadow: 0 15px 30px -12px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-    .package-card:hover, .luxury-card:hover { transform: translateY(-8px); }
-    .package-card img, .luxury-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
-    .package-card .content, .card-text { padding: 22px; }
-    .package-card h3 { font-size: 24px; color: #0B3D2E; }
-    .package-price { color: #F28C28; font-weight: 800; font-size: 1.3rem; margin: 10px 0; }
-    .btn-small { background: #0B3D2E; color: white; border: none; padding: 8px 20px; border-radius: 30px; cursor: pointer; font-weight: 600; margin-top: 12px; }
-    .btn-small:hover { background: #F28C28; color: #1E2A2E; }
+      /* ── ABOUT ───────────────────────────────── */
+      #about {
+        background: var(--dark);
+        padding: 6rem 1rem;
+      }
+      .about-inner {
+        background: var(--card);
+        border-radius: 2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 4rem 3rem;
+        text-align: center;
+      }
+      .about-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        margin-bottom: 2rem;
+        font-weight: 700;
+      }
+      .about-heading {
+        font-size: clamp(1.9rem, 4.5vw, 4rem);
+        line-height: 0.95;
+        max-width: 820px;
+        margin: 0 auto 2.5rem;
+        font-weight: 800;
+      }
+      .about-heading em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold-light);
+      }
+      .about-body {
+        font-size: clamp(0.82rem, 1.3vw, 1rem);
+        color: var(--cream2);
+        max-width: 680px;
+        margin: 0 auto;
+        line-height: 1.8;
+        font-weight: 300;
+      }
+      .about-body .char {
+        display: inline;
+        opacity: 0.18;
+        transition: opacity 0.08s;
+      }
+      .about-body .char.lit {
+        opacity: 1;
+      }
+      .about-imgs {
+        display: flex;
+        gap: 0.6rem;
+        margin-top: 2.5rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        height: 220px;
+      }
+      .about-img {
+        flex: 1;
+        object-fit: cover;
+        filter: brightness(0.7) saturate(1.15);
+        transition:
+          flex 0.45s ease,
+          filter 0.3s;
+        cursor: default;
+      }
+      .about-img:hover {
+        flex: 2.8;
+        filter: brightness(0.9) saturate(1.3);
+      }
 
-    /* Testimonials */
-    .testimonial-card { padding: 25px; text-align: center; }
-    .testimonial-card i { font-size: 2rem; color: #F28C28; opacity: 0.5; }
-    .testimonial-card p { font-style: italic; margin: 15px 0; color: #2c3e2f; }
-    .client-name { font-weight: 700; color: #0B3D2E; }
+      /* ── DESTINATIONS ────────────────────────── */
+      #destinations {
+        background: var(--dark2);
+        padding: 6rem 1rem;
+      }
+      .dest-grid {
+        max-width: 1100px;
+        margin: 2.5rem auto 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.7rem;
+      }
+      .dest-card {
+        background: var(--card);
+        border-radius: 1.2rem;
+        overflow: hidden;
+        position: relative;
+        cursor: default;
+      }
+      .dest-card-wide {
+        grid-column: span 2;
+      }
+      .dest-img-wrap {
+        overflow: hidden;
+      }
+      .dest-card-wide .dest-img-wrap {
+        height: 290px;
+      }
+      .dest-card:not(.dest-card-wide) .dest-img-wrap {
+        height: 290px;
+      }
+      .dest-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.7) saturate(1.2);
+        transition:
+          filter 0.5s,
+          transform 0.6s;
+      }
+      .dest-card:hover img {
+        filter: brightness(0.88) saturate(1.35);
+        transform: scale(1.05);
+      }
+      .dest-body {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1.4rem 1.3rem;
+        background: linear-gradient(transparent, rgba(13, 26, 15, 0.95));
+      }
+      .dest-tag {
+        font-size: 0.6rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        border: 1px solid rgba(240, 169, 60, 0.35);
+        border-radius: 20px;
+        padding: 0.2rem 0.65rem;
+        display: inline-block;
+        margin-bottom: 0.4rem;
+        font-weight: 700;
+      }
+      .dest-name {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: var(--cream);
+        margin-bottom: 0.15rem;
+      }
+      .dest-sub {
+        font-size: 0.72rem;
+        color: rgba(250, 243, 224, 0.5);
+        font-weight: 300;
+      }
 
-    /* Why Choose Us / About */
-    .about-premium { background: #0B3D2E; color: white; }
-    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-    .about-inner img { width: 100%; border-radius: 32px; border: 2px solid rgba(242,140,40,0.3); }
-    .feature-list p { margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
-    .feature-list i { color: #F28C28; }
+      /* ── EXPERIENCES ─────────────────────────── */
+      #experiences {
+        background: var(--dark);
+        padding: 6rem 1rem;
+        position: relative;
+        overflow: hidden;
+      }
+      #experiences::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
+        opacity: 0.12;
+        pointer-events: none;
+      }
+      .exp-grid {
+        max-width: 1100px;
+        margin: 2.5rem auto 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.65rem;
+      }
+      .exp-card {
+        background: var(--card2);
+        border: 1px solid rgba(212, 136, 42, 0.1);
+        border-radius: 1.2rem;
+        padding: 1.6rem 1.4rem;
+        cursor: default;
+        transition:
+          border-color 0.3s,
+          transform 0.3s,
+          background 0.3s;
+      }
+      .exp-card:hover {
+        border-color: rgba(212, 136, 42, 0.4);
+        transform: translateY(-6px) !important;
+        background: var(--card3);
+      }
+      .exp-num {
+        font-size: 0.6rem;
+        letter-spacing: 0.15em;
+        color: var(--gold);
+        margin-bottom: 1.6rem;
+        font-weight: 700;
+      }
+      .exp-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: linear-gradient(
+          135deg,
+          rgba(212, 136, 42, 0.18),
+          rgba(196, 83, 42, 0.12)
+        );
+        border: 1px solid rgba(212, 136, 42, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+      .exp-title {
+        font-size: 0.98rem;
+        font-weight: 800;
+        color: var(--cream);
+        margin-bottom: 0.5rem;
+      }
+      .exp-checks {
+        margin-top: 0.9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .exp-check {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.45rem;
+      }
+      .exp-check svg {
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        stroke: var(--gold-light);
+        stroke-width: 2.5;
+        fill: none;
+      }
+      .exp-check span {
+        font-size: 0.74rem;
+        color: rgba(250, 243, 224, 0.45);
+        line-height: 1.4;
+      }
+      .exp-learn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 1.1rem;
+        font-size: 0.7rem;
+        color: var(--gold);
+        text-decoration: none;
+        transition: color 0.2s;
+        cursor: default;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+      .exp-learn:hover {
+        color: var(--gold-light);
+      }
+      .exp-learn svg {
+        width: 11px;
+        height: 11px;
+        stroke: currentColor;
+        stroke-width: 2.5;
+        fill: none;
+        transform: rotate(-45deg);
+      }
 
-    /* Video placeholder */
-    .video-placeholder { background: #1a2a1f; border-radius: 32px; text-align: center; padding: 60px 20px; color: white; margin-top: 40px; }
-    .video-placeholder i { font-size: 4rem; color: #F28C28; margin-bottom: 20px; }
+      /* ── PACKAGES ────────────────────────────── */
+      #packages {
+        background: var(--card);
+        padding: 6rem 1rem;
+      }
+      .pkg-header {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+      }
+      .pkg-grid {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.7rem;
+      }
+      .pkg-card {
+        background: var(--dark);
+        border: 1px solid rgba(212, 136, 42, 0.1);
+        border-radius: 1.2rem;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        cursor: default;
+        transition:
+          border-color 0.3s,
+          transform 0.3s;
+      }
+      .pkg-card:hover {
+        border-color: rgba(212, 136, 42, 0.35);
+        transform: translateY(-6px) !important;
+      }
+      .pkg-card.featured {
+        border-color: rgba(212, 136, 42, 0.4);
+        background: rgba(30, 77, 43, 0.18);
+      }
+      .pkg-img {
+        width: 100%;
+        height: 185px;
+        object-fit: cover;
+        filter: brightness(0.8) saturate(1.2);
+        transition: filter 0.4s;
+      }
+      .pkg-card:hover .pkg-img {
+        filter: brightness(0.95) saturate(1.35);
+      }
+      .pkg-body {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .pkg-badge {
+        display: inline-block;
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.22rem 0.75rem;
+        border-radius: 20px;
+        margin-bottom: 0.75rem;
+        font-weight: 700;
+      }
+      .pkg-badge.gold {
+        background: rgba(212, 136, 42, 0.15);
+        color: var(--gold-light);
+        border: 1px solid rgba(212, 136, 42, 0.3);
+      }
+      .pkg-badge.green {
+        background: rgba(30, 77, 43, 0.4);
+        color: #7ee89a;
+        border: 1px solid rgba(126, 232, 154, 0.2);
+      }
+      .pkg-badge.blue {
+        background: rgba(30, 60, 120, 0.3);
+        color: #7ab8e8;
+        border: 1px solid rgba(122, 184, 232, 0.2);
+      }
+      .pkg-name {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--cream);
+        margin-bottom: 0.45rem;
+      }
+      .pkg-desc {
+        font-size: 0.78rem;
+        color: rgba(250, 243, 224, 0.45);
+        line-height: 1.7;
+        flex: 1;
+        font-weight: 300;
+        margin-bottom: 1rem;
+      }
+      .pkg-meta {
+        display: flex;
+        gap: 0.7rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+      .pkg-meta span {
+        font-size: 0.66rem;
+        color: rgba(250, 243, 224, 0.38);
+        font-weight: 300;
+      }
+      .pkg-price {
+        margin-bottom: 1rem;
+      }
+      .pkg-amount {
+        font-size: 1.9rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .pkg-per {
+        font-size: 0.7rem;
+        color: rgba(250, 243, 224, 0.35);
+        margin-left: 0.25rem;
+      }
+      .pkg-btn {
+        display: block;
+        text-align: center;
+        padding: 0.7rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 800;
+        text-decoration: none;
+        cursor: default;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        font-family: "Almarai", sans-serif;
+      }
+      .pkg-btn:hover {
+        opacity: 0.85;
+        transform: translateY(-1px);
+      }
+      .pkg-btn.grad {
+        background: linear-gradient(135deg, var(--gold), var(--terra));
+        color: #fff;
+        box-shadow: 0 3px 14px rgba(212, 136, 42, 0.3);
+      }
+      .pkg-btn.outline {
+        border: 1px solid rgba(212, 136, 42, 0.3);
+        color: var(--gold-light);
+      }
 
-    /* FAQ */
-    .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 25px; margin-top: 30px; }
-    .faq-item { background: white; border-radius: 24px; padding: 22px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-    .faq-item h4 { color: #F28C28; margin-bottom: 10px; font-size: 1.2rem; }
+      /* ── GALLERY ─────────────────────────────── */
+      #gallery {
+        background: var(--dark2);
+        padding: 5rem 0;
+        overflow: hidden;
+      }
+      .gallery-header {
+        padding: 0 1rem 2.2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .gallery-track {
+        display: flex;
+        gap: 0.65rem;
+        animation: slideGallery 36s linear infinite;
+        width: max-content;
+      }
+      .gallery-track:hover {
+        animation-play-state: paused;
+      }
+      .gallery-photo {
+        width: 255px;
+        height: 185px;
+        object-fit: cover;
+        border-radius: 1rem;
+        filter: brightness(0.78) saturate(1.1);
+        flex-shrink: 0;
+        transition:
+          filter 0.3s,
+          transform 0.3s;
+        cursor: default;
+      }
+      .gallery-photo:hover {
+        filter: brightness(1) saturate(1.3);
+        transform: scale(1.04);
+      }
 
-    /* Contact & Social */
-    .contact-bar { background: #1E2A2E; color: white; padding: 40px 6%; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; border-radius: 40px; margin: 40px 6% 0; }
-    .contact-info i { width: 30px; color: #F28C28; }
-    .social-icons a { color: white; font-size: 1.8rem; margin-right: 20px; transition: 0.2s; }
-    .social-icons a:hover { color: #F28C28; }
+      /* ── TESTIMONIALS ────────────────────────── */
+      #testimonials {
+        background: var(--card);
+        padding: 6rem 1rem;
+      }
+      .testi-grid {
+        max-width: 1100px;
+        margin: 2.5rem auto 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.65rem;
+      }
+      .testi-card {
+        background: var(--dark);
+        border: 1px solid rgba(212, 136, 42, 0.1);
+        border-radius: 1.2rem;
+        padding: 1.8rem 1.5rem;
+      }
+      .testi-stars {
+        background: linear-gradient(90deg, var(--gold-light), var(--gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+        letter-spacing: 0.08em;
+      }
+      .testi-card blockquote {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: 1.02rem;
+        color: var(--cream);
+        line-height: 1.65;
+        margin-bottom: 1.2rem;
+        font-weight: 400;
+      }
+      .testi-author {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+      .testi-av {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          rgba(212, 136, 42, 0.3),
+          rgba(196, 83, 42, 0.2)
+        );
+        border: 1px solid rgba(212, 136, 42, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.68rem;
+        color: var(--gold-light);
+        font-weight: 800;
+        flex-shrink: 0;
+      }
+      .testi-name {
+        font-size: 0.8rem;
+        color: var(--cream);
+        font-weight: 800;
+      }
+      .testi-loc {
+        font-size: 0.68rem;
+        color: rgba(250, 243, 224, 0.38);
+        font-weight: 300;
+      }
 
-    footer { background: #121A17; color: #aaa; padding: 60px 6% 30px; margin-top: 60px; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 40px; }
-    footer h3 { color: #F28C28; margin-bottom: 18px; }
-    footer ul li { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-    .copyright { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); }
+      /* ── CTA STRIP ───────────────────────────── */
+      .cta-strip {
+        background: linear-gradient(135deg, var(--forest), var(--dark) 60%);
+        padding: 5rem 1rem;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+      .cta-strip::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(212, 136, 42, 0.12) 0%,
+          transparent 70%
+        );
+      }
+      .cta-strip h2 {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 800;
+        color: var(--cream);
+        margin-bottom: 0.6rem;
+        position: relative;
+      }
+      .cta-strip h2 em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold-light);
+      }
+      .cta-strip p {
+        color: rgba(250, 243, 224, 0.5);
+        font-size: 0.95rem;
+        max-width: 480px;
+        margin: 0 auto 2.2rem;
+        line-height: 1.7;
+        font-weight: 300;
+        position: relative;
+      }
+      .cta-btns {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+      }
+      .cta-btn-main {
+        background: linear-gradient(135deg, var(--gold), var(--terra));
+        color: #fff;
+        padding: 0.85rem 2.2rem;
+        border-radius: 9999px;
+        font-size: 0.85rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(212, 136, 42, 0.4);
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        cursor: default;
+      }
+      .cta-btn-main:hover {
+        opacity: 0.88;
+        transform: translateY(-2px);
+      }
+      .cta-btn-sec {
+        background: transparent;
+        color: rgba(250, 243, 224, 0.7);
+        border: 1px solid rgba(250, 243, 224, 0.2);
+        padding: 0.85rem 2.2rem;
+        border-radius: 9999px;
+        font-size: 0.85rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 400;
+        text-decoration: none;
+        transition:
+          border-color 0.25s,
+          color 0.25s,
+          transform 0.2s;
+        cursor: default;
+      }
+      .cta-btn-sec:hover {
+        border-color: var(--gold-light);
+        color: var(--gold-light);
+        transform: translateY(-2px);
+      }
 
-    /* Floating WhatsApp */
-    .whatsapp-float {
-      position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white;
-      width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 999; transition: 0.2s;
-    }
-    .whatsapp-float:hover { transform: scale(1.05); background: #128C7E; }
+      /* ── BOOKING ─────────────────────────────── */
+      #booking {
+        background: var(--dark);
+        padding: 6rem 1rem;
+      }
+      .booking-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: start;
+      }
+      .booking-left p {
+        color: rgba(250, 243, 224, 0.48);
+        font-size: 0.9rem;
+        line-height: 1.85;
+        margin: 1rem 0 2rem;
+        font-weight: 300;
+      }
+      .contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+      .contact-ico {
+        width: 36px;
+        height: 36px;
+        border-radius: 9px;
+        background: linear-gradient(
+          135deg,
+          rgba(212, 136, 42, 0.15),
+          rgba(196, 83, 42, 0.08)
+        );
+        border: 1px solid rgba(212, 136, 42, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+      }
+      .contact-item strong {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--cream);
+        font-weight: 800;
+        margin-bottom: 0.1rem;
+      }
+      .contact-item p {
+        font-size: 0.76rem;
+        color: rgba(250, 243, 224, 0.43);
+        margin: 0;
+        font-weight: 300;
+      }
+      .form-box {
+        background: var(--card);
+        border: 1px solid rgba(212, 136, 42, 0.12);
+        border-radius: 1.5rem;
+        padding: 2rem;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+      .form-grp {
+        display: flex;
+        flex-direction: column;
+        gap: 0.32rem;
+        margin-bottom: 0.75rem;
+      }
+      .form-grp label {
+        font-size: 0.63rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(250, 243, 224, 0.38);
+        font-weight: 700;
+      }
+      .form-grp input,
+      .form-grp select,
+      .form-grp textarea {
+        background: rgba(250, 243, 224, 0.04);
+        border: 1px solid rgba(212, 136, 42, 0.14);
+        border-radius: 0.6rem;
+        padding: 0.72rem 0.85rem;
+        color: var(--cream);
+        font-family: "Almarai", sans-serif;
+        font-size: 0.83rem;
+        outline: none;
+        width: 100%;
+        transition:
+          border-color 0.25s,
+          background 0.25s;
+        cursor: default;
+      }
+      .form-grp input:focus,
+      .form-grp select:focus,
+      .form-grp textarea:focus {
+        border-color: rgba(212, 136, 42, 0.4);
+        background: rgba(212, 136, 42, 0.05);
+      }
+      .form-grp select option {
+        background: var(--card);
+        color: var(--cream);
+      }
+      .form-grp textarea {
+        resize: vertical;
+        min-height: 85px;
+        line-height: 1.6;
+      }
+      .form-submit {
+        width: 100%;
+        padding: 0.95rem;
+        background: linear-gradient(135deg, var(--gold), var(--terra));
+        color: #fff;
+        border: none;
+        border-radius: 9999px;
+        font-family: "Almarai", sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 800;
+        cursor: default;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        margin-top: 0.4rem;
+        box-shadow: 0 3px 16px rgba(212, 136, 42, 0.3);
+      }
+      .form-submit:hover {
+        opacity: 0.86;
+        transform: translateY(-1px);
+      }
+      .form-note {
+        font-size: 0.66rem;
+        color: rgba(250, 243, 224, 0.28);
+        text-align: center;
+        margin-top: 0.8rem;
+      }
 
-    /* Responsive */
-    @media (max-width: 880px) {
-      .navbar { width: 94%; left: 3%; padding: 6px 20px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .about-inner { grid-template-columns: 1fr; text-align: center; }
-      .hero h1 { font-size: 42px; }
-      .section-title h2 { font-size: 32px; }
-    }
-    @media (max-width: 640px) {
-      .hero h1 { font-size: 32px; }
-      .hero-logo-img { max-width: 130px; }
-      .btn { padding: 10px 24px; }
-      .contact-bar { flex-direction: column; text-align: center; }
-      .social-icons a { font-size: 1.5rem; margin: 0 10px; }
-    }
-  </style>
-</head>
-<body>
+      /* ── FOOTER ──────────────────────────────── */
+      footer {
+        background: var(--card);
+        padding: 4rem 1rem 2rem;
+      }
+      .footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .footer-top {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+      .footer-brand-logo {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(250, 243, 224, 0.92);
+        border-radius: 9999px;
+        padding: 5px 16px 5px 5px;
+        margin-bottom: 1.2rem;
+        border: 1px solid rgba(212, 136, 42, 0.2);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+      .footer-brand-logo img {
+        height: 52px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      }
+      .footer-brand p {
+        font-size: 0.78rem;
+        color: rgba(250, 243, 224, 0.35);
+        line-height: 1.75;
+        max-width: 230px;
+        font-weight: 300;
+      }
+      .footer-socials {
+        display: flex;
+        gap: 0.55rem;
+        margin-top: 1.2rem;
+      }
+      .soc {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid rgba(212, 136, 42, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.65rem;
+        color: rgba(250, 243, 224, 0.42);
+        text-decoration: none;
+        cursor: default;
+        font-weight: 800;
+        transition:
+          border-color 0.2s,
+          color 0.2s,
+          background 0.2s;
+      }
+      .soc:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+      .footer-col h5 {
+        font-size: 0.63rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        margin-bottom: 1rem;
+        font-weight: 800;
+      }
+      .footer-col ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .footer-col ul a {
+        text-decoration: none;
+        font-size: 0.77rem;
+        color: rgba(250, 243, 224, 0.36);
+        cursor: default;
+        transition: color 0.2s;
+        font-weight: 300;
+      }
+      .footer-col ul a:hover {
+        color: var(--cream);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(212, 136, 42, 0.1);
+        padding-top: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+      .footer-bottom p {
+        font-size: 0.66rem;
+        color: rgba(250, 243, 224, 0.26);
+        font-weight: 300;
+      }
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/255700000000?text=Hello%21%20I%27m%20interested%20in%20a%20safari%20or%20Kilimanjaro%20trip" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-  <i class="fab fa-whatsapp"></i>
-</a>
+      /* ── KEYFRAMES ───────────────────────────── */
+      @keyframes wordUp {
+        from {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes fadeUp {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes cardIn {
+        from {
+          transform: scale(0.95) translateY(12px);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes slideGallery {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      @keyframes scrollPulse {
+        0% {
+          transform: scaleY(0);
+          transform-origin: top;
+        }
+        50% {
+          transform: scaleY(1);
+          transform-origin: top;
+        }
+        51% {
+          transform: scaleY(1);
+          transform-origin: bottom;
+        }
+        100% {
+          transform: scaleY(0);
+          transform-origin: bottom;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- FIXED NAV -->
+    <nav id="main-nav">
+      <a href="#" class="nav-logo">
+        <img src="molanalogo.png" alt="Molana Adventures" />
+      </a>
+      <ul>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#experiences">Experiences</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#booking">Contact</a></li>
+      </ul>
+      <a href="#booking" class="nav-book">Book Safari</a>
+    </nav>
 
-<!-- Navbar -->
-<nav class="navbar" id="navbar">
-  <div class="logo-container">
-   <img src="summittosafarilogo.jpg" alt="summitTosafaris" class="logo-img" 
-     onerror="this.onerror=null; var fallback=document.createElement('div'); fallback.className='logo-fallback'; fallback.innerHTML='summit<span>To</span>safaris'; this.parentNode.replaceChild(fallback, this);">
-  </div>
-  <div class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></div>
-  <ul class="nav-links">
-    <li><a href="#" class="active">Home</a></li>
-    <li><a href="#packages">Packages</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+    <!-- ══ HERO ══════════════════════════════════ -->
+    <section id="hero">
+      <div class="hero-inner">
+        <img
+          class="hero-img"
+          src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=90"
+          alt="Serengeti"
+        />
+        <div class="noise-overlay"></div>
+        <div class="hero-grad"></div>
+        <div class="hero-grad2"></div>
 
-<!-- Mobile menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <div class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></div>
-  <ul>
-    <li><a href="#" class="active">Home</a></li>
-    <li><a href="#packages">Packages</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</div>
+        <!-- LOGO — top left -->
+        <div class="hero-logo">
+          <img src="molanalogo.png" alt="Molana Adventures" />
+        </div>
 
-<!-- Hero section with emotional storytelling -->
-<section class="hero">
-  <div class="hero-content">
-    <img src="summittosafarlogo.png" alt="summitTosafaris" class="hero-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/200x80?text=summitTosafaris';">
-    <h1>From the Plains of Serengeti <br>to the <span>Roof of Africa</span></h1>
-    <p>We create journeys you will remember forever — luxury safaris, Kilimanjaro summits, and Zanzibar turquoise waters. Local experts, authentic experiences.</p>
-    <div class="btn-group">
-      <button class="btn btn-primary" onclick="alert('📞 Contact us via WhatsApp or email for custom quote!')">Get a Free Quote</button>
-      <button class="btn btn-secondary" onclick="location.href='#packages'">View Packages</button>
-    </div>
-    <div class="trust-row">
-      <span class="trust-badge"><i class="fas fa-map-marked-alt"></i> Local Tanzanian Co.</span>
-      <span class="trust-badge"><i class="fas fa-mountain"></i> 98% Summit Success</span>
-      <span class="trust-badge"><i class="fas fa-gem"></i> Custom Private Tours</span>
-      <span class="trust-badge"><i class="fas fa-trophy"></i> TripAdvisor 5★</span>
-    </div>
-  </div>
-</section>
+        <!-- Nav pill — top center -->
+        <nav class="hero-pill-nav">
+          <a href="#destinations">Destinations</a>
+          <a href="#experiences">Experiences</a>
+          <a href="#packages">Packages</a>
+          <a href="#booking">Inquiries</a>
+        </nav>
 
-<!-- Tour Packages with Prices -->
-<section class="section-pad" id="packages">
-  <div class="section-title">
-    <div class="section-tag">Exclusive Tours</div>
-    <h2>Our Most Loved Packages</h2>
-  </div>
-  <div class="packages-grid">
-    <div class="package-card"><img src="https://images.unsplash.com/photo-1549366021-9f761d450615?q=80&w=1974&auto=format" alt="Safari"><div class="content"><h3>3 Days Serengeti + Ngorongoro</h3><div class="package-price">from $1,250 p/p</div><p>Game drives, crater tour, luxury safari jeep, all meals & park fees.</p><button class="btn-small" onclick="alert('Request booking for Safari package')">Book Now →</button></div></div>
-    <div class="package-card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1974&auto=format" alt="Kilimanjaro"><div class="content"><h3>7 Days Machame Route</h3><div class="package-price">from $1,850 p/p</div><p>Full camping, professional guides, porters, summit certificate, transfers.</p><button class="btn-small" onclick="alert('Request booking for Kilimanjaro')">Book Now →</button></div></div>
-    <div class="package-card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1974&auto=format" alt="Zanzibar"><div class="content"><h3>5 Days Zanzibar Beach Escape</h3><div class="package-price">from $890 p/p</div><p>Stone Town tour, spice farm, beach resort, snorkeling & transfers.</p><button class="btn-small" onclick="alert('Request booking for Zanzibar')">Book Now →</button></div></div>
-    <div class="package-card"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1974&auto=format" alt="Luxury Safari"><div class="content"><h3>5 Days Luxury Safari</h3><div class="package-price">from $2,990 p/p</div><p>Fly-in Serengeti, luxury lodges, private vehicle, champagne sunset.</p><button class="btn-small" onclick="alert('Request luxury safari')">Book Now →</button></div></div>
-  </div>
-</section>
+        <!-- scroll cue -->
+        <div class="scroll-hint">
+          <div class="scroll-line"></div>
+          <span>Scroll</span>
+        </div>
 
-<!-- Video & Emotional Story -->
-<section class="section-pad" style="padding-top: 0;">
-  <div class="video-placeholder">
-    <i class="fas fa-play-circle"></i>
-    <h3>Watch the Magic of Tanzania</h3>
-    <p>Experience summit day, wildlife close-ups, and happy travelers. (Your video here)</p>
-    <button class="btn-primary btn" style="background:#F28C28; margin-top: 15px;" onclick="alert('Video would play – replace with your own YouTube/Vimeo link')">Watch Trailer</button>
-  </div>
-</section>
-
-<!-- Why Choose Us / About (enhanced) -->
-<section class="about-premium section-pad" id="about">
-  <div class="about-inner">
-    <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1974&auto=format" alt="Our team">
-    <div class="about-text">
-      <div class="sub">Why SummitTosafaris</div>
-      <h2>Your Tanzanian Family Since 2012</h2>
-      <div class="feature-list">
-        <p><i class="fas fa-check-circle"></i> 10+ years local guiding experience</p>
-        <p><i class="fas fa-check-circle"></i> 100% Tanzanian owned & operated</p>
-        <p><i class="fas fa-check-circle"></i> Certified mountain guides + ethical porter treatment</p>
-        <p><i class="fas fa-check-circle"></i> 24/7 support & custom itineraries</p>
-        <p><i class="fas fa-check-circle"></i> High summit success (98%) – we prepare you right</p>
+        <!-- Hero content bottom -->
+        <div class="hero-bottom">
+          <div>
+            <div class="hero-title">
+              <span class="word w1">Molana</span>
+              <br />
+              <span class="word w2"><em>Tours</em></span>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="hero-badge">Est. 2012 · Dar es Salaam</div>
+            <p class="hero-desc">
+              Tanzania's finest safari company — crafting journeys through the
+              Serengeti, Kilimanjaro, and Zanzibar.
+            </p>
+            <a href="#packages" class="hero-cta">
+              Explore packages
+              <span class="hero-cta-circle">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
       </div>
-      <button class="btn-primary btn" style="margin-top: 15px;" onclick="alert('Our story: founded by local guides who love sharing Tanzania.')">Meet Our Team →</button>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-num">12+</div>
+        <div class="stat-lbl">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4,800+</div>
+        <div class="stat-lbl">Happy Travelers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">38</div>
+        <div class="stat-lbl">Destinations</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">98%</div>
+        <div class="stat-lbl">Satisfaction</div>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- Testimonials / Reviews -->
-<section class="section-pad" id="testimonials">
-  <div class="section-title">
-    <div class="section-tag">Real Stories</div>
-    <h2>What Our Travelers Say</h2>
-  </div>
-  <div class="testimonials-grid">
-    <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"The Kilimanjaro trek was life-changing. Our guide Moses was incredible – we felt safe and motivated. Summit sunrise was magical!"</p><div class="client-name">— Sarah & Tom, UK</div></div>
-    <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Luxury safari exceeded expectations. Saw big five, amazing lodge, and the team handled everything. Will come back for Zanzibar."</p><div class="client-name">— Linda, Australia</div></div>
-    <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Best decision to book with a local company. They customized our honeymoon: safari + beach. Flawless logistics."</p><div class="client-name">— James & Elena, USA</div></div>
-  </div>
-  <div style="text-align: center; margin-top: 30px;">
-    <span class="trust-badge" style="background: #0B3D2E; color:white;"><i class="fab fa-tripadvisor"></i> Rated 5.0 on TripAdvisor</span>
-    <span class="trust-badge" style="background: #0B3D2E; color:white;"><i class="fab fa-google"></i> Google Reviews ★★★★★</span>
-  </div>
-</section>
+    <!-- ══ ABOUT ══════════════════════════════════ -->
+    <section id="about">
+      <div class="about-inner">
+        <div class="about-label">Est. 2012 · Dar es Salaam, Tanzania</div>
+        <h2 class="about-heading" id="about-h"></h2>
+        <p class="about-body" id="about-body"></p>
+        <div class="about-imgs">
+          <img
+            class="about-img"
+            src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=600&q=80"
+            alt="Serengeti"
+          />
+          <img
+            class="about-img"
+            src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80"
+            alt="Ngorongoro"
+          />
+          <img
+            class="about-img"
+            src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=600&q=80"
+            alt="Zanzibar"
+          />
+          <img
+            class="about-img"
+            src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=600&q=80"
+            alt="Kilimanjaro"
+          />
+        </div>
+      </div>
+    </section>
 
-<!-- FAQ Section -->
-<section class="section-pad" style="background: #F5EFE6;">
-  <div class="section-title">
-    <div class="section-tag">Got questions?</div>
-    <h2>Frequently Asked</h2>
-  </div>
-  <div class="faq-grid">
-    <div class="faq-item"><h4>🏔️ Best time to climb Kilimanjaro?</h4><p>January–March and June–October offer the best weather. We climb year-round with proper gear.</p></div>
-    <div class="faq-item"><h4>🦁 When is the Great Migration?</h4><p>June–July in Serengeti western corridor, and August–November in Masai Mara border. We track it live.</p></div>
-    <div class="faq-item"><h4>✈️ Do I need a visa?</h4><p>Most nationalities get visa on arrival ($50-100). We provide invitation letters if needed.</p></div>
-    <div class="faq-item"><h4>💪 How fit for Kili?</h4><p>Moderate fitness required. We recommend hiking beforehand. Our guides adjust pace for success.</p></div>
-    <div class="faq-item"><h4>💰 What’s included in prices?</h4><p>Park fees, meals, accommodation, guides, porter wages. International flights extra. No hidden fees.</p></div>
-    <div class="faq-item"><h4>📞 How to book?</h4><p>Contact us via WhatsApp, email, or form. Pay 30% deposit, balance before arrival. Secure.</p></div>
-  </div>
-</section>
+    <!-- ══ DESTINATIONS ═══════════════════════════ -->
+    <section id="destinations">
+      <div style="max-width: 1100px; margin: 0 auto">
+        <div class="section-label">Our top picks</div>
+        <h2 class="section-heading">Iconic <em>Destinations</em></h2>
+      </div>
+      <div class="dest-grid">
+        <div class="dest-card dest-card-wide card-in">
+          <div class="dest-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=900&q=80"
+              alt="Serengeti"
+            />
+          </div>
+          <div class="dest-body">
+            <span class="dest-tag">Wildlife Safari</span>
+            <div class="dest-name">Serengeti National Park</div>
+            <div class="dest-sub">
+              Home of the Great Migration — 1.5M wildebeest
+            </div>
+          </div>
+        </div>
+        <div class="dest-card card-in" style="transition-delay: 0.08s">
+          <div class="dest-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=600&q=80"
+              alt="Kilimanjaro"
+            />
+          </div>
+          <div class="dest-body">
+            <span class="dest-tag">Trekking</span>
+            <div class="dest-name">Mt. Kilimanjaro</div>
+            <div class="dest-sub">Roof of Africa · 5,895m</div>
+          </div>
+        </div>
+        <div class="dest-card card-in" style="transition-delay: 0.08s">
+          <div class="dest-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=600&q=80"
+              alt="Zanzibar"
+            />
+          </div>
+          <div class="dest-body">
+            <span class="dest-tag">Beach & Culture</span>
+            <div class="dest-name">Zanzibar Island</div>
+            <div class="dest-sub">Coral reefs & Stone Town</div>
+          </div>
+        </div>
+        <div class="dest-card card-in" style="transition-delay: 0.16s">
+          <div class="dest-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80"
+              alt="Ngorongoro"
+            />
+          </div>
+          <div class="dest-body">
+            <span class="dest-tag">Conservation</span>
+            <div class="dest-name">Ngorongoro Crater</div>
+            <div class="dest-sub">World's largest intact caldera</div>
+          </div>
+        </div>
+        <div class="dest-card card-in" style="transition-delay: 0.24s">
+          <div class="dest-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1580501170888-80668882d0cb?w=600&q=80"
+              alt="Selous"
+            />
+          </div>
+          <div class="dest-body">
+            <span class="dest-tag">Wild Frontier</span>
+            <div class="dest-name">Selous Reserve</div>
+            <div class="dest-sub">Africa's largest game reserve</div>
+          </div>
+        </div>
+        <div class="dest-card card-in" style="transition-delay: 0.32s">
+          <div class="dest-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1474755032398-4b0ed3b2ae5c?w=600&q=80"
+              alt="Tarangire"
+            />
+          </div>
+          <div class="dest-body">
+            <span class="dest-tag">Elephant Country</span>
+            <div class="dest-name">Tarangire</div>
+            <div class="dest-sub">Ancient baobabs & vast herds</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- Contact Bar with all socials and inquiry -->
-<div id="contact"></div>
-<div class="contact-bar">
-  <div class="contact-info"><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania<br><i class="fas fa-phone-alt"></i> +255 768 123 456<br><i class="fas fa-envelope"></i> info@summittosafaris.com</div>
-  <div class="social-icons">
-    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-  </div>
-  <div><button class="btn-primary btn" onclick="alert('📧 Send us an email or WhatsApp for immediate response!')">Request Quote →</button></div>
-</div>
+    <!-- ══ EXPERIENCES ════════════════════════════ -->
+    <section id="experiences">
+      <div style="max-width: 1100px; margin: 0 auto">
+        <div class="section-label">What we offer</div>
+        <h2 class="section-heading">Curated <em>Experiences</em></h2>
+        <p
+          style="
+            color: rgba(250, 243, 224, 0.42);
+            font-size: 0.88rem;
+            margin-top: 0.6rem;
+            max-width: 420px;
+            line-height: 1.7;
+            font-weight: 300;
+          "
+        >
+          Every journey crafted around you — your pace, your passions, your
+          once-in-a-lifetime moments.
+        </p>
+      </div>
+      <div class="exp-grid">
+        <div class="exp-card card-in">
+          <div class="exp-num">01</div>
+          <div class="exp-icon">🦁</div>
+          <div class="exp-title">Game Drives</div>
+          <div class="exp-checks">
+            <div class="exp-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
+              ><span>Dawn & dusk safaris</span>
+            </div>
+            <div class="exp-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
+              ><span>Expert Swahili guides</span>
+            </div>
+            <div class="exp-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
+              ><span>Private 4×4 vehicles</span>
+            </div>
+          </div>
+          <a href="#booking" class="exp-learn"
+            >Learn more
+            <svg viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" /></svg
+          ></a>
+        </div>
+        <div class="exp-card card-in" style="transition-delay: 0.1s">
+          <div class="exp-num">02</div>
+          <div class="exp-icon">⛺</div>
+          <div class="exp-title">Luxury Tented Camps</div>
+          <div class="exp-checks">
+            <div class="exp-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
+              ><span>Stars above, comfort inside</span>
+            </div>
+            <div class="exp-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
+              ><span>Full-board dining</span>
+            </div>
+            <div class="exp-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
+              ><span>Mobile & permanent camps</span>
+            </div>
+          </div>
+          <a href="#booking" class="exp-learn"
+            >Learn more
+            <svg viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" /></svg
+          ></a>
+        </div>
+        <div class="exp-card card-in" style="transition-delay: 0.2s">
+          <div class="exp-num">03</div>
+          <div class="exp-icon">🏔️</div>
+          <div class="exp-title">Kilimanjaro Treks</div>
+          <div class="exp-checks">
+            <div class="exp-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
+              ><span>Lemosho, Machame, Rongai</span>
+            </div>
+            <div class="exp-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
+              ><span>Full support & equipment</span>
+            </div>
+            <div class="exp-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
+              ><span>Summit certificate</span>
+            </div>
+          </div>
+          <a href="#booking" class="exp-learn"
+            >Learn more
+            <svg viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" /></svg
+          ></a>
+        </div>
+        <div class="exp-card card-in" style="transition-delay: 0.3s">
+          <div class="exp-num">04</div>
+          <div class="exp-icon">🤿</div>
+          <div class="exp-title">Zanzibar Escapes</div>
+          <div class="exp-checks">
+            <div class="exp-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
+              ><span>Dhow cruises & snorkeling</span>
+            </div>
+            <div class="exp-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
+              ><span>Spice farm tours</span>
+            </div>
+            <div class="exp-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
+              ><span>Private beach retreats</span>
+            </div>
+          </div>
+          <a href="#booking" class="exp-learn"
+            >Learn more
+            <svg viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" /></svg
+          ></a>
+        </div>
+      </div>
+    </section>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-grid">
-    <div><h3>summitTosafaris</h3><p>Premium adventures, authentic safaris, local heart. Let’s create your dream Tanzania journey.</p></div>
-    <div><h3>Quick Links</h3><ul><li><a href="#" style="color:#aaa;">Home</a></li><li><a href="#packages" style="color:#aaa;">Packages</a></li><li><a href="#about" style="color:#aaa;">About</a></li><li><a href="#contact" style="color:#aaa;">Contact</a></li></ul></div>
-    <div><h3>Certified</h3><ul><li><i class="fas fa-shield-alt"></i> Licensed Tanzanian Tour Operator</li><li><i class="fas fa-lock"></i> Secure Booking</li><li><i class="fas fa-hand-holding-heart"></i> Ethical Porter Policy</li></ul></div>
-  </div>
-  <div class="copyright">© 2026 summitTosafaris Adventures – Your gateway to Tanzania’s wild beauty. All rights reserved.</div>
-</footer>
+    <!-- ══ PACKAGES ═══════════════════════════════ -->
+    <section id="packages">
+      <div class="pkg-header">
+        <div>
+          <div class="section-label">Safari packages</div>
+          <h2 class="section-heading">Choose Your <em>Adventure</em></h2>
+        </div>
+        <a
+          href="#booking"
+          class="hero-cta"
+          style="animation: none; opacity: 1; transform: none"
+        >
+          Custom Package
+          <span class="hero-cta-circle"
+            ><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6" /></svg
+          ></span>
+        </a>
+      </div>
+      <div class="pkg-grid">
+        <div class="pkg-card card-in">
+          <img
+            class="pkg-img"
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=80"
+            alt="Classic"
+          />
+          <div class="pkg-body">
+            <span class="pkg-badge green">Best for beginners</span>
+            <div class="pkg-name">Classic Serengeti Safari</div>
+            <div class="pkg-desc">
+              7 days through the Serengeti and Ngorongoro with daily game drives
+              and full-board tented camp accommodation.
+            </div>
+            <div class="pkg-meta">
+              <span>🗓 7 Days</span><span>👥 2–10 Guests</span
+              ><span>🏕 Tented Camp</span>
+            </div>
+            <div class="pkg-price">
+              <span class="pkg-amount">$2,400</span
+              ><span class="pkg-per">/ per person</span>
+            </div>
+            <a href="#booking" class="pkg-btn outline">Book this package</a>
+          </div>
+        </div>
+        <div class="pkg-card featured card-in" style="transition-delay: 0.12s">
+          <img
+            class="pkg-img"
+            src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=700&q=80"
+            alt="Migration"
+          />
+          <div class="pkg-body">
+            <span class="pkg-badge gold">⭐ Most popular</span>
+            <div class="pkg-name">Great Migration & Zanzibar</div>
+            <div class="pkg-desc">
+              12 days following the wildebeest migration, ending with 3 nights
+              of bliss on Zanzibar's white sand beaches.
+            </div>
+            <div class="pkg-meta">
+              <span>🗓 12 Days</span><span>👥 2–8 Guests</span
+              ><span>🏨 Luxury Lodge</span>
+            </div>
+            <div class="pkg-price">
+              <span class="pkg-amount">$4,900</span
+              ><span class="pkg-per">/ per person</span>
+            </div>
+            <a href="#booking" class="pkg-btn grad">Book this package</a>
+          </div>
+        </div>
+        <div class="pkg-card card-in" style="transition-delay: 0.24s">
+          <img
+            class="pkg-img"
+            src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=700&q=80"
+            alt="Kilimanjaro"
+          />
+          <div class="pkg-body">
+            <span class="pkg-badge blue">Adventure</span>
+            <div class="pkg-name">Kilimanjaro Summit Trek</div>
+            <div class="pkg-desc">
+              9-day Lemosho route climb to Africa's highest summit with expert
+              guides, full equipment & altitude support.
+            </div>
+            <div class="pkg-meta">
+              <span>🗓 9 Days</span><span>👥 1–12 Guests</span
+              ><span>⛺ Mountain Camp</span>
+            </div>
+            <div class="pkg-price">
+              <span class="pkg-amount">$3,200</span
+              ><span class="pkg-per">/ per person</span>
+            </div>
+            <a href="#booking" class="pkg-btn outline">Book this package</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<script>
-  // Scroll navbar
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => { if (window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
+    <!-- GALLERY -->
+    <section
+      id="gallery"
+      style="background: var(--dark2); padding: 5rem 0; overflow: hidden"
+    >
+      <div class="gallery-header">
+        <div>
+          <div class="section-label">Our gallery</div>
+          <h2 class="section-heading" style="font-size: 1.9rem">
+            Tanzania through <em>our lens</em>
+          </h2>
+        </div>
+        <span
+          style="
+            font-size: 0.68rem;
+            color: rgba(250, 243, 224, 0.28);
+            letter-spacing: 0.1em;
+          "
+          >Hover to pause</span
+        >
+      </div>
+      <div style="overflow: hidden">
+        <div class="gallery-track">
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1474755032398-4b0ed3b2ae5c?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1580501170888-80668882d0cb?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1474755032398-4b0ed3b2ae5c?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1580501170888-80668882d0cb?w=400&q=75"
+            alt=""
+          />
+          <img
+            class="gallery-photo"
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=75"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
 
-  // Intersection Observer for animations
-  const animated = document.querySelectorAll('.section-pad, .booking-section, .cards-grid .luxury-card, .about-inner, .cta-section, .package-card, .testimonial-card, .video-placeholder');
-  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
-  animated.forEach(el => observer.observe(el));
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div style="max-width: 1100px; margin: 0 auto">
+        <div class="section-label">What guests say</div>
+        <h2 class="section-heading">Stories from the <em>Wild</em></h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card card-in">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>
+            "The Serengeti at dawn, Hassan spotting a leopard in the acacia —
+            moments like that stay with you forever. Molana made it all
+            effortless."
+          </blockquote>
+          <div class="testi-author">
+            <div class="testi-av">SJ</div>
+            <div>
+              <div class="testi-name">Sophia & James</div>
+              <div class="testi-loc">London · Serengeti Package</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card card-in" style="transition-delay: 0.12s">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>
+            "Standing on Kilimanjaro's summit at sunrise, the shadow of the
+            mountain stretching across the clouds — Molana made this dream
+            real."
+          </blockquote>
+          <div class="testi-author">
+            <div class="testi-av">AK</div>
+            <div>
+              <div class="testi-name">Amara Kone</div>
+              <div class="testi-loc">Paris · Kilimanjaro Trek</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card card-in" style="transition-delay: 0.24s">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>
+            "From wildebeest crossing rivers to cocktails on Zanzibar's beach —
+            12 days with Molana was the most balanced trip of our lives."
+          </blockquote>
+          <div class="testi-author">
+            <div class="testi-av">MR</div>
+            <div>
+              <div class="testi-name">Marcus & Rina</div>
+              <div class="testi-loc">Toronto · Migration & Zanzibar</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  // Mobile menu
-  const hamburger = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const closeMenu = document.getElementById('closeMenuBtn');
-  hamburger?.addEventListener('click', () => { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; });
-  closeMenu?.addEventListener('click', () => { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; });
-  document.querySelectorAll('.mobile-menu ul li a').forEach(link => link.addEventListener('click', () => { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; }));
-</script>
-</body>
+    <!-- CTA STRIP -->
+    <div class="cta-strip">
+      <h2>Ready for Your <em>Tanzanian Adventure?</em></h2>
+      <p>
+        Our safari specialists are standing by. Tell us your dream and we'll
+        craft the perfect journey — from the plains of the Serengeti to the
+        summit of Kilimanjaro.
+      </p>
+      <div class="cta-btns">
+        <a href="#booking" class="cta-btn-main">Plan My Safari</a>
+        <a href="#packages" class="cta-btn-sec">View All Packages</a>
+      </div>
+    </div>
+
+    <!-- ══ BOOKING ════════════════════════════════ -->
+    <section id="booking">
+      <div class="booking-wrap">
+        <div class="booking-left">
+          <div class="section-label">Get in touch</div>
+          <h2 class="section-heading">Start Your <em>Journey</em></h2>
+          <p>
+            Our specialists are based in Dar es Salaam and respond within 24
+            hours. Tell us your dream — we'll make it real.
+          </p>
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="contact-ico">📍</div>
+              <div>
+                <strong>Our Office</strong>
+                <p>Oyster Bay, Dar es Salaam, Tanzania</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-ico">📞</div>
+              <div>
+                <strong>Phone / WhatsApp</strong>
+                <p>+255 754 000 000</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-ico">✉️</div>
+              <div>
+                <strong>Email</strong>
+                <p>hello@molanatours.co.tz</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-ico">🕐</div>
+              <div>
+                <strong>Response Time</strong>
+                <p>Within 24 hours, Mon–Sat</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-box">
+          <div class="form-row">
+            <div class="form-grp">
+              <label>First Name</label
+              ><input type="text" placeholder="Hassan" />
+            </div>
+            <div class="form-grp">
+              <label>Last Name</label><input type="text" placeholder="Mwanga" />
+            </div>
+          </div>
+          <div class="form-grp">
+            <label>Email Address</label
+            ><input type="email" placeholder="you@email.com" />
+          </div>
+          <div class="form-row">
+            <div class="form-grp">
+              <label>Destination</label>
+              <select>
+                <option>Serengeti Safari</option>
+                <option>Kilimanjaro Trek</option>
+                <option>Zanzibar Island</option>
+                <option>Ngorongoro Crater</option>
+                <option>Full Tanzania Circuit</option>
+                <option>Custom Package</option>
+              </select>
+            </div>
+            <div class="form-grp">
+              <label>Travel Month</label>
+              <select>
+                <option>January</option>
+                <option>February</option>
+                <option>March</option>
+                <option>April</option>
+                <option>May</option>
+                <option>June</option>
+                <option>July</option>
+                <option>August</option>
+                <option>September</option>
+                <option>October</option>
+                <option>November</option>
+                <option>December</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-grp">
+              <label>Number of Guests</label>
+              <select>
+                <option>1 guest</option>
+                <option>2 guests</option>
+                <option>3–4 guests</option>
+                <option>5–8 guests</option>
+                <option>9+ guests</option>
+              </select>
+            </div>
+            <div class="form-grp">
+              <label>Budget (per person)</label>
+              <select>
+                <option>$1,500–$2,500</option>
+                <option>$2,500–$4,000</option>
+                <option>$4,000–$6,000</option>
+                <option>$6,000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-grp">
+            <label>Tell us your dream</label
+            ><textarea
+              placeholder="Special requests, interests, or specific dates? The more you share, the better we can tailor your experience."
+            ></textarea>
+          </div>
+          <button
+            class="form-submit"
+            onclick="
+              this.textContent = 'Message Sent ✓';
+              this.style.background = 'linear-gradient(135deg,#2d8a3e,#1e4d2b)';
+            "
+          >
+            Send Enquiry
+          </button>
+          <p class="form-note">
+            No payment required. A Molana specialist will respond within 24
+            hours.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FOOTER ══════════════════════════════════ -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="footer-brand-logo">
+              <img src="molanalogo.jpg" alt="Molana Adventures" />
+            </div>
+            <p>
+              Tanzania's premier safari company, crafting unforgettable journeys
+              since 2012. Based in Dar es Salaam, operating across East Africa.
+            </p>
+            <div class="footer-socials">
+              <a class="soc" href="#">in</a>
+              <a class="soc" href="#">ig</a>
+              <a class="soc" href="#">fb</a>
+              <a class="soc" href="#">tw</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h5>Destinations</h5>
+            <ul>
+              <li><a href="#">Serengeti</a></li>
+              <li><a href="#">Kilimanjaro</a></li>
+              <li><a href="#">Zanzibar</a></li>
+              <li><a href="#">Ngorongoro</a></li>
+              <li><a href="#">Selous Reserve</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Experiences</h5>
+            <ul>
+              <li><a href="#">Game Drives</a></li>
+              <li><a href="#">Balloon Safari</a></li>
+              <li><a href="#">Kili Trekking</a></li>
+              <li><a href="#">Beach Escapes</a></li>
+              <li><a href="#">Cultural Tours</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Our Guides</a></li>
+              <li><a href="#">Sustainability</a></li>
+              <li><a href="#">Testimonials</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            © 2026 Molana Tours Ltd · Dar es Salaam, Tanzania · Licensed by
+            Tanzania Tourism Board
+          </p>
+          <p>Privacy Policy · Terms & Conditions</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ── STICKY NAV ───────────────────────────────
+      const nav = document.getElementById("main-nav");
+      window.addEventListener(
+        "scroll",
+        () => {
+          nav.classList.toggle("show", window.scrollY > 80);
+          nav.classList.toggle("scrolled", window.scrollY > 130);
+        },
+        { passive: true },
+      );
+
+      // ── ABOUT HEADING WORD PULL ──────────────────
+      const aboutSegs = [
+        { text: "We are Molana Tours,", em: false },
+        { text: "a team of passionate guides.", em: true },
+        { text: "Tanzania is our home, and your adventure.", em: false },
+      ];
+      const aboutH = document.getElementById("about-h");
+      let d = 0;
+      aboutSegs.forEach((seg) => {
+        seg.text.split(" ").forEach((w) => {
+          const wrap = document.createElement("span");
+          wrap.style.cssText =
+            "display:inline-block;overflow:hidden;margin-right:0.25em";
+          const inner = document.createElement(seg.em ? "em" : "span");
+          inner.className = "wp-word";
+          if (seg.em) {
+            inner.style.cssText =
+              'font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;color:var(--gold-light);display:inline-block;transform:translateY(100%);opacity:0';
+          }
+          inner.textContent = w;
+          inner.style.animationDelay = d + "s";
+          d += 0.06;
+          wrap.appendChild(inner);
+          aboutH.appendChild(wrap);
+        });
+      });
+      const ahObs = new IntersectionObserver(
+        (e) => {
+          if (e[0].isIntersecting) {
+            aboutH
+              .querySelectorAll(".wp-word")
+              .forEach((w) => w.classList.add("up"));
+            ahObs.disconnect();
+          }
+        },
+        { threshold: 0.2 },
+      );
+      ahObs.observe(aboutH);
+
+      // ── ABOUT BODY CHAR REVEAL ───────────────────
+      const bodyTxt =
+        "Over twelve years, we have guided thousands of travelers through Africa's most breathtaking landscapes — from the endless Serengeti plains to the snowfields of Kilimanjaro and the turquoise shores of Zanzibar. Every safari we craft earns its place in the story of a lifetime.";
+      const bodyEl = document.getElementById("about-body");
+      bodyTxt.split("").forEach((ch) => {
+        const s = document.createElement("span");
+        s.className = "char";
+        s.textContent = ch;
+        bodyEl.appendChild(s);
+      });
+      const chars = bodyEl.querySelectorAll(".char");
+      const total = chars.length;
+      function revChars() {
+        const r = bodyEl.getBoundingClientRect();
+        const prog = Math.max(
+          0,
+          Math.min(
+            1,
+            (window.innerHeight * 0.82 - r.top) / (window.innerHeight * 0.6),
+          ),
+        );
+        chars.forEach((c, i) =>
+          c.classList.toggle("lit", prog > i / total - 0.04),
+        );
+      }
+      window.addEventListener("scroll", revChars, { passive: true });
+      revChars();
+
+      // ── SECTION HEADING PULL ─────────────────────
+      function pullHeading(el) {
+        if (el.dataset.pulled) return;
+        el.dataset.pulled = "1";
+        const orig = el.innerHTML;
+        el.innerHTML = "";
+        const tmp = document.createElement("div");
+        tmp.innerHTML = orig;
+        let dd = 0;
+        function processNode(node, isEm) {
+          if (node.nodeType === 3) {
+            node.textContent
+              .split(" ")
+              .filter(Boolean)
+              .forEach((w) => {
+                const wrap = document.createElement("span");
+                wrap.style.cssText =
+                  "display:inline-block;overflow:hidden;margin-right:0.22em";
+                const inner = document.createElement(isEm ? "em" : "span");
+                inner.className = "wp-word";
+                if (isEm)
+                  inner.style.cssText =
+                    'font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;color:var(--gold-light);display:inline-block;transform:translateY(100%);opacity:0';
+                inner.style.animationDelay = dd + "s";
+                dd += 0.07;
+                inner.textContent = w;
+                wrap.appendChild(inner);
+                el.appendChild(wrap);
+              });
+          } else if (node.nodeName === "EM") {
+            node.childNodes.forEach((n) => processNode(n, true));
+          }
+        }
+        tmp.childNodes.forEach((n) => processNode(n, false));
+        const o = new IntersectionObserver(
+          (e) => {
+            if (e[0].isIntersecting) {
+              el.querySelectorAll(".wp-word").forEach((w) =>
+                w.classList.add("up"),
+              );
+              o.disconnect();
+            }
+          },
+          { threshold: 0.2 },
+        );
+        o.observe(el);
+      }
+      document.querySelectorAll(".section-heading").forEach(pullHeading);
+
+      // ── CARD REVEAL ──────────────────────────────
+      const cObs = new IntersectionObserver(
+        (e) => {
+          e.forEach((en) => {
+            if (en.isIntersecting) {
+              en.target.classList.add("visible");
+              cObs.unobserve(en.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: "-40px" },
+      );
+      document.querySelectorAll(".card-in").forEach((el) => cObs.observe(el));
+    </script>
+  </body>
 </html>
