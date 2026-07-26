@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Molana Tours — Tanzania's Finest Journeys</title>
+    <title>Molana Adventures — Discover Tanzania's Wild Beauty</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,14 +21,11 @@
       :root {
         --gold: #d4882a;
         --gold-light: #f0a93c;
-        --gold-pale: #f7d98b;
         --terra: #c4532a;
         --forest: #1e4d2b;
         --forest-light: #2d6b3e;
-        --forest-pale: #3d8a50;
         --cream: #faf3e0;
         --cream2: #f2e4c0;
-        --cream3: #e8d5a0;
         --dark: #0d1a0f;
         --dark2: #142018;
         --card: #111d14;
@@ -36,6 +33,7 @@
         --card3: #1f3323;
         --muted: rgba(250, 243, 224, 0.5);
         --border: rgba(212, 136, 42, 0.2);
+        --wa: #25d366;
       }
       html {
         scroll-behavior: smooth;
@@ -51,18 +49,58 @@
       }
 
       /* NOISE */
-      .noise-overlay {
+      .noise {
         position: absolute;
         inset: 0;
         pointer-events: none;
         z-index: 3;
-        opacity: 0.55;
+        opacity: 0.45;
         mix-blend-mode: overlay;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
       }
 
-      /* ── NAV (fixed, appears on scroll) ─────── */
-      #main-nav {
+      /* ── WHATSAPP FLOAT ─── */
+      .wa-float {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 900;
+        background: var(--wa);
+        color: #fff;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        animation: waPulse 2.5s infinite;
+      }
+      .wa-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 28px rgba(37, 211, 102, 0.6);
+      }
+      .wa-float svg {
+        width: 28px;
+        height: 28px;
+        fill: #fff;
+      }
+      @keyframes waPulse {
+        0%,
+        100% {
+          box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+        }
+        50% {
+          box-shadow: 0 4px 32px rgba(37, 211, 102, 0.75);
+        }
+      }
+
+      /* ── NAV ─── */
+      #nav {
         position: fixed;
         top: 0;
         left: 0;
@@ -79,61 +117,83 @@
           background 0.4s,
           padding 0.3s;
       }
-      #main-nav.show {
+      #nav.show {
         opacity: 1;
         pointer-events: all;
       }
-      #main-nav.scrolled {
-        background: rgba(13, 26, 15, 0.94);
-        backdrop-filter: blur(18px);
-        padding: 0.75rem 2.5rem;
+      #nav.scrolled {
+        background: rgba(13, 26, 15, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 0.7rem 2.5rem;
         border-bottom: 1px solid var(--border);
       }
-      /* ── LOGO STYLES ─────────────────────────── */
       .nav-logo {
         display: flex;
         align-items: center;
         text-decoration: none;
-        background: rgba(250, 243, 224, 0.92);
+        background: rgba(250, 243, 224, 0.95);
         border-radius: 9999px;
-        padding: 4px 14px 4px 4px;
-        backdrop-filter: blur(8px);
+        padding: 3px 12px 3px 3px;
         border: 1px solid rgba(212, 136, 42, 0.2);
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
-        transition: box-shadow 0.2s;
-      }
-      .nav-logo:hover {
-        box-shadow: 0 4px 18px rgba(212, 136, 42, 0.3);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
       }
       .nav-logo img {
-        height: 40px;
+        height: 36px;
         width: auto;
         object-fit: contain;
         display: block;
       }
-      #main-nav ul {
+      #nav ul {
         list-style: none;
         display: flex;
-        gap: 2.2rem;
+        gap: 2rem;
       }
-      #main-nav ul a {
+      #nav ul a {
         text-decoration: none;
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: rgba(250, 243, 224, 0.6);
+        color: rgba(250, 243, 224, 0.65);
         transition: color 0.2s;
         font-weight: 400;
       }
-      #main-nav ul a:hover {
+      #nav ul a:hover {
         color: var(--gold-light);
+      }
+      .nav-actions {
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+      }
+      .nav-wa {
+        background: var(--wa);
+        color: #fff;
+        padding: 0.45rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 800;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        transition: opacity 0.2s;
+      }
+      .nav-wa:hover {
+        opacity: 0.85;
+      }
+      .nav-wa svg {
+        width: 13px;
+        height: 13px;
+        fill: #fff;
       }
       .nav-book {
         background: linear-gradient(135deg, var(--gold), var(--terra));
         color: #fff;
-        padding: 0.5rem 1.3rem;
+        padding: 0.45rem 1.1rem;
         border-radius: 9999px;
-        font-size: 0.72rem;
+        font-size: 0.68rem;
         letter-spacing: 0.1em;
         text-transform: uppercase;
         font-weight: 800;
@@ -141,1299 +201,12 @@
         transition:
           opacity 0.2s,
           transform 0.2s;
-        box-shadow: 0 2px 14px rgba(212, 136, 42, 0.3);
+        box-shadow: 0 2px 12px rgba(212, 136, 42, 0.3);
       }
       .nav-book:hover {
         opacity: 0.88;
         transform: translateY(-1px);
       }
-
-      /* ── HERO ────────────────────────────────── */
-      #hero {
-        height: 100vh;
-        padding: 0.9rem;
-        display: flex;
-        flex-direction: column;
-      }
-      .hero-inner {
-        flex: 1;
-        position: relative;
-        border-radius: 1.6rem;
-        overflow: hidden;
-        background: var(--dark);
-      }
-      .hero-img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 1;
-      }
-      .hero-grad {
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        background: linear-gradient(
-          to bottom,
-          rgba(13, 26, 15, 0.25) 0%,
-          rgba(13, 26, 15, 0.1) 35%,
-          rgba(13, 26, 15, 0.75) 100%
-        );
-      }
-      .hero-grad2 {
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        background: linear-gradient(
-          to right,
-          rgba(13, 26, 15, 0.55) 0%,
-          transparent 60%
-        );
-      }
-
-      /* Hero pill nav */
-      .hero-pill-nav {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 20;
-        background: rgba(13, 26, 15, 0.82);
-        backdrop-filter: blur(14px);
-        border-radius: 0 0 1.4rem 1.4rem;
-        padding: 0.65rem 2rem;
-        display: flex;
-        align-items: center;
-        gap: 2.5rem;
-        border: 1px solid rgba(212, 136, 42, 0.15);
-        border-top: none;
-      }
-      .hero-pill-nav a {
-        text-decoration: none;
-        font-size: 0.7rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: rgba(250, 243, 224, 0.7);
-        transition: color 0.2s;
-        font-weight: 400;
-      }
-      .hero-pill-nav a:hover {
-        color: var(--gold-light);
-      }
-
-      /* LOGO watermark in hero — top left */
-      .hero-logo {
-        position: absolute;
-        top: 1.2rem;
-        left: 1.6rem;
-        z-index: 20;
-        display: inline-flex;
-        align-items: center;
-        background: rgba(250, 243, 224, 0.92);
-        border-radius: 9999px;
-        padding: 5px 18px 5px 5px;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(212, 136, 42, 0.25);
-        box-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
-      }
-      .hero-logo img {
-        height: 64px;
-        width: auto;
-        object-fit: contain;
-        display: block;
-      }
-
-      /* Hero content */
-      .hero-bottom {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 10;
-        padding: 0 1.8rem 1.8rem;
-        display: grid;
-        grid-template-columns: 8fr 4fr;
-        align-items: flex-end;
-        gap: 1.5rem;
-      }
-      .hero-title {
-        font-size: clamp(4rem, 17vw, 18vw);
-        font-weight: 800;
-        line-height: 0.85;
-        letter-spacing: -0.06em;
-        color: var(--cream);
-        font-family: "Almarai", sans-serif;
-      }
-      .hero-title .word {
-        display: inline-block;
-        transform: translateY(100%);
-        opacity: 0;
-        animation: wordUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-      .hero-title .w1 {
-        animation-delay: 0.05s;
-      }
-      .hero-title .w2 {
-        animation-delay: 0.14s;
-      }
-      .hero-title em {
-        font-style: italic;
-        font-family: "Instrument Serif", serif;
-        font-weight: 400;
-        color: var(--gold-light);
-      }
-
-      .hero-right {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-        padding-bottom: 0.5rem;
-      }
-      .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        background: rgba(212, 136, 42, 0.18);
-        border: 1px solid rgba(212, 136, 42, 0.35);
-        border-radius: 9999px;
-        padding: 0.3rem 0.75rem;
-        font-size: 0.65rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--gold-light);
-        font-weight: 700;
-      }
-      .hero-badge::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--gold-light);
-        animation: pulse 2s infinite;
-      }
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.5;
-          transform: scale(0.8);
-        }
-      }
-      .hero-desc {
-        color: rgba(250, 243, 224, 0.72);
-        font-size: clamp(0.78rem, 1.2vw, 1rem);
-        line-height: 1.3;
-        font-weight: 300;
-        opacity: 0;
-        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-      }
-      .hero-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: linear-gradient(135deg, var(--gold), var(--terra));
-        color: #fff;
-        border: none;
-        border-radius: 9999px;
-        padding: 0.6rem 0.6rem 0.6rem 1.3rem;
-        font-family: "Almarai", sans-serif;
-        font-size: 0.85rem;
-        font-weight: 800;
-        text-decoration: none;
-        cursor: default;
-        opacity: 0;
-        animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
-        transition: gap 0.3s;
-        box-shadow: 0 4px 20px rgba(212, 136, 42, 0.35);
-      }
-      .hero-cta:hover {
-        gap: 0.8rem;
-      }
-      .hero-cta-circle {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.18);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.3s;
-        flex-shrink: 0;
-      }
-      .hero-cta:hover .hero-cta-circle {
-        transform: scale(1.12);
-      }
-      .hero-cta-circle svg {
-        width: 15px;
-        height: 15px;
-        stroke: #fff;
-        stroke-width: 2.5;
-        fill: none;
-      }
-
-      .scroll-hint {
-        position: absolute;
-        bottom: 2rem;
-        left: 3rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.4rem;
-        z-index: 20;
-        opacity: 0;
-        animation: fadeIn 1.5s 2s ease both;
-      }
-      .scroll-hint span {
-        font-size: 0.58rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: rgba(250, 243, 224, 0.35);
-      }
-      .scroll-line {
-        width: 1px;
-        height: 40px;
-        background: linear-gradient(
-          to bottom,
-          rgba(212, 136, 42, 0.6),
-          transparent
-        );
-        animation: scrollPulse 1.8s ease infinite;
-      }
-
-      /* ── STATS ───────────────────────────────── */
-      .stats-bar {
-        background: var(--card);
-        display: flex;
-        border-top: 1px solid rgba(212, 136, 42, 0.12);
-      }
-      .stat-item {
-        flex: 1;
-        text-align: center;
-        padding: 1.8rem 1rem;
-        border-right: 1px solid rgba(212, 136, 42, 0.1);
-      }
-      .stat-item:last-child {
-        border-right: none;
-      }
-      .stat-num {
-        font-size: 2.1rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--gold-light), var(--gold));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      .stat-lbl {
-        font-size: 0.62rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: rgba(250, 243, 224, 0.38);
-        margin-top: 0.3rem;
-        font-weight: 300;
-      }
-
-      /* ── SHARED ──────────────────────────────── */
-      .section-label {
-        font-size: 0.66rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--gold-light);
-        margin-bottom: 0.8rem;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 0.55rem;
-      }
-      .section-label::before {
-        content: "";
-        width: 20px;
-        height: 1.5px;
-        background: linear-gradient(to right, var(--gold), transparent);
-      }
-      .section-heading {
-        font-size: clamp(1.8rem, 3.5vw, 3rem);
-        font-weight: 800;
-        line-height: 1.05;
-        color: var(--cream);
-      }
-      .section-heading em {
-        font-family: "Instrument Serif", serif;
-        font-style: italic;
-        font-weight: 400;
-        color: var(--gold-light);
-      }
-
-      /* word pull */
-      .wp-wrap {
-        display: inline-block;
-        overflow: hidden;
-        margin-right: 0.22em;
-      }
-      .wp-word {
-        display: inline-block;
-        transform: translateY(100%);
-        opacity: 0;
-      }
-      .wp-word.up {
-        animation: wordUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-
-      /* card in */
-      .card-in {
-        transform: scale(0.95) translateY(12px);
-        opacity: 0;
-      }
-      .card-in.visible {
-        animation: cardIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      }
-
-      /* ── ABOUT ───────────────────────────────── */
-      #about {
-        background: var(--dark);
-        padding: 6rem 1rem;
-      }
-      .about-inner {
-        background: var(--card);
-        border-radius: 2rem;
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 4rem 3rem;
-        text-align: center;
-      }
-      .about-label {
-        font-size: 0.68rem;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--gold-light);
-        margin-bottom: 2rem;
-        font-weight: 700;
-      }
-      .about-heading {
-        font-size: clamp(1.9rem, 4.5vw, 4rem);
-        line-height: 0.95;
-        max-width: 820px;
-        margin: 0 auto 2.5rem;
-        font-weight: 800;
-      }
-      .about-heading em {
-        font-family: "Instrument Serif", serif;
-        font-style: italic;
-        font-weight: 400;
-        color: var(--gold-light);
-      }
-      .about-body {
-        font-size: clamp(0.82rem, 1.3vw, 1rem);
-        color: var(--cream2);
-        max-width: 680px;
-        margin: 0 auto;
-        line-height: 1.8;
-        font-weight: 300;
-      }
-      .about-body .char {
-        display: inline;
-        opacity: 0.18;
-        transition: opacity 0.08s;
-      }
-      .about-body .char.lit {
-        opacity: 1;
-      }
-      .about-imgs {
-        display: flex;
-        gap: 0.6rem;
-        margin-top: 2.5rem;
-        border-radius: 1rem;
-        overflow: hidden;
-        height: 220px;
-      }
-      .about-img {
-        flex: 1;
-        object-fit: cover;
-        filter: brightness(0.7) saturate(1.15);
-        transition:
-          flex 0.45s ease,
-          filter 0.3s;
-        cursor: default;
-      }
-      .about-img:hover {
-        flex: 2.8;
-        filter: brightness(0.9) saturate(1.3);
-      }
-
-      /* ── DESTINATIONS ────────────────────────── */
-      #destinations {
-        background: var(--dark2);
-        padding: 6rem 1rem;
-      }
-      .dest-grid {
-        max-width: 1100px;
-        margin: 2.5rem auto 0;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.7rem;
-      }
-      .dest-card {
-        background: var(--card);
-        border-radius: 1.2rem;
-        overflow: hidden;
-        position: relative;
-        cursor: default;
-      }
-      .dest-card-wide {
-        grid-column: span 2;
-      }
-      .dest-img-wrap {
-        overflow: hidden;
-      }
-      .dest-card-wide .dest-img-wrap {
-        height: 290px;
-      }
-      .dest-card:not(.dest-card-wide) .dest-img-wrap {
-        height: 290px;
-      }
-      .dest-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        filter: brightness(0.7) saturate(1.2);
-        transition:
-          filter 0.5s,
-          transform 0.6s;
-      }
-      .dest-card:hover img {
-        filter: brightness(0.88) saturate(1.35);
-        transform: scale(1.05);
-      }
-      .dest-body {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 1.4rem 1.3rem;
-        background: linear-gradient(transparent, rgba(13, 26, 15, 0.95));
-      }
-      .dest-tag {
-        font-size: 0.6rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--gold-light);
-        border: 1px solid rgba(240, 169, 60, 0.35);
-        border-radius: 20px;
-        padding: 0.2rem 0.65rem;
-        display: inline-block;
-        margin-bottom: 0.4rem;
-        font-weight: 700;
-      }
-      .dest-name {
-        font-size: 1.2rem;
-        font-weight: 800;
-        color: var(--cream);
-        margin-bottom: 0.15rem;
-      }
-      .dest-sub {
-        font-size: 0.72rem;
-        color: rgba(250, 243, 224, 0.5);
-        font-weight: 300;
-      }
-
-      /* ── EXPERIENCES ─────────────────────────── */
-      #experiences {
-        background: var(--dark);
-        padding: 6rem 1rem;
-        position: relative;
-        overflow: hidden;
-      }
-      #experiences::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
-        opacity: 0.12;
-        pointer-events: none;
-      }
-      .exp-grid {
-        max-width: 1100px;
-        margin: 2.5rem auto 0;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.65rem;
-      }
-      .exp-card {
-        background: var(--card2);
-        border: 1px solid rgba(212, 136, 42, 0.1);
-        border-radius: 1.2rem;
-        padding: 1.6rem 1.4rem;
-        cursor: default;
-        transition:
-          border-color 0.3s,
-          transform 0.3s,
-          background 0.3s;
-      }
-      .exp-card:hover {
-        border-color: rgba(212, 136, 42, 0.4);
-        transform: translateY(-6px) !important;
-        background: var(--card3);
-      }
-      .exp-num {
-        font-size: 0.6rem;
-        letter-spacing: 0.15em;
-        color: var(--gold);
-        margin-bottom: 1.6rem;
-        font-weight: 700;
-      }
-      .exp-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 10px;
-        background: linear-gradient(
-          135deg,
-          rgba(212, 136, 42, 0.18),
-          rgba(196, 83, 42, 0.12)
-        );
-        border: 1px solid rgba(212, 136, 42, 0.2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1rem;
-        font-size: 1.2rem;
-      }
-      .exp-title {
-        font-size: 0.98rem;
-        font-weight: 800;
-        color: var(--cream);
-        margin-bottom: 0.5rem;
-      }
-      .exp-checks {
-        margin-top: 0.9rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .exp-check {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.45rem;
-      }
-      .exp-check svg {
-        width: 13px;
-        height: 13px;
-        flex-shrink: 0;
-        margin-top: 2px;
-        stroke: var(--gold-light);
-        stroke-width: 2.5;
-        fill: none;
-      }
-      .exp-check span {
-        font-size: 0.74rem;
-        color: rgba(250, 243, 224, 0.45);
-        line-height: 1.4;
-      }
-      .exp-learn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        margin-top: 1.1rem;
-        font-size: 0.7rem;
-        color: var(--gold);
-        text-decoration: none;
-        transition: color 0.2s;
-        cursor: default;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-      }
-      .exp-learn:hover {
-        color: var(--gold-light);
-      }
-      .exp-learn svg {
-        width: 11px;
-        height: 11px;
-        stroke: currentColor;
-        stroke-width: 2.5;
-        fill: none;
-        transform: rotate(-45deg);
-      }
-
-      /* ── PACKAGES ────────────────────────────── */
-      #packages {
-        background: var(--card);
-        padding: 6rem 1rem;
-      }
-      .pkg-header {
-        max-width: 1100px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-bottom: 2.5rem;
-      }
-      .pkg-grid {
-        max-width: 1100px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.7rem;
-      }
-      .pkg-card {
-        background: var(--dark);
-        border: 1px solid rgba(212, 136, 42, 0.1);
-        border-radius: 1.2rem;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        cursor: default;
-        transition:
-          border-color 0.3s,
-          transform 0.3s;
-      }
-      .pkg-card:hover {
-        border-color: rgba(212, 136, 42, 0.35);
-        transform: translateY(-6px) !important;
-      }
-      .pkg-card.featured {
-        border-color: rgba(212, 136, 42, 0.4);
-        background: rgba(30, 77, 43, 0.18);
-      }
-      .pkg-img {
-        width: 100%;
-        height: 185px;
-        object-fit: cover;
-        filter: brightness(0.8) saturate(1.2);
-        transition: filter 0.4s;
-      }
-      .pkg-card:hover .pkg-img {
-        filter: brightness(0.95) saturate(1.35);
-      }
-      .pkg-body {
-        padding: 1.5rem;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-      .pkg-badge {
-        display: inline-block;
-        font-size: 0.6rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        padding: 0.22rem 0.75rem;
-        border-radius: 20px;
-        margin-bottom: 0.75rem;
-        font-weight: 700;
-      }
-      .pkg-badge.gold {
-        background: rgba(212, 136, 42, 0.15);
-        color: var(--gold-light);
-        border: 1px solid rgba(212, 136, 42, 0.3);
-      }
-      .pkg-badge.green {
-        background: rgba(30, 77, 43, 0.4);
-        color: #7ee89a;
-        border: 1px solid rgba(126, 232, 154, 0.2);
-      }
-      .pkg-badge.blue {
-        background: rgba(30, 60, 120, 0.3);
-        color: #7ab8e8;
-        border: 1px solid rgba(122, 184, 232, 0.2);
-      }
-      .pkg-name {
-        font-size: 1.1rem;
-        font-weight: 800;
-        color: var(--cream);
-        margin-bottom: 0.45rem;
-      }
-      .pkg-desc {
-        font-size: 0.78rem;
-        color: rgba(250, 243, 224, 0.45);
-        line-height: 1.7;
-        flex: 1;
-        font-weight: 300;
-        margin-bottom: 1rem;
-      }
-      .pkg-meta {
-        display: flex;
-        gap: 0.7rem;
-        flex-wrap: wrap;
-        margin-bottom: 1rem;
-      }
-      .pkg-meta span {
-        font-size: 0.66rem;
-        color: rgba(250, 243, 224, 0.38);
-        font-weight: 300;
-      }
-      .pkg-price {
-        margin-bottom: 1rem;
-      }
-      .pkg-amount {
-        font-size: 1.9rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--gold-light), var(--gold));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      .pkg-per {
-        font-size: 0.7rem;
-        color: rgba(250, 243, 224, 0.35);
-        margin-left: 0.25rem;
-      }
-      .pkg-btn {
-        display: block;
-        text-align: center;
-        padding: 0.7rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        font-weight: 800;
-        text-decoration: none;
-        cursor: default;
-        transition:
-          opacity 0.2s,
-          transform 0.2s;
-        font-family: "Almarai", sans-serif;
-      }
-      .pkg-btn:hover {
-        opacity: 0.85;
-        transform: translateY(-1px);
-      }
-      .pkg-btn.grad {
-        background: linear-gradient(135deg, var(--gold), var(--terra));
-        color: #fff;
-        box-shadow: 0 3px 14px rgba(212, 136, 42, 0.3);
-      }
-      .pkg-btn.outline {
-        border: 1px solid rgba(212, 136, 42, 0.3);
-        color: var(--gold-light);
-      }
-
-      /* ── GALLERY ─────────────────────────────── */
-      #gallery {
-        background: var(--dark2);
-        padding: 5rem 0;
-        overflow: hidden;
-      }
-      .gallery-header {
-        padding: 0 1rem 2.2rem;
-        max-width: 1100px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-      }
-      .gallery-track {
-        display: flex;
-        gap: 0.65rem;
-        animation: slideGallery 36s linear infinite;
-        width: max-content;
-      }
-      .gallery-track:hover {
-        animation-play-state: paused;
-      }
-      .gallery-photo {
-        width: 255px;
-        height: 185px;
-        object-fit: cover;
-        border-radius: 1rem;
-        filter: brightness(0.78) saturate(1.1);
-        flex-shrink: 0;
-        transition:
-          filter 0.3s,
-          transform 0.3s;
-        cursor: default;
-      }
-      .gallery-photo:hover {
-        filter: brightness(1) saturate(1.3);
-        transform: scale(1.04);
-      }
-
-      /* ── TESTIMONIALS ────────────────────────── */
-      #testimonials {
-        background: var(--card);
-        padding: 6rem 1rem;
-      }
-      .testi-grid {
-        max-width: 1100px;
-        margin: 2.5rem auto 0;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.65rem;
-      }
-      .testi-card {
-        background: var(--dark);
-        border: 1px solid rgba(212, 136, 42, 0.1);
-        border-radius: 1.2rem;
-        padding: 1.8rem 1.5rem;
-      }
-      .testi-stars {
-        background: linear-gradient(90deg, var(--gold-light), var(--gold));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-size: 0.85rem;
-        margin-bottom: 0.8rem;
-        letter-spacing: 0.08em;
-      }
-      .testi-card blockquote {
-        font-family: "Instrument Serif", serif;
-        font-style: italic;
-        font-size: 1.02rem;
-        color: var(--cream);
-        line-height: 1.65;
-        margin-bottom: 1.2rem;
-        font-weight: 400;
-      }
-      .testi-author {
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-      }
-      .testi-av {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: linear-gradient(
-          135deg,
-          rgba(212, 136, 42, 0.3),
-          rgba(196, 83, 42, 0.2)
-        );
-        border: 1px solid rgba(212, 136, 42, 0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.68rem;
-        color: var(--gold-light);
-        font-weight: 800;
-        flex-shrink: 0;
-      }
-      .testi-name {
-        font-size: 0.8rem;
-        color: var(--cream);
-        font-weight: 800;
-      }
-      .testi-loc {
-        font-size: 0.68rem;
-        color: rgba(250, 243, 224, 0.38);
-        font-weight: 300;
-      }
-
-      /* ── CTA STRIP ───────────────────────────── */
-      .cta-strip {
-        background: linear-gradient(135deg, var(--forest), var(--dark) 60%);
-        padding: 5rem 1rem;
-        position: relative;
-        overflow: hidden;
-        text-align: center;
-      }
-      .cta-strip::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          ellipse at center,
-          rgba(212, 136, 42, 0.12) 0%,
-          transparent 70%
-        );
-      }
-      .cta-strip h2 {
-        font-size: clamp(2rem, 4vw, 3.5rem);
-        font-weight: 800;
-        color: var(--cream);
-        margin-bottom: 0.6rem;
-        position: relative;
-      }
-      .cta-strip h2 em {
-        font-family: "Instrument Serif", serif;
-        font-style: italic;
-        font-weight: 400;
-        color: var(--gold-light);
-      }
-      .cta-strip p {
-        color: rgba(250, 243, 224, 0.5);
-        font-size: 0.95rem;
-        max-width: 480px;
-        margin: 0 auto 2.2rem;
-        line-height: 1.7;
-        font-weight: 300;
-        position: relative;
-      }
-      .cta-btns {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        position: relative;
-      }
-      .cta-btn-main {
-        background: linear-gradient(135deg, var(--gold), var(--terra));
-        color: #fff;
-        padding: 0.85rem 2.2rem;
-        border-radius: 9999px;
-        font-size: 0.85rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        font-weight: 800;
-        text-decoration: none;
-        box-shadow: 0 4px 20px rgba(212, 136, 42, 0.4);
-        transition:
-          opacity 0.2s,
-          transform 0.2s;
-        cursor: default;
-      }
-      .cta-btn-main:hover {
-        opacity: 0.88;
-        transform: translateY(-2px);
-      }
-      .cta-btn-sec {
-        background: transparent;
-        color: rgba(250, 243, 224, 0.7);
-        border: 1px solid rgba(250, 243, 224, 0.2);
-        padding: 0.85rem 2.2rem;
-        border-radius: 9999px;
-        font-size: 0.85rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        font-weight: 400;
-        text-decoration: none;
-        transition:
-          border-color 0.25s,
-          color 0.25s,
-          transform 0.2s;
-        cursor: default;
-      }
-      .cta-btn-sec:hover {
-        border-color: var(--gold-light);
-        color: var(--gold-light);
-        transform: translateY(-2px);
-      }
-
-      /* ── BOOKING ─────────────────────────────── */
-      #booking {
-        background: var(--dark);
-        padding: 6rem 1rem;
-      }
-      .booking-wrap {
-        max-width: 1100px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5rem;
-        align-items: start;
-      }
-      .booking-left p {
-        color: rgba(250, 243, 224, 0.48);
-        font-size: 0.9rem;
-        line-height: 1.85;
-        margin: 1rem 0 2rem;
-        font-weight: 300;
-      }
-      .contact-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.9rem;
-      }
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 0.85rem;
-      }
-      .contact-ico {
-        width: 36px;
-        height: 36px;
-        border-radius: 9px;
-        background: linear-gradient(
-          135deg,
-          rgba(212, 136, 42, 0.15),
-          rgba(196, 83, 42, 0.08)
-        );
-        border: 1px solid rgba(212, 136, 42, 0.18);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.9rem;
-        flex-shrink: 0;
-      }
-      .contact-item strong {
-        display: block;
-        font-size: 0.8rem;
-        color: var(--cream);
-        font-weight: 800;
-        margin-bottom: 0.1rem;
-      }
-      .contact-item p {
-        font-size: 0.76rem;
-        color: rgba(250, 243, 224, 0.43);
-        margin: 0;
-        font-weight: 300;
-      }
-      .form-box {
-        background: var(--card);
-        border: 1px solid rgba(212, 136, 42, 0.12);
-        border-radius: 1.5rem;
-        padding: 2rem;
-      }
-      .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.75rem;
-        margin-bottom: 0.75rem;
-      }
-      .form-grp {
-        display: flex;
-        flex-direction: column;
-        gap: 0.32rem;
-        margin-bottom: 0.75rem;
-      }
-      .form-grp label {
-        font-size: 0.63rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: rgba(250, 243, 224, 0.38);
-        font-weight: 700;
-      }
-      .form-grp input,
-      .form-grp select,
-      .form-grp textarea {
-        background: rgba(250, 243, 224, 0.04);
-        border: 1px solid rgba(212, 136, 42, 0.14);
-        border-radius: 0.6rem;
-        padding: 0.72rem 0.85rem;
-        color: var(--cream);
-        font-family: "Almarai", sans-serif;
-        font-size: 0.83rem;
-        outline: none;
-        width: 100%;
-        transition:
-          border-color 0.25s,
-          background 0.25s;
-        cursor: default;
-      }
-      .form-grp input:focus,
-      .form-grp select:focus,
-      .form-grp textarea:focus {
-        border-color: rgba(212, 136, 42, 0.4);
-        background: rgba(212, 136, 42, 0.05);
-      }
-      .form-grp select option {
-        background: var(--card);
-        color: var(--cream);
-      }
-      .form-grp textarea {
-        resize: vertical;
-        min-height: 85px;
-        line-height: 1.6;
-      }
-      .form-submit {
-        width: 100%;
-        padding: 0.95rem;
-        background: linear-gradient(135deg, var(--gold), var(--terra));
-        color: #fff;
-        border: none;
-        border-radius: 9999px;
-        font-family: "Almarai", sans-serif;
-        font-size: 0.8rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        font-weight: 800;
-        cursor: default;
-        transition:
-          opacity 0.2s,
-          transform 0.2s;
-        margin-top: 0.4rem;
-        box-shadow: 0 3px 16px rgba(212, 136, 42, 0.3);
-      }
-      .form-submit:hover {
-        opacity: 0.86;
-        transform: translateY(-1px);
-      }
-      .form-note {
-        font-size: 0.66rem;
-        color: rgba(250, 243, 224, 0.28);
-        text-align: center;
-        margin-top: 0.8rem;
-      }
-
-      /* ── FOOTER ──────────────────────────────── */
-      footer {
-        background: var(--card);
-        padding: 4rem 1rem 2rem;
-      }
-      .footer-inner {
-        max-width: 1100px;
-        margin: 0 auto;
-      }
-      .footer-top {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 3rem;
-        margin-bottom: 3rem;
-      }
-      .footer-brand-logo {
-        display: inline-flex;
-        align-items: center;
-        background: rgba(250, 243, 224, 0.92);
-        border-radius: 9999px;
-        padding: 5px 16px 5px 5px;
-        margin-bottom: 1.2rem;
-        border: 1px solid rgba(212, 136, 42, 0.2);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      }
-      .footer-brand-logo img {
-        height: 52px;
-        width: auto;
-        object-fit: contain;
-        display: block;
-      }
-      .footer-brand p {
-        font-size: 0.78rem;
-        color: rgba(250, 243, 224, 0.35);
-        line-height: 1.75;
-        max-width: 230px;
-        font-weight: 300;
-      }
-      .footer-socials {
-        display: flex;
-        gap: 0.55rem;
-        margin-top: 1.2rem;
-      }
-      .soc {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        border: 1px solid rgba(212, 136, 42, 0.18);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.65rem;
-        color: rgba(250, 243, 224, 0.42);
-        text-decoration: none;
-        cursor: default;
-        font-weight: 800;
-        transition:
-          border-color 0.2s,
-          color 0.2s,
-          background 0.2s;
-      }
-      .soc:hover {
-        border-color: var(--gold);
-        color: var(--gold);
-      }
-      .footer-col h5 {
-        font-size: 0.63rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--gold-light);
-        margin-bottom: 1rem;
-        font-weight: 800;
-      }
-      .footer-col ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .footer-col ul a {
-        text-decoration: none;
-        font-size: 0.77rem;
-        color: rgba(250, 243, 224, 0.36);
-        cursor: default;
-        transition: color 0.2s;
-        font-weight: 300;
-      }
-      .footer-col ul a:hover {
-        color: var(--cream);
-      }
-      .footer-bottom {
-        border-top: 1px solid rgba(212, 136, 42, 0.1);
-        padding-top: 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 0.8rem;
-      }
-      .footer-bottom p {
-        font-size: 0.66rem;
-        color: rgba(250, 243, 224, 0.26);
-        font-weight: 300;
-      }
-
-      /* ── KEYFRAMES ───────────────────────────── */
-      @keyframes wordUp {
-        from {
-          transform: translateY(100%);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-      @keyframes fadeUp {
-        from {
-          transform: translateY(20px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      @keyframes cardIn {
-        from {
-          transform: scale(0.95) translateY(12px);
-          opacity: 0;
-        }
-        to {
-          transform: scale(1) translateY(0);
-          opacity: 1;
-        }
-      }
-      @keyframes slideGallery {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-      @keyframes scrollPulse {
-        0% {
-          transform: scaleY(0);
-          transform-origin: top;
-        }
-        50% {
-          transform: scaleY(1);
-          transform-origin: top;
-        }
-        51% {
-          transform: scaleY(1);
-          transform-origin: bottom;
-        }
-        100% {
-          transform: scaleY(0);
-          transform-origin: bottom;
-        }
-      }
-
-      /* ════════════════════════════════════════════
-   RESPONSIVE — MOBILE FIRST
-════════════════════════════════════════════ */
-
-      /* ── HAMBURGER ─────────────────────────── */
       .hamburger {
         display: none;
         flex-direction: column;
@@ -1463,9 +236,7 @@
       .hamburger.open span:nth-child(3) {
         transform: translateY(-7px) rotate(-45deg);
       }
-
-      /* Mobile nav drawer */
-      .mobile-drawer {
+      .mob-drawer {
         position: fixed;
         inset: 0;
         z-index: 550;
@@ -1475,99 +246,1444 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 2.5rem;
+        gap: 2rem;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.35s;
       }
-      .mobile-drawer.open {
+      .mob-drawer.open {
         opacity: 1;
         pointer-events: all;
       }
-      .mobile-drawer a {
+      .mob-drawer a {
         text-decoration: none;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         font-weight: 800;
         color: rgba(250, 243, 224, 0.7);
-        letter-spacing: 0.04em;
         transition: color 0.2s;
       }
-      .mobile-drawer a:hover {
+      .mob-drawer a:hover {
         color: var(--gold-light);
       }
-      .mobile-drawer .mob-cta {
+      .mob-wa {
+        background: var(--wa) !important;
+        color: #fff !important;
+        padding: 0.85rem 2.2rem;
+        border-radius: 9999px;
+        font-size: 1rem !important;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .mob-book {
+        background: linear-gradient(
+          135deg,
+          var(--gold),
+          var(--terra)
+        ) !important;
+        color: #fff !important;
+        padding: 0.85rem 2.2rem;
+        border-radius: 9999px;
+        font-size: 0.9rem !important;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      /* ── HERO ─── */
+      #hero {
+        height: 100vh;
+        padding: 0.9rem;
+        display: flex;
+        flex-direction: column;
+      }
+      .hero-inner {
+        flex: 1;
+        position: relative;
+        border-radius: 1.6rem;
+        overflow: hidden;
+        background: var(--dark);
+      }
+      .hero-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+      }
+      .hero-g1 {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(
+          to bottom,
+          rgba(13, 26, 15, 0.2) 0%,
+          rgba(13, 26, 15, 0.05) 30%,
+          rgba(13, 26, 15, 0.8) 100%
+        );
+      }
+      .hero-g2 {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(
+          to right,
+          rgba(13, 26, 15, 0.6) 0%,
+          transparent 55%
+        );
+      }
+      .hero-pill {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+        background: rgba(13, 26, 15, 0.85);
+        backdrop-filter: blur(14px);
+        border-radius: 0 0 1.4rem 1.4rem;
+        padding: 0.6rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        border: 1px solid rgba(212, 136, 42, 0.15);
+        border-top: none;
+      }
+      .hero-pill a {
+        text-decoration: none;
+        font-size: 0.68rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(250, 243, 224, 0.7);
+        transition: color 0.2s;
+      }
+      .hero-pill a:hover {
+        color: var(--gold-light);
+      }
+      .hero-logo-wrap {
+        position: absolute;
+        top: 1.2rem;
+        left: 1.6rem;
+        z-index: 20;
+        display: inline-flex;
+        align-items: center;
+        background: rgba(250, 243, 224, 0.95);
+        border-radius: 9999px;
+        padding: 5px 16px 5px 5px;
+        border: 1px solid rgba(212, 136, 42, 0.25);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+      }
+      .hero-logo-wrap img {
+        height: 60px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      }
+      .hero-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        padding: 0 1.8rem 2rem;
+        display: grid;
+        grid-template-columns: 7fr 5fr;
+        align-items: flex-end;
+        gap: 2rem;
+      }
+      .hero-eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 0.8rem;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.3s ease both;
+      }
+      .hero-eyebrow-line {
+        width: 24px;
+        height: 1.5px;
+        background: var(--gold-light);
+      }
+      .hero-eyebrow span {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        font-weight: 700;
+      }
+      .hero-h1 {
+        font-size: clamp(2.5rem, 5.5vw, 5vw);
+        font-weight: 800;
+        line-height: 1.05;
+        color: var(--cream);
+        margin-bottom: 0.6rem;
+        opacity: 0;
+        animation: fadeUp 0.9s 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      .hero-h1 em {
+        font-style: italic;
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+        color: var(--gold-light);
+      }
+      .hero-sub-text {
+        font-size: clamp(0.82rem, 1.2vw, 1rem);
+        color: rgba(250, 243, 224, 0.6);
+        line-height: 1.55;
+        font-weight: 300;
+        max-width: 480px;
+        opacity: 0;
+        animation: fadeUp 0.9s 0.6s ease both;
+      }
+      .hero-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding-bottom: 0.5rem;
+        opacity: 0;
+        animation: fadeUp 0.9s 0.75s ease both;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: rgba(212, 136, 42, 0.18);
+        border: 1px solid rgba(212, 136, 42, 0.35);
+        border-radius: 9999px;
+        padding: 0.3rem 0.75rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        font-weight: 700;
+      }
+      .hero-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gold-light);
+        animation: blink 2s infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+      .hero-trust {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+      }
+      .htrust-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.72rem;
+        color: rgba(250, 243, 224, 0.6);
+        font-weight: 300;
+      }
+      .htrust-item svg {
+        width: 13px;
+        height: 13px;
+        stroke: var(--gold-light);
+        stroke-width: 2.5;
+        fill: none;
+        flex-shrink: 0;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
         background: linear-gradient(135deg, var(--gold), var(--terra));
         color: #fff;
-        padding: 0.9rem 2.5rem;
+        border: none;
         border-radius: 9999px;
-        font-size: 0.9rem;
+        padding: 0.7rem 0.7rem 0.7rem 1.4rem;
+        font-family: "Almarai", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 800;
+        text-decoration: none;
+        transition:
+          gap 0.3s,
+          opacity 0.2s;
+        box-shadow: 0 4px 18px rgba(212, 136, 42, 0.35);
+      }
+      .btn-primary:hover {
+        gap: 0.8rem;
+        opacity: 0.9;
+      }
+      .btn-primary-circle {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: transform 0.3s;
+      }
+      .btn-primary:hover .btn-primary-circle {
+        transform: scale(1.1);
+      }
+      .btn-primary-circle svg {
+        width: 14px;
+        height: 14px;
+        stroke: #fff;
+        stroke-width: 2.5;
+        fill: none;
+      }
+      .btn-wa {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--wa);
+        color: #fff;
+        border-radius: 9999px;
+        padding: 0.7rem 1.3rem;
+        font-size: 0.82rem;
+        font-weight: 800;
+        text-decoration: none;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+      }
+      .btn-wa:hover {
+        opacity: 0.88;
+        transform: translateY(-1px);
+      }
+      .btn-wa svg {
+        width: 16px;
+        height: 16px;
+        fill: #fff;
+      }
+      .scroll-hint {
+        position: absolute;
+        bottom: 1.8rem;
+        right: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        z-index: 20;
+        opacity: 0;
+        animation: fadeIn 1.5s 2s ease both;
+      }
+      .scroll-hint span {
+        font-size: 0.56rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(250, 243, 224, 0.3);
+      }
+      .scroll-line {
+        width: 1px;
+        height: 36px;
+        background: linear-gradient(
+          to bottom,
+          rgba(212, 136, 42, 0.55),
+          transparent
+        );
+        animation: sPulse 1.8s ease infinite;
+      }
+
+      /* ── STATS ─── */
+      .stats-bar {
+        background: var(--card);
+        display: flex;
+        border-top: 1px solid rgba(212, 136, 42, 0.1);
+      }
+      .stat-item {
+        flex: 1;
+        text-align: center;
+        padding: 1.6rem 0.8rem;
+        border-right: 1px solid rgba(212, 136, 42, 0.08);
+      }
+      .stat-item:last-child {
+        border-right: none;
+      }
+      .stat-num {
+        font-size: 2rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .stat-lbl {
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(250, 243, 224, 0.38);
+        margin-top: 0.25rem;
+        font-weight: 300;
+      }
+
+      /* ── SHARED ─── */
+      section {
+        padding: 5.5rem 1rem;
+      }
+      .inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .sec-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        margin-bottom: 0.7rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .sec-label::before {
+        content: "";
+        width: 20px;
+        height: 1.5px;
+        background: linear-gradient(to right, var(--gold), transparent);
+      }
+      .sec-h2 {
+        font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+        font-weight: 800;
+        line-height: 1.05;
+        color: var(--cream);
+        margin-bottom: 0.5rem;
+      }
+      .sec-h2 em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold-light);
+      }
+      .card-reveal {
+        transform: translateY(24px);
+        opacity: 0;
+        transition:
+          transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.7s ease;
+      }
+      .card-reveal.vis {
+        transform: none;
+        opacity: 1;
+      }
+
+      /* ── ABOUT ─── */
+      #about {
+        background: var(--dark);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 2.5rem;
+      }
+      .about-imgs-stack {
+        position: relative;
+        height: 460px;
+      }
+      .about-img-main {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 75%;
+        height: 85%;
+        object-fit: cover;
+        border-radius: 1.2rem;
+        filter: brightness(0.85) saturate(1.15);
+      }
+      .about-img-sec {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 55%;
+        height: 55%;
+        object-fit: cover;
+        border-radius: 1rem;
+        filter: brightness(0.9) saturate(1.2);
+        border: 4px solid var(--dark);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      }
+      .about-badge {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background: linear-gradient(135deg, var(--gold), var(--terra));
+        color: #fff;
+        border-radius: 0.8rem;
+        padding: 0.8rem 1rem;
+        font-size: 0.7rem;
+        font-weight: 800;
+        line-height: 1.4;
+        box-shadow: 0 4px 16px rgba(212, 136, 42, 0.35);
+      }
+      .about-badge strong {
+        display: block;
+        font-size: 1.4rem;
+      }
+      .about-text p {
+        color: rgba(250, 243, 224, 0.6);
+        font-size: 0.92rem;
+        line-height: 1.85;
+        font-weight: 300;
+        margin-bottom: 1.2rem;
+      }
+      .about-text p strong {
+        color: var(--cream);
+        font-weight: 700;
+      }
+      .about-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1.2rem 0;
+      }
+      .about-tag {
+        background: rgba(212, 136, 42, 0.12);
+        border: 1px solid rgba(212, 136, 42, 0.25);
+        border-radius: 9999px;
+        padding: 0.3rem 0.85rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        font-weight: 700;
+      }
+
+      /* ── TOURS ─── */
+      #tours {
+        background: var(--dark2);
+      }
+      .tours-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+        margin-top: 2.5rem;
+      }
+      .tour-card {
+        background: var(--card);
+        border: 1px solid rgba(212, 136, 42, 0.1);
+        border-radius: 1.2rem;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition:
+          border-color 0.3s,
+          transform 0.3s;
+      }
+      .tour-card:hover {
+        border-color: rgba(212, 136, 42, 0.35);
+        transform: translateY(-5px);
+      }
+      .tour-card.featured {
+        border-color: rgba(212, 136, 42, 0.4);
+        background: rgba(30, 77, 43, 0.15);
+      }
+      .tour-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        filter: brightness(0.82) saturate(1.2);
+        transition: filter 0.4s;
+      }
+      .tour-card:hover .tour-img {
+        filter: brightness(0.95) saturate(1.35);
+      }
+      .tour-body {
+        padding: 1.4rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .tour-badge {
+        display: inline-block;
+        font-size: 0.58rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.65rem;
+        border-radius: 20px;
+        margin-bottom: 0.7rem;
+        font-weight: 700;
+      }
+      .tour-badge.pop {
+        background: rgba(212, 136, 42, 0.15);
+        color: var(--gold-light);
+        border: 1px solid rgba(212, 136, 42, 0.3);
+      }
+      .tour-badge.adv {
+        background: rgba(30, 77, 43, 0.4);
+        color: #7ee89a;
+        border: 1px solid rgba(126, 232, 154, 0.2);
+      }
+      .tour-badge.bch {
+        background: rgba(20, 80, 160, 0.3);
+        color: #7ab8e8;
+        border: 1px solid rgba(122, 184, 232, 0.2);
+      }
+      .tour-badge.eco {
+        background: rgba(80, 150, 80, 0.25);
+        color: #a0e8a0;
+        border: 1px solid rgba(160, 232, 160, 0.2);
+      }
+      .tour-name {
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--cream);
+        margin-bottom: 0.4rem;
+      }
+      .tour-desc {
+        font-size: 0.78rem;
+        color: rgba(250, 243, 224, 0.48);
+        line-height: 1.65;
+        flex: 1;
+        font-weight: 300;
+        margin-bottom: 0.9rem;
+      }
+      .tour-meta {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.9rem;
+        padding-bottom: 0.9rem;
+        border-bottom: 1px solid rgba(212, 136, 42, 0.1);
+      }
+      .tour-meta span {
+        font-size: 0.65rem;
+        color: rgba(250, 243, 224, 0.42);
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+      .tour-price-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-bottom: 0.9rem;
+      }
+      .tour-from {
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(250, 243, 224, 0.35);
+        font-weight: 300;
+      }
+      .tour-price {
+        font-size: 1.6rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+      }
+      .tour-per {
+        font-size: 0.62rem;
+        color: rgba(250, 243, 224, 0.32);
+      }
+      .tour-btn {
+        display: block;
+        text-align: center;
+        padding: 0.65rem;
+        border-radius: 9999px;
+        font-size: 0.72rem;
         letter-spacing: 0.1em;
         text-transform: uppercase;
         font-weight: 800;
+        text-decoration: none;
+        font-family: "Almarai", sans-serif;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+      }
+      .tour-btn:hover {
+        opacity: 0.85;
+        transform: translateY(-1px);
+      }
+      .tour-btn.grad {
+        background: linear-gradient(135deg, var(--gold), var(--terra));
+        color: #fff;
+        box-shadow: 0 3px 12px rgba(212, 136, 42, 0.3);
+      }
+      .tour-btn.out {
+        border: 1px solid rgba(212, 136, 42, 0.3);
+        color: var(--gold-light);
       }
 
-      /* ── TABLET 768px ─────────────────────── */
+      /* ── WHY US ─── */
+      #why {
+        background: var(--dark);
+      }
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+        margin-top: 2.5rem;
+      }
+      .why-card {
+        background: var(--card2);
+        border: 1px solid rgba(212, 136, 42, 0.1);
+        border-radius: 1.2rem;
+        padding: 1.6rem 1.4rem;
+        transition:
+          border-color 0.3s,
+          transform 0.3s;
+      }
+      .why-card:hover {
+        border-color: rgba(212, 136, 42, 0.35);
+        transform: translateY(-4px);
+      }
+      .why-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: linear-gradient(
+          135deg,
+          rgba(212, 136, 42, 0.18),
+          rgba(196, 83, 42, 0.1)
+        );
+        border: 1px solid rgba(212, 136, 42, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+      .why-title {
+        font-size: 0.98rem;
+        font-weight: 800;
+        color: var(--cream);
+        margin-bottom: 0.45rem;
+      }
+      .why-desc {
+        font-size: 0.78rem;
+        color: rgba(250, 243, 224, 0.48);
+        line-height: 1.7;
+        font-weight: 300;
+      }
+
+      /* ── TRUST ─── */
+      #trust {
+        background: var(--card);
+        padding: 4rem 1rem;
+      }
+      .trust-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .trust-badges {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .trust-badge {
+        background: var(--dark);
+        border: 1px solid rgba(212, 136, 42, 0.18);
+        border-radius: 1rem;
+        padding: 1.2rem 1.6rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        min-width: 140px;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .trust-badge:hover {
+        border-color: rgba(212, 136, 42, 0.4);
+        transform: translateY(-3px);
+      }
+      .trust-badge-icon {
+        font-size: 1.6rem;
+      }
+      .trust-badge-name {
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: var(--cream);
+        text-align: center;
+        letter-spacing: 0.04em;
+      }
+      .trust-badge-sub {
+        font-size: 0.6rem;
+        color: rgba(250, 243, 224, 0.38);
+        font-weight: 300;
+      }
+      .trust-reviews {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .review-pill {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: var(--dark);
+        border: 1px solid rgba(212, 136, 42, 0.15);
+        border-radius: 9999px;
+        padding: 0.5rem 1.1rem;
+      }
+      .review-stars {
+        color: var(--gold-light);
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+      }
+      .review-text {
+        font-size: 0.7rem;
+        color: rgba(250, 243, 224, 0.55);
+        font-weight: 300;
+      }
+      .review-text strong {
+        color: var(--cream);
+        font-weight: 800;
+      }
+
+      /* ── GALLERY ─── */
+      #gallery {
+        background: var(--dark2);
+        padding: 4.5rem 0;
+        overflow: hidden;
+      }
+      .gallery-head {
+        padding: 0 1rem 2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+      .gallery-track {
+        display: flex;
+        gap: 0.65rem;
+        animation: gSlide 36s linear infinite;
+        width: max-content;
+      }
+      .gallery-track:hover {
+        animation-play-state: paused;
+      }
+      .gphoto {
+        width: 240px;
+        height: 175px;
+        object-fit: cover;
+        border-radius: 0.9rem;
+        filter: brightness(0.78) saturate(1.15);
+        flex-shrink: 0;
+        transition:
+          filter 0.3s,
+          transform 0.3s;
+      }
+      .gphoto:hover {
+        filter: brightness(1) saturate(1.3);
+        transform: scale(1.04);
+      }
+
+      /* ── TESTIMONIALS ─── */
+      #testimonials {
+        background: var(--dark);
+      }
+      .testi-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+        margin-top: 2.5rem;
+      }
+      .testi-card {
+        background: var(--card);
+        border: 1px solid rgba(212, 136, 42, 0.1);
+        border-radius: 1.2rem;
+        padding: 1.8rem 1.4rem;
+        transition: border-color 0.2s;
+      }
+      .testi-card:hover {
+        border-color: rgba(212, 136, 42, 0.3);
+      }
+      .testi-stars {
+        font-size: 0.82rem;
+        letter-spacing: 0.06em;
+        margin-bottom: 0.8rem;
+        background: linear-gradient(90deg, var(--gold-light), var(--gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .testi-card blockquote {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-size: 1rem;
+        color: var(--cream);
+        line-height: 1.65;
+        margin-bottom: 1.2rem;
+        font-weight: 400;
+      }
+      .testi-author {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+      }
+      .testi-av {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          rgba(212, 136, 42, 0.3),
+          rgba(196, 83, 42, 0.2)
+        );
+        border: 1px solid rgba(212, 136, 42, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.65rem;
+        color: var(--gold-light);
+        font-weight: 800;
+        flex-shrink: 0;
+      }
+      .testi-name {
+        font-size: 0.78rem;
+        color: var(--cream);
+        font-weight: 800;
+      }
+      .testi-loc {
+        font-size: 0.66rem;
+        color: rgba(250, 243, 224, 0.38);
+        font-weight: 300;
+      }
+      .testi-source {
+        font-size: 0.6rem;
+        color: rgba(250, 243, 224, 0.3);
+        margin-top: 0.15rem;
+      }
+
+      /* ── CONTACT ─── */
+      #contact {
+        background: var(--card);
+        padding: 5.5rem 1rem;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+      .contact-left p {
+        color: rgba(250, 243, 224, 0.5);
+        font-size: 0.9rem;
+        line-height: 1.85;
+        margin: 0.8rem 0 1.8rem;
+        font-weight: 300;
+      }
+      .contact-items {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        margin-bottom: 1.8rem;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+      .contact-ico {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: linear-gradient(
+          135deg,
+          rgba(212, 136, 42, 0.15),
+          rgba(196, 83, 42, 0.08)
+        );
+        border: 1px solid rgba(212, 136, 42, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+      }
+      .contact-item strong {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--cream);
+        font-weight: 800;
+        margin-bottom: 0.1rem;
+      }
+      .contact-item p {
+        font-size: 0.75rem;
+        color: rgba(250, 243, 224, 0.45);
+        margin: 0;
+        font-weight: 300;
+      }
+      .contact-ctas {
+        display: flex;
+        gap: 0.7rem;
+        flex-wrap: wrap;
+      }
+      .cta-wa-big {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--wa);
+        color: #fff;
+        padding: 0.75rem 1.4rem;
+        border-radius: 9999px;
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-decoration: none;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        box-shadow: 0 3px 14px rgba(37, 211, 102, 0.35);
+      }
+      .cta-wa-big:hover {
+        opacity: 0.88;
+        transform: translateY(-1px);
+      }
+      .cta-wa-big svg {
+        width: 16px;
+        height: 16px;
+        fill: #fff;
+      }
+      .cta-email-big {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: transparent;
+        color: var(--gold-light);
+        padding: 0.75rem 1.4rem;
+        border-radius: 9999px;
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-decoration: none;
+        border: 1px solid rgba(212, 136, 42, 0.3);
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .cta-email-big:hover {
+        border-color: var(--gold-light);
+        transform: translateY(-1px);
+      }
+      .map-wrap {
+        border-radius: 1rem;
+        overflow: hidden;
+        margin-top: 1.5rem;
+        height: 180px;
+        border: 1px solid rgba(212, 136, 42, 0.15);
+      }
+      .map-placeholder {
+        width: 100%;
+        height: 100%;
+        background: var(--dark2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        color: rgba(250, 243, 224, 0.3);
+        font-size: 0.78rem;
+        cursor: pointer;
+        transition: background 0.2s;
+        text-decoration: none;
+      }
+      .map-placeholder:hover {
+        background: rgba(212, 136, 42, 0.07);
+      }
+      .map-placeholder svg {
+        width: 28px;
+        height: 28px;
+        stroke: var(--gold);
+        stroke-width: 1.5;
+        fill: none;
+      }
+      .form-box {
+        background: var(--dark);
+        border: 1px solid rgba(212, 136, 42, 0.12);
+        border-radius: 1.5rem;
+        padding: 2rem;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem;
+        margin-bottom: 0.7rem;
+      }
+      .form-grp {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        margin-bottom: 0.7rem;
+      }
+      .form-grp label {
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(250, 243, 224, 0.38);
+        font-weight: 700;
+      }
+      .form-grp input,
+      .form-grp select,
+      .form-grp textarea {
+        background: rgba(250, 243, 224, 0.04);
+        border: 1px solid rgba(212, 136, 42, 0.14);
+        border-radius: 0.6rem;
+        padding: 0.7rem 0.85rem;
+        color: var(--cream);
+        font-family: "Almarai", sans-serif;
+        font-size: 0.83rem;
+        outline: none;
+        width: 100%;
+        transition:
+          border-color 0.25s,
+          background 0.25s;
+      }
+      .form-grp input:focus,
+      .form-grp select:focus,
+      .form-grp textarea:focus {
+        border-color: rgba(212, 136, 42, 0.45);
+        background: rgba(212, 136, 42, 0.05);
+      }
+      .form-grp select option {
+        background: var(--card);
+        color: var(--cream);
+      }
+      .form-grp textarea {
+        resize: vertical;
+        min-height: 85px;
+        line-height: 1.6;
+      }
+      .form-submit {
+        width: 100%;
+        padding: 0.95rem;
+        background: linear-gradient(135deg, var(--gold), var(--terra));
+        color: #fff;
+        border: none;
+        border-radius: 9999px;
+        font-family: "Almarai", sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 800;
+        cursor: pointer;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        margin-top: 0.4rem;
+        box-shadow: 0 3px 14px rgba(212, 136, 42, 0.3);
+      }
+      .form-submit:hover {
+        opacity: 0.87;
+        transform: translateY(-1px);
+      }
+      .form-note {
+        font-size: 0.65rem;
+        color: rgba(250, 243, 224, 0.28);
+        text-align: center;
+        margin-top: 0.75rem;
+      }
+
+      /* ── CTA STRIP ─── */
+      .cta-strip {
+        background: linear-gradient(135deg, var(--forest) 0%, var(--dark) 70%);
+        padding: 5rem 1rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-strip::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 50% 0%,
+          rgba(212, 136, 42, 0.12),
+          transparent 65%
+        );
+      }
+      .cta-strip h2 {
+        font-size: clamp(1.9rem, 4vw, 3.2rem);
+        font-weight: 800;
+        color: var(--cream);
+        margin-bottom: 0.6rem;
+        position: relative;
+      }
+      .cta-strip h2 em {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--gold-light);
+      }
+      .cta-strip p {
+        color: rgba(250, 243, 224, 0.5);
+        font-size: 0.92rem;
+        max-width: 500px;
+        margin: 0 auto 2rem;
+        line-height: 1.75;
+        font-weight: 300;
+        position: relative;
+      }
+      .cta-btns {
+        display: flex;
+        gap: 0.8rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+      }
+
+      /* ── FOOTER ─── */
+      footer {
+        background: var(--card);
+        padding: 4rem 1rem 2rem;
+      }
+      .footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .footer-top {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+      .foot-brand-logo {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(250, 243, 224, 0.95);
+        border-radius: 9999px;
+        padding: 4px 14px 4px 4px;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(212, 136, 42, 0.2);
+      }
+      .foot-brand-logo img {
+        height: 46px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      }
+      .foot-brand p {
+        font-size: 0.77rem;
+        color: rgba(250, 243, 224, 0.36);
+        line-height: 1.75;
+        max-width: 230px;
+        font-weight: 300;
+        margin-bottom: 1.1rem;
+      }
+      .foot-socials {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .fsoc {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid rgba(212, 136, 42, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.62rem;
+        color: rgba(250, 243, 224, 0.42);
+        text-decoration: none;
+        font-weight: 800;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .fsoc:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+      .foot-col h5 {
+        font-size: 0.62rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        margin-bottom: 1rem;
+        font-weight: 800;
+      }
+      .foot-col ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .foot-col ul a {
+        text-decoration: none;
+        font-size: 0.76rem;
+        color: rgba(250, 243, 224, 0.36);
+        transition: color 0.2s;
+        font-weight: 300;
+      }
+      .foot-col ul a:hover {
+        color: var(--cream);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(212, 136, 42, 0.1);
+        padding-top: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .footer-bottom p {
+        font-size: 0.64rem;
+        color: rgba(250, 243, 224, 0.26);
+        font-weight: 300;
+      }
+      .foot-legal {
+        display: flex;
+        gap: 1.2rem;
+      }
+      .foot-legal a {
+        font-size: 0.64rem;
+        color: rgba(250, 243, 224, 0.26);
+        text-decoration: none;
+        font-weight: 300;
+        transition: color 0.2s;
+      }
+      .foot-legal a:hover {
+        color: rgba(250, 243, 224, 0.6);
+      }
+
+      /* ── KEYFRAMES ─── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes sPulse {
+        0% {
+          transform: scaleY(0);
+          transform-origin: top;
+        }
+        50% {
+          transform: scaleY(1);
+          transform-origin: top;
+        }
+        51% {
+          transform: scaleY(1);
+          transform-origin: bottom;
+        }
+        100% {
+          transform: scaleY(0);
+          transform-origin: bottom;
+        }
+      }
+      @keyframes gSlide {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ════════════════ RESPONSIVE ════════════════ */
       @media (max-width: 1024px) {
-        /* destinations */
-        .dest-grid {
+        .tours-grid {
           grid-template-columns: 1fr 1fr;
         }
-        .dest-card-wide {
-          grid-column: span 2;
-        }
-        /* experiences */
-        .exp-grid {
+        .why-grid {
           grid-template-columns: 1fr 1fr;
         }
-        /* packages */
-        .pkg-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-        .pkg-grid .pkg-card:last-child {
-          grid-column: span 2;
-        }
-        /* testimonials */
         .testi-grid {
           grid-template-columns: 1fr 1fr;
         }
         .testi-grid .testi-card:last-child {
           grid-column: span 2;
         }
-        /* footer */
         .footer-top {
           grid-template-columns: 1fr 1fr;
           gap: 2rem;
         }
-        .footer-brand {
+        .foot-brand {
           grid-column: span 2;
         }
-        /* booking */
-        .booking-wrap {
-          gap: 3rem;
+        .contact-grid {
+          gap: 2.5rem;
+        }
+        .about-grid {
+          gap: 2.5rem;
         }
       }
-
-      /* ── MOBILE 640px ─────────────────────── */
+      @media (max-width: 768px) {
+        .tours-grid {
+          grid-template-columns: 1fr;
+        }
+        .why-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-imgs-stack {
+          height: 280px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-bottom {
+          grid-template-columns: 1fr;
+          gap: 0.8rem;
+        }
+        .hero-h1 {
+          font-size: clamp(1.8rem, 6vw, 3rem);
+        }
+        .hero-right {
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+        }
+      }
       @media (max-width: 640px) {
-        /* NAV */
-        #main-nav ul,
-        .nav-book {
+        #nav ul,
+        .nav-book,
+        .nav-wa {
           display: none;
         }
         .hamburger {
           display: flex;
         }
-        #main-nav {
-          padding: 0.75rem 1.2rem;
+        #nav {
+          padding: 0.7rem 1.2rem;
         }
-        #main-nav.scrolled {
+        #nav.scrolled {
           padding: 0.6rem 1.2rem;
         }
         .nav-logo img {
-          height: 32px;
+          height: 30px;
         }
-
-        /* HERO */
         #hero {
           padding: 0.5rem;
           height: 100svh;
@@ -1575,61 +1691,57 @@
         .hero-inner {
           border-radius: 1rem;
         }
-        .hero-pill-nav {
+        .hero-pill {
           display: none;
         }
-        .hero-logo {
-          top: 0.9rem;
-          left: 0.9rem;
+        .hero-logo-wrap {
+          top: 0.85rem;
+          left: 0.85rem;
         }
-        .hero-logo img {
-          height: 48px;
+        .hero-logo-wrap img {
+          height: 50px;
         }
         .hero-bottom {
+          padding: 0 1rem 1.4rem;
           grid-template-columns: 1fr;
-          padding: 0 1.1rem 1.4rem;
           gap: 0.8rem;
         }
-        .hero-title {
-          font-size: clamp(3.2rem, 18vw, 5rem);
-          line-height: 0.88;
-          letter-spacing: -0.04em;
+        .hero-h1 {
+          font-size: clamp(1.6rem, 7.5vw, 2.6rem);
+          line-height: 1.1;
+        }
+        .hero-sub-text {
+          font-size: 0.8rem;
         }
         .hero-right {
-          gap: 0.8rem;
+          gap: 0.7rem;
         }
-        .hero-badge {
-          font-size: 0.6rem;
-          padding: 0.25rem 0.65rem;
+        .hero-btns {
+          gap: 0.5rem;
         }
-        .hero-desc {
-          font-size: 0.82rem;
-          line-height: 1.5;
+        .btn-primary,
+        .btn-wa {
+          font-size: 0.75rem;
+          padding: 0.6rem 0.6rem 0.6rem 1rem;
         }
-        .hero-cta {
-          font-size: 0.78rem;
-          padding: 0.5rem 0.5rem 0.5rem 1rem;
-        }
-        .hero-cta-circle {
-          width: 30px;
-          height: 30px;
+        .btn-primary-circle {
+          width: 28px;
+          height: 28px;
         }
         .scroll-hint {
           display: none;
         }
-
-        /* STATS */
         .stats-bar {
           flex-wrap: wrap;
         }
         .stat-item {
           flex: 1 1 50%;
           border-right: none;
-          border-bottom: 1px solid rgba(212, 136, 42, 0.1);
-          padding: 1.3rem 0.5rem;
+          border-bottom: 1px solid rgba(212, 136, 42, 0.08);
+          padding: 1.2rem 0.5rem;
         }
         .stat-item:nth-child(odd) {
-          border-right: 1px solid rgba(212, 136, 42, 0.1);
+          border-right: 1px solid rgba(212, 136, 42, 0.08);
         }
         .stat-item:nth-child(3),
         .stat-item:nth-child(4) {
@@ -1638,109 +1750,37 @@
         .stat-num {
           font-size: 1.7rem;
         }
-
-        /* SECTIONS */
-        #about,
-        #destinations,
-        #experiences,
-        #packages,
-        #gallery,
-        #testimonials,
-        #booking {
+        section {
           padding: 3.5rem 0.85rem;
         }
-        .section-heading {
-          font-size: 1.7rem;
+        .sec-h2 {
+          font-size: 1.6rem;
         }
-
-        /* ABOUT */
-        .about-inner {
-          padding: 2.2rem 1.2rem;
-        }
-        .about-imgs {
-          height: 150px;
-        }
-        .about-heading {
-          font-size: 1.5rem;
-        }
-
-        /* DESTINATIONS */
-        .dest-grid {
-          grid-template-columns: 1fr;
-          gap: 0.6rem;
-        }
-        .dest-card-wide {
-          grid-column: span 1;
-        }
-        .dest-card-wide .dest-img-wrap,
-        .dest-card:not(.dest-card-wide) .dest-img-wrap {
+        .about-imgs-stack {
           height: 220px;
         }
-
-        /* EXPERIENCES */
-        .exp-grid {
+        .about-img-main {
+          width: 80%;
+          height: 80%;
+        }
+        .about-img-sec {
+          width: 52%;
+          height: 52%;
+        }
+        .why-grid {
           grid-template-columns: 1fr;
         }
-
-        /* PACKAGES */
-        .pkg-grid {
-          grid-template-columns: 1fr;
-        }
-        .pkg-grid .pkg-card:last-child {
-          grid-column: span 1;
-        }
-        .pkg-header {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        /* GALLERY */
-        .gallery-photo {
-          width: 200px;
-          height: 145px;
-        }
-        .gallery-header {
-          padding: 0 0.85rem 1.5rem;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.4rem;
-        }
-
-        /* TESTIMONIALS */
         .testi-grid {
           grid-template-columns: 1fr;
         }
         .testi-grid .testi-card:last-child {
           grid-column: span 1;
         }
-
-        /* CTA STRIP */
-        .cta-strip {
-          padding: 3.5rem 1.2rem;
-        }
-        .cta-strip h2 {
-          font-size: 1.7rem;
-        }
-        .cta-btns {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        /* BOOKING */
-        .booking-wrap {
-          grid-template-columns: 1fr;
-          gap: 2.5rem;
-        }
-        .form-row {
-          grid-template-columns: 1fr;
-        }
-
-        /* FOOTER */
         .footer-top {
           grid-template-columns: 1fr;
-          gap: 2rem;
+          gap: 1.8rem;
         }
-        .footer-brand {
+        .foot-brand {
           grid-column: span 1;
         }
         .footer-bottom {
@@ -1751,18 +1791,48 @@
         footer {
           padding: 3rem 0.85rem 2rem;
         }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .contact-ctas {
+          flex-direction: column;
+        }
+        .trust-badges {
+          gap: 0.7rem;
+        }
+        .trust-badge {
+          min-width: 110px;
+          padding: 1rem;
+        }
+        #trust {
+          padding: 3rem 0.85rem;
+        }
+        .cta-btns {
+          flex-direction: column;
+          align-items: center;
+        }
+        .cta-strip {
+          padding: 3.5rem 1rem;
+        }
+        .cta-strip h2 {
+          font-size: 1.7rem;
+        }
+        #gallery {
+          padding: 3.5rem 0;
+        }
+        .gallery-head {
+          padding: 0 0.85rem 1.5rem;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.3rem;
+        }
       }
-
-      /* ── SMALL MOBILE 380px ────────────────── */
       @media (max-width: 380px) {
-        .hero-title {
-          font-size: clamp(2.8rem, 19vw, 4rem);
+        .hero-h1 {
+          font-size: 1.5rem;
         }
-        .about-inner {
-          padding: 1.8rem 1rem;
-        }
-        .about-imgs {
-          height: 120px;
+        .why-grid {
+          grid-template-columns: 1fr;
         }
         .form-box {
           padding: 1.4rem;
@@ -1771,86 +1841,172 @@
     </style>
   </head>
   <body>
+    <!-- WHATSAPP FLOAT -->
+    <a
+      href="https://wa.me/255754000000"
+      target="_blank"
+      class="wa-float"
+      aria-label="WhatsApp"
+    >
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        />
+      </svg>
+    </a>
+
     <!-- FIXED NAV -->
-    <nav id="main-nav">
-      <a href="#" class="nav-logo">
-        <img src="molanalogo.png" alt="Molana Adventures" />
-      </a>
+    <nav id="nav">
+      <a href="#" class="nav-logo"
+        ><img src="molanalogo.jpg" alt="Molana Adventures"
+      /></a>
       <ul>
-        <li><a href="#destinations">Destinations</a></li>
-        <li><a href="#experiences">Experiences</a></li>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#booking">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#tours">Tours</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-      <a href="#booking" class="nav-book">Book Safari</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-actions">
+        <a href="https://wa.me/255754000000" class="nav-wa" target="_blank">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            />
+          </svg>
+          WhatsApp
+        </a>
+        <a href="#contact" class="nav-book">Book Now</a>
+        <button class="hamburger" id="hbtn">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
 
     <!-- MOBILE DRAWER -->
-    <div class="mobile-drawer" id="mobileDrawer">
-      <a href="#destinations" class="mob-link">Destinations</a>
-      <a href="#experiences" class="mob-link">Experiences</a>
-      <a href="#packages" class="mob-link">Packages</a>
-      <a href="#booking" class="mob-link">Contact</a>
-      <a href="#booking" class="mob-cta mob-link">Book Safari</a>
+    <div class="mob-drawer" id="mobDrawer">
+      <a href="#about" class="mdl">About Us</a>
+      <a href="#tours" class="mdl">Tours & Prices</a>
+      <a href="#why" class="mdl">Why Choose Us</a>
+      <a href="#testimonials" class="mdl">Reviews</a>
+      <a href="#contact" class="mdl">Contact</a>
+      <a href="https://wa.me/255754000000" class="mob-wa mdl" target="_blank">
+        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: #fff">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+          />
+        </svg>
+        WhatsApp Us
+      </a>
+      <a href="#contact" class="mob-book mdl">Book Now</a>
     </div>
 
-    <!-- ══ HERO ══════════════════════════════════ -->
+    <!-- ═══ HERO ══════════════════════════════════ -->
     <section id="hero">
       <div class="hero-inner">
         <img
           class="hero-img"
-          src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=90"
-          alt="Serengeti"
+          src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=85"
+          alt="Tanzania Serengeti sunset safari"
         />
-        <div class="noise-overlay"></div>
-        <div class="hero-grad"></div>
-        <div class="hero-grad2"></div>
+        <div class="noise"></div>
+        <div class="hero-g1"></div>
+        <div class="hero-g2"></div>
 
-        <!-- LOGO — top left -->
-        <div class="hero-logo">
-          <img src="molanalogo.png" alt="Molana Adventures" />
+        <div class="hero-logo-wrap">
+          <img src="molanalogo.jpg" alt="Molana Adventures" />
         </div>
 
-        <!-- Nav pill — top center -->
-        <nav class="hero-pill-nav">
-          <a href="#destinations">Destinations</a>
-          <a href="#experiences">Experiences</a>
-          <a href="#packages">Packages</a>
-          <a href="#booking">Inquiries</a>
+        <nav class="hero-pill">
+          <a href="#about">About</a>
+          <a href="#tours">Tours</a>
+          <a href="#why">Why Us</a>
+          <a href="#contact">Contact</a>
         </nav>
 
-        <!-- scroll cue -->
         <div class="scroll-hint">
           <div class="scroll-line"></div>
           <span>Scroll</span>
         </div>
 
-        <!-- Hero content bottom -->
         <div class="hero-bottom">
           <div>
-            <div class="hero-title">
-              <span class="word w1">Molana</span>
-              <br />
-              <span class="word w2"><em>Tours</em></span>
+            <div class="hero-eyebrow">
+              <div class="hero-eyebrow-line"></div>
+              <span>Est. 2012 · Dar es Salaam, Tanzania</span>
             </div>
+            <h1 class="hero-h1">
+              Discover Tanzania's <em>Wild Beauty</em><br />with Local Experts
+            </h1>
+            <p class="hero-sub-text">
+              From the endless Serengeti plains to the summit of Kilimanjaro and
+              the coral shores of Zanzibar — we craft journeys that stay with
+              you forever.
+            </p>
           </div>
           <div class="hero-right">
-            <div class="hero-badge">Est. 2012 · Dar es Salaam</div>
-            <p class="hero-desc">
-              Tanzania's finest safari company — crafting journeys through the
-              Serengeti, Kilimanjaro, and Zanzibar.
-            </p>
-            <a href="#packages" class="hero-cta">
-              Explore packages
-              <span class="hero-cta-circle">
+            <div class="hero-badge">🟢 Available for 2026 bookings</div>
+            <div class="hero-trust">
+              <div class="htrust-item">
                 <svg viewBox="0 0 24 24">
-                  <polyline points="9 18 15 12 9 6" />
+                  <polyline points="20 6 9 17 4 12" /></svg
+                >Licensed Tanzanian tour operator
+              </div>
+              <div class="htrust-item">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" /></svg
+                >Professional certified guides
+              </div>
+              <div class="htrust-item">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" /></svg
+                >24/7 guest support
+              </div>
+              <div class="htrust-item">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" /></svg
+                >500+ 5-star reviews
+              </div>
+            </div>
+            <div class="hero-btns">
+              <a href="#contact" class="btn-primary">
+                Book Now
+                <span class="btn-primary-circle"
+                  ><svg viewBox="0 0 24 24">
+                    <polyline points="9 18 15 12 9 6" /></svg
+                ></span>
+              </a>
+              <a
+                href="https://wa.me/255754000000"
+                class="btn-wa"
+                target="_blank"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                  />
                 </svg>
-              </span>
-            </a>
+                WhatsApp
+              </a>
+              <a
+                href="#contact"
+                class="btn-primary"
+                style="
+                  background: transparent;
+                  border: 1px solid rgba(250, 243, 224, 0.25);
+                  color: var(--cream);
+                  box-shadow: none;
+                "
+              >
+                Get a Quote
+                <span
+                  class="btn-primary-circle"
+                  style="background: rgba(250, 243, 224, 0.12)"
+                  ><svg viewBox="0 0 24 24">
+                    <polyline points="9 18 15 12 9 6" /></svg
+                ></span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -1872,363 +2028,439 @@
       </div>
       <div class="stat-item">
         <div class="stat-num">98%</div>
-        <div class="stat-lbl">Satisfaction</div>
+        <div class="stat-lbl">5-Star Reviews</div>
       </div>
     </div>
 
-    <!-- ══ ABOUT ══════════════════════════════════ -->
+    <!-- ═══ ABOUT ══════════════════════════════════ -->
     <section id="about">
-      <div class="about-inner">
-        <div class="about-label">Est. 2012 · Dar es Salaam, Tanzania</div>
-        <h2 class="about-heading" id="about-h"></h2>
-        <p class="about-body" id="about-body"></p>
-        <div class="about-imgs">
-          <img
-            class="about-img"
-            src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=600&q=80"
-            alt="Serengeti"
-          />
-          <img
-            class="about-img"
-            src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80"
-            alt="Ngorongoro"
-          />
-          <img
-            class="about-img"
-            src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=600&q=80"
-            alt="Zanzibar"
-          />
-          <img
-            class="about-img"
-            src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=600&q=80"
-            alt="Kilimanjaro"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- ══ DESTINATIONS ═══════════════════════════ -->
-    <section id="destinations">
-      <div style="max-width: 1100px; margin: 0 auto">
-        <div class="section-label">Our top picks</div>
-        <h2 class="section-heading">Iconic <em>Destinations</em></h2>
-      </div>
-      <div class="dest-grid">
-        <div class="dest-card dest-card-wide card-in">
-          <div class="dest-img-wrap">
+      <div class="inner">
+        <div class="sec-label">Our story</div>
+        <h2 class="sec-h2">
+          A Locally Owned <em>Tanzanian</em> Adventure Company
+        </h2>
+        <div class="about-grid">
+          <div class="about-imgs-stack card-reveal">
             <img
-              src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=900&q=80"
-              alt="Serengeti"
+              class="about-img-main"
+              src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=700&q=80"
+              alt="Serengeti safari"
             />
+            <img
+              class="about-img-sec"
+              src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=500&q=80"
+              alt="Ngorongoro crater"
+            />
+            <div class="about-badge">
+              <strong>2012</strong>Founded in<br />Dar es Salaam
+            </div>
           </div>
-          <div class="dest-body">
-            <span class="dest-tag">Wildlife Safari</span>
-            <div class="dest-name">Serengeti National Park</div>
-            <div class="dest-sub">
-              Home of the Great Migration — 1.5M wildebeest
+          <div class="about-text card-reveal" style="transition-delay: 0.15s">
+            <p>
+              Molana Adventures is a
+              <strong>100% locally owned Tanzanian tour operator</strong>,
+              founded in Dar es Salaam in 2012 by passionate guides who grew up
+              exploring Tanzania's extraordinary wilderness.
+            </p>
+            <p>
+              We are built on a simple belief: the best safaris are led by
+              people who know the land, love the animals, and care deeply about
+              the communities that share this wilderness.
+            </p>
+            <p>
+              Our team of
+              <strong>professionally certified guides</strong> brings decades of
+              experience across the Serengeti, Kilimanjaro, Zanzibar, and
+              beyond. Every itinerary is tailor-made — we don't do
+              one-size-fits-all.
+            </p>
+            <p>
+              We are committed to <strong>responsible tourism</strong>,
+              supporting local communities, conservation efforts, and ensuring
+              every traveler leaves Tanzania with memories — and a lasting
+              respect for its wild beauty.
+            </p>
+            <div class="about-tags">
+              <span class="about-tag">🇹🇿 Locally owned</span>
+              <span class="about-tag">✅ Licensed operator</span>
+              <span class="about-tag">🦺 Safety first</span>
+              <span class="about-tag">🌿 Eco-conscious</span>
+              <span class="about-tag">🗺 Tailor-made tours</span>
+            </div>
+            <div class="hero-btns" style="margin-top: 1rem">
+              <a
+                href="#contact"
+                class="btn-primary"
+                style="opacity: 1; animation: none; transform: none"
+              >
+                Plan My Trip
+                <span class="btn-primary-circle"
+                  ><svg viewBox="0 0 24 24">
+                    <polyline points="9 18 15 12 9 6" /></svg
+                ></span>
+              </a>
             </div>
           </div>
         </div>
-        <div class="dest-card card-in" style="transition-delay: 0.08s">
-          <div class="dest-img-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=600&q=80"
-              alt="Kilimanjaro"
-            />
-          </div>
-          <div class="dest-body">
-            <span class="dest-tag">Trekking</span>
-            <div class="dest-name">Mt. Kilimanjaro</div>
-            <div class="dest-sub">Roof of Africa · 5,895m</div>
-          </div>
-        </div>
-        <div class="dest-card card-in" style="transition-delay: 0.08s">
-          <div class="dest-img-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=600&q=80"
-              alt="Zanzibar"
-            />
-          </div>
-          <div class="dest-body">
-            <span class="dest-tag">Beach & Culture</span>
-            <div class="dest-name">Zanzibar Island</div>
-            <div class="dest-sub">Coral reefs & Stone Town</div>
-          </div>
-        </div>
-        <div class="dest-card card-in" style="transition-delay: 0.16s">
-          <div class="dest-img-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80"
-              alt="Ngorongoro"
-            />
-          </div>
-          <div class="dest-body">
-            <span class="dest-tag">Conservation</span>
-            <div class="dest-name">Ngorongoro Crater</div>
-            <div class="dest-sub">World's largest intact caldera</div>
-          </div>
-        </div>
-        <div class="dest-card card-in" style="transition-delay: 0.24s">
-          <div class="dest-img-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1580501170888-80668882d0cb?w=600&q=80"
-              alt="Selous"
-            />
-          </div>
-          <div class="dest-body">
-            <span class="dest-tag">Wild Frontier</span>
-            <div class="dest-name">Selous Reserve</div>
-            <div class="dest-sub">Africa's largest game reserve</div>
-          </div>
-        </div>
-        <div class="dest-card card-in" style="transition-delay: 0.32s">
-          <div class="dest-img-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1474755032398-4b0ed3b2ae5c?w=600&q=80"
-              alt="Tarangire"
-            />
-          </div>
-          <div class="dest-body">
-            <span class="dest-tag">Elephant Country</span>
-            <div class="dest-name">Tarangire</div>
-            <div class="dest-sub">Ancient baobabs & vast herds</div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- ══ EXPERIENCES ════════════════════════════ -->
-    <section id="experiences">
-      <div style="max-width: 1100px; margin: 0 auto">
-        <div class="section-label">What we offer</div>
-        <h2 class="section-heading">Curated <em>Experiences</em></h2>
+    <!-- ═══ TOURS ══════════════════════════════════ -->
+    <section id="tours">
+      <div class="inner">
+        <div class="sec-label">Safari packages</div>
+        <h2 class="sec-h2">Tours & <em>Prices</em></h2>
         <p
           style="
-            color: rgba(250, 243, 224, 0.42);
+            color: var(--muted);
             font-size: 0.88rem;
-            margin-top: 0.6rem;
-            max-width: 420px;
+            margin-top: 0.4rem;
+            max-width: 500px;
             line-height: 1.7;
             font-weight: 300;
           "
         >
-          Every journey crafted around you — your pace, your passions, your
-          once-in-a-lifetime moments.
+          All packages include transport, accommodation, guide, park fees, and
+          full-board meals. Prices are per person based on double occupancy.
         </p>
       </div>
-      <div class="exp-grid">
-        <div class="exp-card card-in">
-          <div class="exp-num">01</div>
-          <div class="exp-icon">🦁</div>
-          <div class="exp-title">Game Drives</div>
-          <div class="exp-checks">
-            <div class="exp-check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
-              ><span>Dawn & dusk safaris</span>
-            </div>
-            <div class="exp-check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
-              ><span>Expert Swahili guides</span>
-            </div>
-            <div class="exp-check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
-              ><span>Private 4×4 vehicles</span>
-            </div>
-          </div>
-          <a href="#booking" class="exp-learn"
-            >Learn more
-            <svg viewBox="0 0 24 24">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" /></svg
-          ></a>
-        </div>
-        <div class="exp-card card-in" style="transition-delay: 0.1s">
-          <div class="exp-num">02</div>
-          <div class="exp-icon">⛺</div>
-          <div class="exp-title">Luxury Tented Camps</div>
-          <div class="exp-checks">
-            <div class="exp-check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
-              ><span>Stars above, comfort inside</span>
-            </div>
-            <div class="exp-check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
-              ><span>Full-board dining</span>
-            </div>
-            <div class="exp-check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
-              ><span>Mobile & permanent camps</span>
+      <div class="inner" style="margin-top: 0">
+        <div class="tours-grid" style="margin-top: 2rem">
+          <div class="tour-card card-reveal">
+            <img
+              class="tour-img"
+              src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=700&q=80"
+              alt="Serengeti Safari"
+            />
+            <div class="tour-body">
+              <span class="tour-badge adv">Bestseller</span>
+              <div class="tour-name">Classic Serengeti Safari</div>
+              <div class="tour-desc">
+                Daily game drives across the Serengeti plains and Ngorongoro
+                Crater with expert guides. Witness the Great Migration in
+                season.
+              </div>
+              <div class="tour-meta">
+                <span>🗓 7 Days</span><span>👥 2–10 pax</span
+                ><span>🏕 Tented Camp</span><span>🚙 4×4 vehicle</span>
+              </div>
+              <div class="tour-price-row">
+                <div>
+                  <div class="tour-from">Starting from</div>
+                  <div class="tour-price">$2,400</div>
+                  <div class="tour-per">per person</div>
+                </div>
+              </div>
+              <a href="#contact" class="tour-btn out">Get a Quote</a>
             </div>
           </div>
-          <a href="#booking" class="exp-learn"
-            >Learn more
-            <svg viewBox="0 0 24 24">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" /></svg
-          ></a>
-        </div>
-        <div class="exp-card card-in" style="transition-delay: 0.2s">
-          <div class="exp-num">03</div>
-          <div class="exp-icon">🏔️</div>
-          <div class="exp-title">Kilimanjaro Treks</div>
-          <div class="exp-checks">
-            <div class="exp-check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
-              ><span>Lemosho, Machame, Rongai</span>
-            </div>
-            <div class="exp-check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
-              ><span>Full support & equipment</span>
-            </div>
-            <div class="exp-check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
-              ><span>Summit certificate</span>
-            </div>
-          </div>
-          <a href="#booking" class="exp-learn"
-            >Learn more
-            <svg viewBox="0 0 24 24">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" /></svg
-          ></a>
-        </div>
-        <div class="exp-card card-in" style="transition-delay: 0.3s">
-          <div class="exp-num">04</div>
-          <div class="exp-icon">🤿</div>
-          <div class="exp-title">Zanzibar Escapes</div>
-          <div class="exp-checks">
-            <div class="exp-check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
-              ><span>Dhow cruises & snorkeling</span>
-            </div>
-            <div class="exp-check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
-              ><span>Spice farm tours</span>
-            </div>
-            <div class="exp-check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg
-              ><span>Private beach retreats</span>
+          <div
+            class="tour-card featured card-reveal"
+            style="transition-delay: 0.1s"
+          >
+            <img
+              class="tour-img"
+              src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=80"
+              alt="Great Migration"
+            />
+            <div class="tour-body">
+              <span class="tour-badge pop">⭐ Most Popular</span>
+              <div class="tour-name">Great Migration & Zanzibar</div>
+              <div class="tour-desc">
+                Follow 1.5 million wildebeest across the Serengeti then unwind
+                on Zanzibar's white sand beaches. The ultimate Tanzania
+                experience.
+              </div>
+              <div class="tour-meta">
+                <span>🗓 12 Days</span><span>👥 2–8 pax</span
+                ><span>🏨 Luxury Lodge</span><span>✈ Flights incl.</span>
+              </div>
+              <div class="tour-price-row">
+                <div>
+                  <div class="tour-from">Starting from</div>
+                  <div class="tour-price">$4,900</div>
+                  <div class="tour-per">per person</div>
+                </div>
+              </div>
+              <a href="#contact" class="tour-btn grad">Book Now</a>
             </div>
           </div>
-          <a href="#booking" class="exp-learn"
-            >Learn more
-            <svg viewBox="0 0 24 24">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" /></svg
-          ></a>
+          <div class="tour-card card-reveal" style="transition-delay: 0.2s">
+            <img
+              class="tour-img"
+              src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=700&q=80"
+              alt="Kilimanjaro"
+            />
+            <div class="tour-body">
+              <span class="tour-badge bch">Adventure</span>
+              <div class="tour-name">Kilimanjaro Summit Trek</div>
+              <div class="tour-desc">
+                Ascend Africa's highest peak on the scenic Lemosho route. Expert
+                mountain guides, full equipment hire, and altitude support
+                included.
+              </div>
+              <div class="tour-meta">
+                <span>🗓 9 Days</span><span>👥 1–12 pax</span
+                ><span>⛺ Mountain Camps</span><span>🏔 5,895m</span>
+              </div>
+              <div class="tour-price-row">
+                <div>
+                  <div class="tour-from">Starting from</div>
+                  <div class="tour-price">$3,200</div>
+                  <div class="tour-per">per person</div>
+                </div>
+              </div>
+              <a href="#contact" class="tour-btn out">Get a Quote</a>
+            </div>
+          </div>
+          <div class="tour-card card-reveal" style="transition-delay: 0.3s">
+            <img
+              class="tour-img"
+              src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=700&q=80"
+              alt="Zanzibar"
+            />
+            <div class="tour-body">
+              <span class="tour-badge bch">Beach & Culture</span>
+              <div class="tour-name">Zanzibar Island Escape</div>
+              <div class="tour-desc">
+                Explore Stone Town's spice markets, snorkel over coral reefs,
+                and relax on pristine beaches. The perfect add-on or standalone
+                trip.
+              </div>
+              <div class="tour-meta">
+                <span>🗓 5 Days</span><span>👥 2–12 pax</span
+                ><span>🏖 Beach Resort</span><span>🤿 Snorkeling</span>
+              </div>
+              <div class="tour-price-row">
+                <div>
+                  <div class="tour-from">Starting from</div>
+                  <div class="tour-price">$1,200</div>
+                  <div class="tour-per">per person</div>
+                </div>
+              </div>
+              <a href="#contact" class="tour-btn out">Get a Quote</a>
+            </div>
+          </div>
+          <div class="tour-card card-reveal" style="transition-delay: 0.4s">
+            <img
+              class="tour-img"
+              src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=700&q=80"
+              alt="Ngorongoro"
+            />
+            <div class="tour-body">
+              <span class="tour-badge eco">Conservation</span>
+              <div class="tour-name">Ngorongoro & Lake Manyara</div>
+              <div class="tour-desc">
+                Descend into the world's largest intact volcanic caldera,
+                teeming with lions, rhinos, and flamingos on a shimmering soda
+                lake.
+              </div>
+              <div class="tour-meta">
+                <span>🗓 4 Days</span><span>👥 2–8 pax</span
+                ><span>🏕 Lodge</span><span>🦩 Flamingos</span>
+              </div>
+              <div class="tour-price-row">
+                <div>
+                  <div class="tour-from">Starting from</div>
+                  <div class="tour-price">$1,600</div>
+                  <div class="tour-per">per person</div>
+                </div>
+              </div>
+              <a href="#contact" class="tour-btn out">Get a Quote</a>
+            </div>
+          </div>
+          <div class="tour-card card-reveal" style="transition-delay: 0.5s">
+            <img
+              class="tour-img"
+              src="https://images.unsplash.com/photo-1474755032398-4b0ed3b2ae5c?w=700&q=80"
+              alt="Tarangire"
+            />
+            <div class="tour-body">
+              <span class="tour-badge eco">Custom</span>
+              <div class="tour-name">Build Your Own Safari</div>
+              <div class="tour-desc">
+                Tell us your dream — budget, destinations, travel style, group
+                size — and we'll design a completely tailor-made Tanzania
+                itinerary for you.
+              </div>
+              <div class="tour-meta">
+                <span>🗓 Your dates</span><span>👥 Any group</span
+                ><span>🗺 Any route</span><span>💬 Free consult</span>
+              </div>
+              <div class="tour-price-row">
+                <div>
+                  <div class="tour-from">Starting from</div>
+                  <div class="tour-price">Custom</div>
+                  <div class="tour-per">price on request</div>
+                </div>
+              </div>
+              <a
+                href="https://wa.me/255754000000"
+                class="tour-btn grad"
+                target="_blank"
+                >WhatsApp Us</a
+              >
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ PACKAGES ═══════════════════════════════ -->
-    <section id="packages">
-      <div class="pkg-header">
-        <div>
-          <div class="section-label">Safari packages</div>
-          <h2 class="section-heading">Choose Your <em>Adventure</em></h2>
-        </div>
-        <a
-          href="#booking"
-          class="hero-cta"
-          style="animation: none; opacity: 1; transform: none"
+    <!-- ═══ WHY US ══════════════════════════════════ -->
+    <section id="why">
+      <div class="inner">
+        <div class="sec-label">Why choose us</div>
+        <h2 class="sec-h2">Why Choose <em>Molana Adventures?</em></h2>
+        <p
+          style="
+            color: var(--muted);
+            font-size: 0.88rem;
+            margin-top: 0.4rem;
+            max-width: 500px;
+            line-height: 1.7;
+            font-weight: 300;
+          "
         >
-          Custom Package
-          <span class="hero-cta-circle"
-            ><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6" /></svg
-          ></span>
-        </a>
+          We're not a booking platform. We're your partner on the ground —
+          people who live here, know this land, and care about your experience.
+        </p>
+        <div class="why-grid">
+          <div class="why-card card-reveal">
+            <div class="why-icon">🇹🇿</div>
+            <div class="why-title">Local Tanzanian Experts</div>
+            <div class="why-desc">
+              Born and raised in Tanzania, our guides know every corner of the
+              wilderness — the best spots, the secret paths, the animal
+              behaviors no guidebook can teach.
+            </div>
+          </div>
+          <div class="why-card card-reveal" style="transition-delay: 0.1s">
+            <div class="why-icon">🪪</div>
+            <div class="why-title">Licensed & Certified</div>
+            <div class="why-desc">
+              Fully licensed by the Tanzania Tourism Board. All guides hold
+              professional certifications in wildlife guiding, first aid, and
+              mountain safety.
+            </div>
+          </div>
+          <div class="why-card card-reveal" style="transition-delay: 0.2s">
+            <div class="why-icon">🗺</div>
+            <div class="why-title">Tailor-Made Itineraries</div>
+            <div class="why-desc">
+              No cookie-cutter tours. Every itinerary is crafted around your
+              group size, budget, travel dates, interests, and comfort level.
+            </div>
+          </div>
+          <div class="why-card card-reveal" style="transition-delay: 0.3s">
+            <div class="why-icon">🛡</div>
+            <div class="why-title">Safety First, Always</div>
+            <div class="why-desc">
+              We carry first-aid kits, maintain fully serviced vehicles, and
+              have 24/7 emergency contacts throughout every safari and trek.
+            </div>
+          </div>
+          <div class="why-card card-reveal" style="transition-delay: 0.4s">
+            <div class="why-icon">📞</div>
+            <div class="why-title">24/7 Guest Support</div>
+            <div class="why-desc">
+              From first enquiry to your final day — we're always reachable.
+              WhatsApp, phone, or email — our team responds fast, every day of
+              the week.
+            </div>
+          </div>
+          <div class="why-card card-reveal" style="transition-delay: 0.5s">
+            <div class="why-icon">💰</div>
+            <div class="why-title">Fair & Transparent Prices</div>
+            <div class="why-desc">
+              No hidden fees. All quotes include park fees, accommodation,
+              transport, guide, and meals. You know exactly what you're paying
+              for, upfront.
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="pkg-grid">
-        <div class="pkg-card card-in">
-          <img
-            class="pkg-img"
-            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=80"
-            alt="Classic"
-          />
-          <div class="pkg-body">
-            <span class="pkg-badge green">Best for beginners</span>
-            <div class="pkg-name">Classic Serengeti Safari</div>
-            <div class="pkg-desc">
-              7 days through the Serengeti and Ngorongoro with daily game drives
-              and full-board tented camp accommodation.
+    </section>
+
+    <!-- ═══ TRUST ════════════════════════════════════ -->
+    <section id="trust">
+      <div class="trust-inner">
+        <div class="sec-label" style="justify-content: center">
+          Accreditations & Partners
+        </div>
+        <h2 class="sec-h2" style="text-align: center">
+          Trusted, Verified & <em>Accredited</em>
+        </h2>
+        <div class="trust-badges">
+          <div class="trust-badge card-reveal">
+            <div class="trust-badge-icon">🏛</div>
+            <div class="trust-badge-name">Tanzania Tourism Board</div>
+            <div class="trust-badge-sub">Licensed Operator</div>
+          </div>
+          <div class="trust-badge card-reveal" style="transition-delay: 0.08s">
+            <div class="trust-badge-icon">🏔</div>
+            <div class="trust-badge-name">TANAPA Partner</div>
+            <div class="trust-badge-sub">National Parks Authority</div>
+          </div>
+          <div class="trust-badge card-reveal" style="transition-delay: 0.16s">
+            <div class="trust-badge-icon">🤝</div>
+            <div class="trust-badge-name">TATO Member</div>
+            <div class="trust-badge-sub">
+              Tanzania Association of Tour Operators
             </div>
-            <div class="pkg-meta">
-              <span>🗓 7 Days</span><span>👥 2–10 Guests</span
-              ><span>🏕 Tented Camp</span>
+          </div>
+          <div class="trust-badge card-reveal" style="transition-delay: 0.24s">
+            <div class="trust-badge-icon">🌿</div>
+            <div class="trust-badge-name">KPAP Partner</div>
+            <div class="trust-badge-sub">
+              Kilimanjaro Porters Assistance Project
             </div>
-            <div class="pkg-price">
-              <span class="pkg-amount">$2,400</span
-              ><span class="pkg-per">/ per person</span>
-            </div>
-            <a href="#booking" class="pkg-btn outline">Book this package</a>
+          </div>
+          <div class="trust-badge card-reveal" style="transition-delay: 0.32s">
+            <div class="trust-badge-icon">⭐</div>
+            <div class="trust-badge-name">TripAdvisor</div>
+            <div class="trust-badge-sub">Certificate of Excellence</div>
+          </div>
+          <div class="trust-badge card-reveal" style="transition-delay: 0.4s">
+            <div class="trust-badge-icon">🟢</div>
+            <div class="trust-badge-name">Google Reviews</div>
+            <div class="trust-badge-sub">4.9 / 5 · 300+ reviews</div>
           </div>
         </div>
-        <div class="pkg-card featured card-in" style="transition-delay: 0.12s">
-          <img
-            class="pkg-img"
-            src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=700&q=80"
-            alt="Migration"
-          />
-          <div class="pkg-body">
-            <span class="pkg-badge gold">⭐ Most popular</span>
-            <div class="pkg-name">Great Migration & Zanzibar</div>
-            <div class="pkg-desc">
-              12 days following the wildebeest migration, ending with 3 nights
-              of bliss on Zanzibar's white sand beaches.
+        <div class="trust-reviews" style="margin-top: 1.8rem">
+          <div class="review-pill">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">
+              <strong>4.9/5</strong> on Google · 300+ reviews
             </div>
-            <div class="pkg-meta">
-              <span>🗓 12 Days</span><span>👥 2–8 Guests</span
-              ><span>🏨 Luxury Lodge</span>
-            </div>
-            <div class="pkg-price">
-              <span class="pkg-amount">$4,900</span
-              ><span class="pkg-per">/ per person</span>
-            </div>
-            <a href="#booking" class="pkg-btn grad">Book this package</a>
           </div>
-        </div>
-        <div class="pkg-card card-in" style="transition-delay: 0.24s">
-          <img
-            class="pkg-img"
-            src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=700&q=80"
-            alt="Kilimanjaro"
-          />
-          <div class="pkg-body">
-            <span class="pkg-badge blue">Adventure</span>
-            <div class="pkg-name">Kilimanjaro Summit Trek</div>
-            <div class="pkg-desc">
-              9-day Lemosho route climb to Africa's highest summit with expert
-              guides, full equipment & altitude support.
+          <div class="review-pill">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">
+              <strong>Excellent</strong> on TripAdvisor · 200+ reviews
             </div>
-            <div class="pkg-meta">
-              <span>🗓 9 Days</span><span>👥 1–12 Guests</span
-              ><span>⛺ Mountain Camp</span>
+          </div>
+          <div class="review-pill">
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">
+              <strong>Top Rated</strong> · 98% recommend us
             </div>
-            <div class="pkg-price">
-              <span class="pkg-amount">$3,200</span
-              ><span class="pkg-per">/ per person</span>
-            </div>
-            <a href="#booking" class="pkg-btn outline">Book this package</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- GALLERY -->
-    <section
-      id="gallery"
-      style="background: var(--dark2); padding: 5rem 0; overflow: hidden"
-    >
-      <div class="gallery-header">
+    <section id="gallery">
+      <div class="gallery-head">
         <div>
-          <div class="section-label">Our gallery</div>
-          <h2 class="section-heading" style="font-size: 1.9rem">
+          <div class="sec-label">Our gallery</div>
+          <h2 class="sec-h2" style="font-size: 1.8rem">
             Tanzania through <em>our lens</em>
           </h2>
         </div>
         <span
           style="
-            font-size: 0.68rem;
+            font-size: 0.66rem;
             color: rgba(250, 243, 224, 0.28);
             letter-spacing: 0.1em;
           "
@@ -2238,82 +2470,68 @@
       <div style="overflow: hidden">
         <div class="gallery-track">
           <img
-            class="gallery-photo"
+            class="gphoto"
             src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&q=75"
-            alt=""
-          />
-          <img
-            class="gallery-photo"
+            alt="Safari"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=400&q=75"
-            alt=""
-          />
-          <img
-            class="gallery-photo"
+            alt="Serengeti"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=400&q=75"
-            alt=""
-          />
-          <img
-            class="gallery-photo"
+            alt="Kilimanjaro"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=400&q=75"
-            alt=""
-          />
-          <img
-            class="gallery-photo"
+            alt="Zanzibar"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&q=75"
-            alt=""
-          />
-          <img
-            class="gallery-photo"
+            alt="Ngorongoro"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1474755032398-4b0ed3b2ae5c?w=400&q=75"
-            alt=""
-          />
-          <img
-            class="gallery-photo"
+            alt="Tarangire"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1580501170888-80668882d0cb?w=400&q=75"
-            alt=""
-          />
-          <img
-            class="gallery-photo"
+            alt="Selous"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=75"
-            alt=""
+            alt="Mountain"
           />
           <img
-            class="gallery-photo"
+            class="gphoto"
             src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&q=75"
             alt=""
-          />
-          <img
-            class="gallery-photo"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=400&q=75"
             alt=""
-          />
-          <img
-            class="gallery-photo"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=400&q=75"
             alt=""
-          />
-          <img
-            class="gallery-photo"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=400&q=75"
             alt=""
-          />
-          <img
-            class="gallery-photo"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&q=75"
             alt=""
-          />
-          <img
-            class="gallery-photo"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1474755032398-4b0ed3b2ae5c?w=400&q=75"
             alt=""
-          />
-          <img
-            class="gallery-photo"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1580501170888-80668882d0cb?w=400&q=75"
             alt=""
-          />
-          <img
-            class="gallery-photo"
+          /><img
+            class="gphoto"
             src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=75"
             alt=""
           />
@@ -2321,54 +2539,60 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
+    <!-- ═══ TESTIMONIALS ══════════════════════════ -->
     <section id="testimonials">
-      <div style="max-width: 1100px; margin: 0 auto">
-        <div class="section-label">What guests say</div>
-        <h2 class="section-heading">Stories from the <em>Wild</em></h2>
-      </div>
-      <div class="testi-grid">
-        <div class="testi-card card-in">
-          <div class="testi-stars">★★★★★</div>
-          <blockquote>
-            "The Serengeti at dawn, Hassan spotting a leopard in the acacia —
-            moments like that stay with you forever. Molana made it all
-            effortless."
-          </blockquote>
-          <div class="testi-author">
-            <div class="testi-av">SJ</div>
-            <div>
-              <div class="testi-name">Sophia & James</div>
-              <div class="testi-loc">London · Serengeti Package</div>
+      <div class="inner">
+        <div class="sec-label">Guest reviews</div>
+        <h2 class="sec-h2">Stories from the <em>Wild</em></h2>
+        <div class="testi-grid">
+          <div class="testi-card card-reveal">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>
+              "Hassan spotted a leopard hidden in the acacia at dawn — moments
+              like that stay with you forever. Molana made everything feel
+              effortless and magical."
+            </blockquote>
+            <div class="testi-author">
+              <div class="testi-av">SJ</div>
+              <div>
+                <div class="testi-name">Sophia & James M.</div>
+                <div class="testi-loc">London, UK · Serengeti Package</div>
+                <div class="testi-source">via Google Reviews</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="testi-card card-in" style="transition-delay: 0.12s">
-          <div class="testi-stars">★★★★★</div>
-          <blockquote>
-            "Standing on Kilimanjaro's summit at sunrise, the shadow of the
-            mountain stretching across the clouds — Molana made this dream
-            real."
-          </blockquote>
-          <div class="testi-author">
-            <div class="testi-av">AK</div>
-            <div>
-              <div class="testi-name">Amara Kone</div>
-              <div class="testi-loc">Paris · Kilimanjaro Trek</div>
+          <div class="testi-card card-reveal" style="transition-delay: 0.12s">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>
+              "Standing on Kilimanjaro's summit at sunrise — I cried. Our guide
+              David never left my side. Molana's team is world-class. I can't
+              recommend them highly enough."
+            </blockquote>
+            <div class="testi-author">
+              <div class="testi-av">AK</div>
+              <div>
+                <div class="testi-name">Amara K.</div>
+                <div class="testi-loc">Paris, France · Kilimanjaro Trek</div>
+                <div class="testi-source">via TripAdvisor</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="testi-card card-in" style="transition-delay: 0.24s">
-          <div class="testi-stars">★★★★★</div>
-          <blockquote>
-            "From wildebeest crossing rivers to cocktails on Zanzibar's beach —
-            12 days with Molana was the most balanced trip of our lives."
-          </blockquote>
-          <div class="testi-author">
-            <div class="testi-av">MR</div>
-            <div>
-              <div class="testi-name">Marcus & Rina</div>
-              <div class="testi-loc">Toronto · Migration & Zanzibar</div>
+          <div class="testi-card card-reveal" style="transition-delay: 0.24s">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>
+              "From wildebeest crossing rivers to cocktails on Zanzibar's beach
+              — 12 days with Molana was the most perfectly balanced, beautifully
+              organized trip of our lives."
+            </blockquote>
+            <div class="testi-author">
+              <div class="testi-av">MR</div>
+              <div>
+                <div class="testi-name">Marcus & Rina T.</div>
+                <div class="testi-loc">
+                  Toronto, Canada · Migration & Zanzibar
+                </div>
+                <div class="testi-source">via Google Reviews</div>
+              </div>
             </div>
           </div>
         </div>
@@ -2377,167 +2601,257 @@
 
     <!-- CTA STRIP -->
     <div class="cta-strip">
-      <h2>Ready for Your <em>Tanzanian Adventure?</em></h2>
+      <h2>Ready to <em>Discover Tanzania?</em></h2>
       <p>
-        Our safari specialists are standing by. Tell us your dream and we'll
-        craft the perfect journey — from the plains of the Serengeti to the
-        summit of Kilimanjaro.
+        Talk to our local experts today — no pressure, no commitment. Just
+        honest advice from people who know this land inside out.
       </p>
       <div class="cta-btns">
-        <a href="#booking" class="cta-btn-main">Plan My Safari</a>
-        <a href="#packages" class="cta-btn-sec">View All Packages</a>
+        <a
+          href="#contact"
+          class="btn-primary"
+          style="opacity: 1; animation: none; transform: none"
+          >Book My Safari
+          <span class="btn-primary-circle"
+            ><svg viewBox="0 0 24 24">
+              <polyline points="9 18 15 12 9 6" /></svg></span
+        ></a>
+        <a href="https://wa.me/255754000000" class="btn-wa" target="_blank"
+          ><svg
+            viewBox="0 0 24 24"
+            style="width: 16px; height: 16px; fill: #fff"
+          >
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            /></svg
+          >WhatsApp Us</a
+        >
       </div>
     </div>
 
-    <!-- ══ BOOKING ════════════════════════════════ -->
-    <section id="booking">
-      <div class="booking-wrap">
-        <div class="booking-left">
-          <div class="section-label">Get in touch</div>
-          <h2 class="section-heading">Start Your <em>Journey</em></h2>
-          <p>
-            Our specialists are based in Dar es Salaam and respond within 24
-            hours. Tell us your dream — we'll make it real.
-          </p>
-          <div class="contact-list">
-            <div class="contact-item">
-              <div class="contact-ico">📍</div>
-              <div>
-                <strong>Our Office</strong>
-                <p>Oyster Bay, Dar es Salaam, Tanzania</p>
+    <!-- ═══ CONTACT ══════════════════════════════════ -->
+    <section id="contact">
+      <div class="inner">
+        <div class="sec-label">Get in touch</div>
+        <h2 class="sec-h2">Start Your <em>Journey Today</em></h2>
+      </div>
+      <div class="inner" style="margin-top: 0">
+        <div class="contact-grid" style="margin-top: 2rem">
+          <div class="contact-left card-reveal">
+            <p>
+              Our safari specialists are based in Dar es Salaam and respond
+              within a few hours. Tell us your dream — we'll make it happen.
+            </p>
+            <div class="contact-items">
+              <div class="contact-item">
+                <div class="contact-ico">📍</div>
+                <div>
+                  <strong>Office</strong>
+                  <p>Oyster Bay, Dar es Salaam, Tanzania</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-ico">📞</div>
+                <div>
+                  <strong>Phone</strong>
+                  <p>+255 754 000 000</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-ico">💬</div>
+                <div>
+                  <strong>WhatsApp</strong>
+                  <p>+255 754 000 000</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-ico">✉️</div>
+                <div>
+                  <strong>Email</strong>
+                  <p>hello@molanatours.co.tz</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-ico">🕐</div>
+                <div>
+                  <strong>Response Time</strong>
+                  <p>Usually within 2–4 hours, 7 days a week</p>
+                </div>
               </div>
             </div>
-            <div class="contact-item">
-              <div class="contact-ico">📞</div>
-              <div>
-                <strong>Phone / WhatsApp</strong>
-                <p>+255 754 000 000</p>
+            <div class="contact-ctas">
+              <a
+                href="https://wa.me/255754000000"
+                class="cta-wa-big"
+                target="_blank"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                  /></svg
+                >Chat on WhatsApp</a
+              >
+              <a href="mailto:hello@molanatours.co.tz" class="cta-email-big"
+                >✉️ Send Email</a
+              >
+            </div>
+            <div class="map-wrap">
+              <a
+                href="https://maps.google.com/?q=Oyster+Bay+Dar+es+Salaam+Tanzania"
+                target="_blank"
+                class="map-placeholder"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  />
+                </svg>
+                <span>📍 Oyster Bay, Dar es Salaam</span>
+                <span style="font-size: 0.62rem; opacity: 0.6"
+                  >Click to open in Google Maps</span
+                >
+              </a>
+            </div>
+          </div>
+          <div class="form-box card-reveal" style="transition-delay: 0.15s">
+            <div class="form-row">
+              <div class="form-grp">
+                <label>First Name</label
+                ><input type="text" placeholder="Your first name" />
+              </div>
+              <div class="form-grp">
+                <label>Last Name</label
+                ><input type="text" placeholder="Your last name" />
               </div>
             </div>
-            <div class="contact-item">
-              <div class="contact-ico">✉️</div>
-              <div>
-                <strong>Email</strong>
-                <p>hello@molanatours.co.tz</p>
+            <div class="form-grp">
+              <label>Email</label
+              ><input type="email" placeholder="your@email.com" />
+            </div>
+            <div class="form-grp">
+              <label>Phone / WhatsApp</label
+              ><input type="tel" placeholder="+1 234 567 8900" />
+            </div>
+            <div class="form-row">
+              <div class="form-grp">
+                <label>Interested In</label>
+                <select>
+                  <option>Serengeti Safari</option>
+                  <option>Great Migration</option>
+                  <option>Kilimanjaro Trek</option>
+                  <option>Zanzibar Escape</option>
+                  <option>Ngorongoro Crater</option>
+                  <option>Custom Package</option>
+                </select>
+              </div>
+              <div class="form-grp">
+                <label>Travel Month</label>
+                <select>
+                  <option>January</option>
+                  <option>February</option>
+                  <option>March</option>
+                  <option>April</option>
+                  <option>May</option>
+                  <option>June</option>
+                  <option>July</option>
+                  <option>August</option>
+                  <option>September</option>
+                  <option>October</option>
+                  <option>November</option>
+                  <option>December</option>
+                  <option>Flexible</option>
+                </select>
               </div>
             </div>
-            <div class="contact-item">
-              <div class="contact-ico">🕐</div>
-              <div>
-                <strong>Response Time</strong>
-                <p>Within 24 hours, Mon–Sat</p>
+            <div class="form-row">
+              <div class="form-grp">
+                <label>Group Size</label>
+                <select>
+                  <option>Solo</option>
+                  <option>2 people</option>
+                  <option>3–4 people</option>
+                  <option>5–8 people</option>
+                  <option>9+ people</option>
+                </select>
+              </div>
+              <div class="form-grp">
+                <label>Budget per Person</label>
+                <select>
+                  <option>Under $1,500</option>
+                  <option>$1,500–$2,500</option>
+                  <option>$2,500–$4,000</option>
+                  <option>$4,000–$6,000</option>
+                  <option>$6,000+</option>
+                </select>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="form-box">
-          <div class="form-row">
             <div class="form-grp">
-              <label>First Name</label
-              ><input type="text" placeholder="Hassan" />
+              <label>Tell us your dream trip</label
+              ><textarea
+                placeholder="Any special requests, accessibility needs, travel style, or specific dates? The more detail, the better we can help."
+              ></textarea>
             </div>
-            <div class="form-grp">
-              <label>Last Name</label><input type="text" placeholder="Mwanga" />
-            </div>
+            <button
+              class="form-submit"
+              onclick="
+                this.textContent = '✓ Sent! We\'ll reply within a few hours';
+                this.style.background =
+                  'linear-gradient(135deg,#2d8a3e,#1e4d2b)';
+              "
+            >
+              Send Enquiry — It's Free
+            </button>
+            <p class="form-note">
+              No payment needed. No spam. Just a friendly reply from our team.
+            </p>
           </div>
-          <div class="form-grp">
-            <label>Email Address</label
-            ><input type="email" placeholder="you@email.com" />
-          </div>
-          <div class="form-row">
-            <div class="form-grp">
-              <label>Destination</label>
-              <select>
-                <option>Serengeti Safari</option>
-                <option>Kilimanjaro Trek</option>
-                <option>Zanzibar Island</option>
-                <option>Ngorongoro Crater</option>
-                <option>Full Tanzania Circuit</option>
-                <option>Custom Package</option>
-              </select>
-            </div>
-            <div class="form-grp">
-              <label>Travel Month</label>
-              <select>
-                <option>January</option>
-                <option>February</option>
-                <option>March</option>
-                <option>April</option>
-                <option>May</option>
-                <option>June</option>
-                <option>July</option>
-                <option>August</option>
-                <option>September</option>
-                <option>October</option>
-                <option>November</option>
-                <option>December</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-grp">
-              <label>Number of Guests</label>
-              <select>
-                <option>1 guest</option>
-                <option>2 guests</option>
-                <option>3–4 guests</option>
-                <option>5–8 guests</option>
-                <option>9+ guests</option>
-              </select>
-            </div>
-            <div class="form-grp">
-              <label>Budget (per person)</label>
-              <select>
-                <option>$1,500–$2,500</option>
-                <option>$2,500–$4,000</option>
-                <option>$4,000–$6,000</option>
-                <option>$6,000+</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-grp">
-            <label>Tell us your dream</label
-            ><textarea
-              placeholder="Special requests, interests, or specific dates? The more you share, the better we can tailor your experience."
-            ></textarea>
-          </div>
-          <button
-            class="form-submit"
-            onclick="
-              this.textContent = 'Message Sent ✓';
-              this.style.background = 'linear-gradient(135deg,#2d8a3e,#1e4d2b)';
-            "
-          >
-            Send Enquiry
-          </button>
-          <p class="form-note">
-            No payment required. A Molana specialist will respond within 24
-            hours.
-          </p>
         </div>
       </div>
     </section>
 
-    <!-- ══ FOOTER ══════════════════════════════════ -->
+    <!-- ═══ FOOTER ════════════════════════════════ -->
     <footer>
       <div class="footer-inner">
         <div class="footer-top">
-          <div class="footer-brand">
-            <div class="footer-brand-logo">
+          <div class="foot-brand">
+            <div class="foot-brand-logo">
               <img src="molanalogo.jpg" alt="Molana Adventures" />
             </div>
             <p>
-              Tanzania's premier safari company, crafting unforgettable journeys
-              since 2012. Based in Dar es Salaam, operating across East Africa.
+              Tanzania's premier locally-owned safari company, crafting
+              unforgettable journeys since 2012. Based in Dar es Salaam.
+              Licensed by the Tanzania Tourism Board.
             </p>
-            <div class="footer-socials">
-              <a class="soc" href="#">in</a>
-              <a class="soc" href="#">ig</a>
-              <a class="soc" href="#">fb</a>
-              <a class="soc" href="#">tw</a>
+            <div class="foot-socials">
+              <a class="fsoc" href="#" aria-label="Facebook">f</a>
+              <a class="fsoc" href="#" aria-label="Instagram">ig</a>
+              <a class="fsoc" href="#" aria-label="TripAdvisor">ta</a>
+              <a class="fsoc" href="#" aria-label="YouTube">yt</a>
+              <a
+                class="fsoc"
+                href="https://wa.me/255754000000"
+                aria-label="WhatsApp"
+                target="_blank"
+                style="
+                  background: rgba(37, 211, 102, 0.12);
+                  border-color: rgba(37, 211, 102, 0.3);
+                  color: #25d366;
+                "
+                >wa</a
+              >
             </div>
           </div>
-          <div class="footer-col">
+          <div class="foot-col">
+            <h5>Tours</h5>
+            <ul>
+              <li><a href="#">Serengeti Safari</a></li>
+              <li><a href="#">Great Migration</a></li>
+              <li><a href="#">Kilimanjaro Trek</a></li>
+              <li><a href="#">Zanzibar Escape</a></li>
+              <li><a href="#">Ngorongoro Crater</a></li>
+              <li><a href="#">Custom Safari</a></li>
+            </ul>
+          </div>
+          <div class="foot-col">
             <h5>Destinations</h5>
             <ul>
               <li><a href="#">Serengeti</a></li>
@@ -2545,43 +2859,50 @@
               <li><a href="#">Zanzibar</a></li>
               <li><a href="#">Ngorongoro</a></li>
               <li><a href="#">Selous Reserve</a></li>
+              <li><a href="#">Tarangire</a></li>
             </ul>
           </div>
-          <div class="footer-col">
-            <h5>Experiences</h5>
-            <ul>
-              <li><a href="#">Game Drives</a></li>
-              <li><a href="#">Balloon Safari</a></li>
-              <li><a href="#">Kili Trekking</a></li>
-              <li><a href="#">Beach Escapes</a></li>
-              <li><a href="#">Cultural Tours</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
+          <div class="foot-col">
             <h5>Company</h5>
             <ul>
               <li><a href="#">About Us</a></li>
               <li><a href="#">Our Guides</a></li>
               <li><a href="#">Sustainability</a></li>
-              <li><a href="#">Testimonials</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#">Accreditations</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#">Blog</a></li>
             </ul>
           </div>
         </div>
         <div class="footer-bottom">
           <p>
-            © 2026 Molana Tours Ltd · Dar es Salaam, Tanzania · Licensed by
-            Tanzania Tourism Board
+            © 2026 Molana Adventures Ltd · Dar es Salaam, Tanzania · Licensed by
+            Tanzania Tourism Board (TTB)
           </p>
-          <p>Privacy Policy · Terms & Conditions</p>
+          <div class="foot-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Cookie Policy</a>
+          </div>
         </div>
       </div>
     </footer>
 
     <script>
-      // ── HAMBURGER ────────────────────────────────
-      const hbtn = document.getElementById("hamburger");
-      const drawer = document.getElementById("mobileDrawer");
+      // NAV
+      const nav = document.getElementById("nav");
+      window.addEventListener(
+        "scroll",
+        () => {
+          nav.classList.toggle("show", scrollY > 60);
+          nav.classList.toggle("scrolled", scrollY > 110);
+        },
+        { passive: true },
+      );
+
+      // HAMBURGER
+      const hbtn = document.getElementById("hbtn"),
+        drawer = document.getElementById("mobDrawer");
       hbtn.addEventListener("click", () => {
         hbtn.classList.toggle("open");
         drawer.classList.toggle("open");
@@ -2589,154 +2910,29 @@
           ? "hidden"
           : "";
       });
-      drawer.querySelectorAll(".mob-link").forEach((a) => {
+      document.querySelectorAll(".mdl").forEach((a) =>
         a.addEventListener("click", () => {
           hbtn.classList.remove("open");
           drawer.classList.remove("open");
           document.body.style.overflow = "";
-        });
-      });
-
-      // ── STICKY NAV ───────────────────────────────
-      const nav = document.getElementById("main-nav");
-      window.addEventListener(
-        "scroll",
-        () => {
-          nav.classList.toggle("show", window.scrollY > 80);
-          nav.classList.toggle("scrolled", window.scrollY > 130);
-        },
-        { passive: true },
+        }),
       );
 
-      // ── ABOUT HEADING WORD PULL ──────────────────
-      const aboutSegs = [
-        { text: "We are Molana Tours,", em: false },
-        { text: "a team of passionate guides.", em: true },
-        { text: "Tanzania is our home, and your adventure.", em: false },
-      ];
-      const aboutH = document.getElementById("about-h");
-      let d = 0;
-      aboutSegs.forEach((seg) => {
-        seg.text.split(" ").forEach((w) => {
-          const wrap = document.createElement("span");
-          wrap.style.cssText =
-            "display:inline-block;overflow:hidden;margin-right:0.25em";
-          const inner = document.createElement(seg.em ? "em" : "span");
-          inner.className = "wp-word";
-          if (seg.em) {
-            inner.style.cssText =
-              'font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;color:var(--gold-light);display:inline-block;transform:translateY(100%);opacity:0';
-          }
-          inner.textContent = w;
-          inner.style.animationDelay = d + "s";
-          d += 0.06;
-          wrap.appendChild(inner);
-          aboutH.appendChild(wrap);
-        });
-      });
-      const ahObs = new IntersectionObserver(
-        (e) => {
-          if (e[0].isIntersecting) {
-            aboutH
-              .querySelectorAll(".wp-word")
-              .forEach((w) => w.classList.add("up"));
-            ahObs.disconnect();
-          }
-        },
-        { threshold: 0.2 },
-      );
-      ahObs.observe(aboutH);
-
-      // ── ABOUT BODY CHAR REVEAL ───────────────────
-      const bodyTxt =
-        "Over twelve years, we have guided thousands of travelers through Africa's most breathtaking landscapes — from the endless Serengeti plains to the snowfields of Kilimanjaro and the turquoise shores of Zanzibar. Every safari we craft earns its place in the story of a lifetime.";
-      const bodyEl = document.getElementById("about-body");
-      bodyTxt.split("").forEach((ch) => {
-        const s = document.createElement("span");
-        s.className = "char";
-        s.textContent = ch;
-        bodyEl.appendChild(s);
-      });
-      const chars = bodyEl.querySelectorAll(".char");
-      const total = chars.length;
-      function revChars() {
-        const r = bodyEl.getBoundingClientRect();
-        const prog = Math.max(
-          0,
-          Math.min(
-            1,
-            (window.innerHeight * 0.82 - r.top) / (window.innerHeight * 0.6),
-          ),
-        );
-        chars.forEach((c, i) =>
-          c.classList.toggle("lit", prog > i / total - 0.04),
-        );
-      }
-      window.addEventListener("scroll", revChars, { passive: true });
-      revChars();
-
-      // ── SECTION HEADING PULL ─────────────────────
-      function pullHeading(el) {
-        if (el.dataset.pulled) return;
-        el.dataset.pulled = "1";
-        const orig = el.innerHTML;
-        el.innerHTML = "";
-        const tmp = document.createElement("div");
-        tmp.innerHTML = orig;
-        let dd = 0;
-        function processNode(node, isEm) {
-          if (node.nodeType === 3) {
-            node.textContent
-              .split(" ")
-              .filter(Boolean)
-              .forEach((w) => {
-                const wrap = document.createElement("span");
-                wrap.style.cssText =
-                  "display:inline-block;overflow:hidden;margin-right:0.22em";
-                const inner = document.createElement(isEm ? "em" : "span");
-                inner.className = "wp-word";
-                if (isEm)
-                  inner.style.cssText =
-                    'font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;color:var(--gold-light);display:inline-block;transform:translateY(100%);opacity:0';
-                inner.style.animationDelay = dd + "s";
-                dd += 0.07;
-                inner.textContent = w;
-                wrap.appendChild(inner);
-                el.appendChild(wrap);
-              });
-          } else if (node.nodeName === "EM") {
-            node.childNodes.forEach((n) => processNode(n, true));
-          }
-        }
-        tmp.childNodes.forEach((n) => processNode(n, false));
-        const o = new IntersectionObserver(
-          (e) => {
-            if (e[0].isIntersecting) {
-              el.querySelectorAll(".wp-word").forEach((w) =>
-                w.classList.add("up"),
-              );
-              o.disconnect();
-            }
-          },
-          { threshold: 0.2 },
-        );
-        o.observe(el);
-      }
-      document.querySelectorAll(".section-heading").forEach(pullHeading);
-
-      // ── CARD REVEAL ──────────────────────────────
-      const cObs = new IntersectionObserver(
+      // SCROLL REVEAL
+      const obs = new IntersectionObserver(
         (e) => {
           e.forEach((en) => {
             if (en.isIntersecting) {
-              en.target.classList.add("visible");
-              cObs.unobserve(en.target);
+              en.target.classList.add("vis");
+              obs.unobserve(en.target);
             }
           });
         },
-        { threshold: 0.08, rootMargin: "-40px" },
+        { threshold: 0.08, rootMargin: "-30px" },
       );
-      document.querySelectorAll(".card-in").forEach((el) => cObs.observe(el));
+      document
+        .querySelectorAll(".card-reveal")
+        .forEach((el) => obs.observe(el));
     </script>
   </body>
 </html>
